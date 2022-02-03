@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/01 14:27:29 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/03 13:27:54 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,10 @@ fclean: clean
 	/bin/rm -f $(NAME)
 	make -C $(LIBFT) fclean
 
+comp:
+	gcc $(FLAGS) -I . -I $(LIBFT_INCLUDES) -c $(SOURCES)
+	ar rcs $(NAME) $(OBJECTS)
+
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean comp re
