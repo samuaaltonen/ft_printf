@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/03 14:21:50 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/03 15:53:19 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	main(void)
 
 	printf("\n%s6x percent signs %%%%%%%%%%%%\n", COLOR_CYAN);
 	ft_printf("%s6x percent signs %%%%%%%%%%%%\n", COLOR_PURPLE);
+
+	printf("\n%sReturn values:\n", COLOR_RESET);
+	printf(" %sRETURNED: %i\n", COLOR_RESET, printf("%syoyoyo", COLOR_CYAN));
+	printf(" %sRETURNED: %i\n", COLOR_RESET, ft_printf("%syoyoyo", COLOR_PURPLE));
 
 	printf(COLOR_RESET);
 	return (0);
