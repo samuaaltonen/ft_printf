@@ -1,0 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tests_main_05.test                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
+/*   Updated: 2022/02/03 14:31:35 by saaltone         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+#ifndef PRINTF_TESTS_H
+
+#define PRINTF_TESTS_H
+#define COLOR_GREEN "\033[0;32m"
+#define COLOR_RED "\033[0;31m"
+#define COLOR_PURPLE "\033[0;35m"
+#define COLOR_CYAN "\033[0;36m"
+#define COLOR_RESET "\033[0m"
+
+#include <stdio.h>
+
+int get_next_line(const int fd, char **line);
+
+#endif
+
+int	main(void)
+{
+	printf("%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_CYAN, 123456.789123345678);
+	ft_printf("%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_PURPLE, 123456.789123345678);
+
+	printf("\n%sDouble with width 30 and precision 0 %30.0lf\n", COLOR_CYAN, 123456.789123345678);
+	ft_printf("%sDouble with width 30 and precision 0 %30.0lf\n", COLOR_PURPLE, 123456.789123345678);
+
+	printf("\n%sExponential notation with precision 1 %.1e\n", COLOR_CYAN, 1000000.123);
+	ft_printf("%sExponential notation with precision 1 %.1e\n", COLOR_PURPLE, 1000000.123);
+
+	printf("\n%sHexadecimal with precision 10 %.10x\n", COLOR_CYAN, 16777215);
+	ft_printf("%sHexadecimal with precision 10 %.10x\n", COLOR_PURPLE, 16777215);
+
+	printf("\n%sOctal with precision 10 %.10o\n", COLOR_CYAN, 123);
+	ft_printf("%sOctal with precision 10 %.10o\n", COLOR_PURPLE, 123);
+
+	printf(COLOR_RESET);
+	return (0);
+}

@@ -1,0 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tests_main_04.test                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
+/*   Updated: 2022/02/03 14:21:50 by saaltone         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+#ifndef PRINTF_TESTS_H
+
+#define PRINTF_TESTS_H
+#define COLOR_GREEN "\033[0;32m"
+#define COLOR_RED "\033[0;31m"
+#define COLOR_PURPLE "\033[0;35m"
+#define COLOR_CYAN "\033[0;36m"
+#define COLOR_RESET "\033[0m"
+
+#include <stdio.h>
+
+int get_next_line(const int fd, char **line);
+
+#endif
+
+int	main(void)
+{
+	void	*something;
+	void	*ptr;
+	int		nbr;
+	int		nbr2;
+
+	something = "asd";
+	ptr = NULL;
+	nbr = 0;
+	nbr2 = 0;
+	printf("%sPointer to something %p\n", COLOR_CYAN, something);
+	ft_printf("%sPointer to something %p\n", COLOR_PURPLE, something);
+
+	printf("\n%sPointer to NULL %p\n", COLOR_CYAN, ptr);
+	ft_printf("%sPointer to NULL %p\n", COLOR_PURPLE, ptr);
+
+	printf("\n%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
+	printf("nbr: %d\n", nbr);
+	ft_printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_PURPLE, &nbr2);
+	ft_printf("nbr: %d\n", nbr2);
+
+	printf("\n%s6x percent signs %%%%%%%%%%%%\n", COLOR_CYAN);
+	ft_printf("%s6x percent signs %%%%%%%%%%%%\n", COLOR_PURPLE);
+
+	printf(COLOR_RESET);
+	return (0);
+}
