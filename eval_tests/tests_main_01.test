@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/08 10:34:01 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:36:05 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(void)
 {
 	printf("%sBasic string\n", COLOR_RESET);
 	printf("%s%s\n", COLOR_CYAN, "yo");
-	ft_printf("%s%c\n", COLOR_PURPLE, "yo");
+	ft_printf("%s%s\n", COLOR_PURPLE, "yo");
 
 	printf("%s\nString with width 30 aligned to right\n", COLOR_RESET);
 	printf("%s%30s%c\n", COLOR_CYAN, "yo", '|');
