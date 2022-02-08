@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/03 14:10:24 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 10:34:01 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #define COLOR_RESET "\033[0m"
 
 #include <stdio.h>
-
-int get_next_line(const int fd, char **line);
 
 #endif
 

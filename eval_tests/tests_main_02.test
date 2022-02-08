@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/03 14:28:00 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 11:06:02 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #define COLOR_RESET "\033[0m"
 
 #include <stdio.h>
-
-int get_next_line(const int fd, char **line);
 
 #endif
 
@@ -67,21 +65,6 @@ int	main(void)
 
 	printf("\n%sUnsigned long long %llu\n", COLOR_CYAN, ((unsigned long long) 1) << 63);
 	ft_printf("%sUnsigned long long %llu\n", COLOR_PURPLE, ((unsigned long long) 1) << 63);
-
-	printf("\n%sDouble %lf\n", COLOR_CYAN, 123456.789123345678);
-	ft_printf("%sDouble %lf\n", COLOR_PURPLE, 123456.789123345678);
-
-	printf("\n%sLong double %Lf\n", COLOR_CYAN, (long double) 123456123456.789123345678 * (long double) 123456123456.789123345678);
-	ft_printf("%sLong double %Lf\n", COLOR_PURPLE, (long double) 123456123456.789123345678 * (long double) 123456123456.789123345678);
-
-	printf("\n%sOctal %o\n", COLOR_CYAN, 999999);
-	ft_printf("%sOctal %o\n", COLOR_PURPLE, 999999);
-
-	printf("\n%sHexadecimal %x\n", COLOR_CYAN, 16777215);
-	ft_printf("%sHexadecimal %x\n", COLOR_PURPLE, 16777215);
-
-	printf("\n%sHexadecimal %X\n", COLOR_CYAN, 69420);
-	ft_printf("%sHexadecimal %X\n", COLOR_PURPLE, 69420);
 
 	printf(COLOR_RESET);
 	return (0);

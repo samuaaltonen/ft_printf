@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/03 16:13:34 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 11:05:11 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 #include <stdio.h>
 
-int get_next_line(const int fd, char **line);
-
 #endif
 
 int	main(void)
@@ -32,8 +30,8 @@ int	main(void)
 	printf("%sDouble %lf\n", COLOR_CYAN, 123456.789123345678);
 	ft_printf("%sDouble %lf\n", COLOR_PURPLE, 123456.789123345678);
 
-	printf("\n%sLong double %Lf\n", COLOR_CYAN, (long double) 123456123456.789123345678 * (long double) 123456123456.789123345678);
-	ft_printf("%sLong double %Lf\n", COLOR_PURPLE, (long double) 123456123456.789123345678 * (long double) 123456123456.789123345678);
+	printf("\n%sLong double %Lf\n", COLOR_CYAN, (long double) 123456123.789123345678 * (long double) 123456123.789123345678);
+	ft_printf("%sLong double %Lf\n", COLOR_PURPLE, (long double) 123456123.789123345678 * (long double) 123456123.789123345678);
 
 	printf("\n%sOctal %o\n", COLOR_CYAN, 999999);
 	ft_printf("%sOctal %o\n", COLOR_PURPLE, 999999);
@@ -44,7 +42,7 @@ int	main(void)
 	printf("\n%sHexadecimal %X\n", COLOR_CYAN, 16777215);
 	ft_printf("%sHexadecimal %X\n", COLOR_PURPLE, 16777215);
 
-	printf("\n%sExponential notation %e\n", COLOR_CYAN, 1000000.123);
+	printf("\n%sBONUS:%s\nExponential notation %e\n", COLOR_GREEN, COLOR_CYAN, 1000000.123);
 	ft_printf("%sExponential notation %e\n", COLOR_PURPLE, 1000000.123);
 
 	printf(COLOR_RESET);

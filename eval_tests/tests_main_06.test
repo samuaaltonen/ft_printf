@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/03 14:38:31 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 11:44:12 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,77 @@
 
 #include <stdio.h>
 
-int get_next_line(const int fd, char **line);
-
 #endif
 
 int	main(void)
 {
-	// TODO LEAK TESTS
+	printf("%sOctal with # flag (prefixing a 0 if it was not zero already). Any non-zero number:\n", COLOR_RESET);
+	printf("%s%#o\n", COLOR_CYAN, 123);
+	ft_printf("%s%#o\n", COLOR_PURPLE, 123);
+
+	printf("%s\nOctal with # flag (prefixing a 0 if it was not zero already). Zero:\n", COLOR_RESET);
+	printf("%s%#o\n", COLOR_CYAN, 0);
+	ft_printf("%s%#o\n", COLOR_PURPLE, 0);
+
+	printf("%s\nHexadecimal with # flag (prefixing a 0x / 0X). Any non-zero number:\n", COLOR_RESET);
+	printf("%s%#x\n", COLOR_CYAN, 16777215);
+	ft_printf("%s%#x\n", COLOR_PURPLE, 16777215);
+	printf("%s%#X\n", COLOR_CYAN, 16777215);
+	ft_printf("%s%#X\n", COLOR_PURPLE, 16777215);
+
+	printf("%s\nHexadecimal with # flag (prefixing a 0x / 0X). Zero:\n", COLOR_RESET);
+	printf("%s%#x\n", COLOR_CYAN, 0);
+	ft_printf("%s%#x\n", COLOR_PURPLE, 0);
+	printf("%s%#X\n", COLOR_CYAN, 0);
+	ft_printf("%s%#X\n", COLOR_PURPLE, 0);
+
+	printf("%s\nZero padded value, number with 3 zero-padding (%%03d):\n", COLOR_RESET);
+	printf("%s%03d\n", COLOR_CYAN, 42);
+	ft_printf("%s%03d\n", COLOR_PURPLE, 42);
+	printf("%s%03d\n", COLOR_CYAN, 0);
+	ft_printf("%s%03d\n", COLOR_PURPLE, 0);
+
+	printf("%s\nZero padded value, negative number with 3 and 5 zero-padding (%%03d). Note that the zero count is 1 less than with positive numbers:\n", COLOR_RESET);
+	printf("%s%03d\n", COLOR_CYAN, -42);
+	ft_printf("%s%03d\n", COLOR_PURPLE, -42);
+	printf("%s%05d\n", COLOR_CYAN, -42);
+	ft_printf("%s%05d\n", COLOR_PURPLE, -42);
+
+	printf("%s\nZero padded value, number with 3 zero-padding but number is bigger than 3 digits (%%03d):\n", COLOR_RESET);
+	printf("%s%03d\n", COLOR_CYAN, 1234);
+	ft_printf("%s%03d\n", COLOR_PURPLE, 1234);
+	printf("%s%03d\n", COLOR_CYAN, -1234);
+	ft_printf("%s%03d\n", COLOR_PURPLE, -1234);
+
+	printf("%s\nZero padded value, number with 0 zero-padding (%%00d):\n", COLOR_RESET);
+	printf("%s%00d\n", COLOR_CYAN, 1234);
+	ft_printf("%s%00d\n", COLOR_PURPLE, 1234);
+	printf("%s%00d\n", COLOR_CYAN, 0);
+	ft_printf("%s%00d\n", COLOR_PURPLE, 0);
+
+	printf("%s\nBoth, - and 0 flags. - should override 0. Positive, zero, negative and also different order of flags:\n", COLOR_RESET);
+	// Trick compiler error checking (to not get error: flag '0' is ignored when flag '-' is present [-Werror,-Wformat])
+	char	*format_trick = "%s%-010d%c\n";
+	printf(format_trick, COLOR_CYAN, 1234, '|');
+	ft_printf(format_trick, COLOR_PURPLE, 1234, '|');
+	printf(format_trick, COLOR_CYAN, 0, '|');
+	ft_printf(format_trick, COLOR_PURPLE, 0, '|');
+	printf(format_trick, COLOR_CYAN, -1234, '|');
+	ft_printf(format_trick, COLOR_PURPLE, -1234, '|');
+	char	*format_trick2 = "%s%0-10d%c\n";
+	printf(format_trick2, COLOR_CYAN, 1234, '|');
+	ft_printf(format_trick2, COLOR_PURPLE, 1234, '|');
+	printf(format_trick2, COLOR_CYAN, 0, '|');
+	ft_printf(format_trick2, COLOR_PURPLE, 0, '|');
+	printf(format_trick2, COLOR_CYAN, -1234, '|');
+	ft_printf(format_trick2, COLOR_PURPLE, -1234, '|');
+
+	printf("%s\n- and 0 flags with width (3) less than digit count (4):\n", COLOR_RESET);
+	// Trick compiler error checking (to not get error: flag '0' is ignored when flag '-' is present [-Werror,-Wformat])
+	char	*format_trick3 = "%s%-03d%c\n";
+	printf(format_trick3, COLOR_CYAN, 1234, '|');
+	ft_printf(format_trick3, COLOR_PURPLE, 1234, '|');
+
 	printf(COLOR_RESET);
 	return (0);
 }
