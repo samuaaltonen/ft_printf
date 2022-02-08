@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/08 10:33:37 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:05:07 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,25 @@
 #define COLOR_RESET "\033[0m"
 
 #include <stdio.h>
+#include <time.h>
 
 #endif
 
 int	main(void)
 {
-	// TODO LEAK TESTS
+	int		i = 0;
+	time_t	end_loop;
+	time_t	start_loop = time(NULL);
+
+	end_loop = start_loop + (time_t) 20;
+
+	while (start_loop < end_loop)
+	{
+		start_loop = time(NULL);
+		ft_printf("\r%sTotal calls: %s%d", COLOR_RESET, COLOR_GREEN, i);
+		i++;
+	}
+	printf("\n");
 	printf(COLOR_RESET);
 	return (0);
 }
