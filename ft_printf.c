@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/03 13:28:38 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 15:06:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	count_arguments(const char *format)
 
 int	somethingsimple(const char *format, va_list ap, t_types **types)
 {
-	if (format[0] == 'i')
+	if (format[0] == 'i' || format[0] == 'd')
 	{
 		(*types)->int_i = va_arg(ap, int);
 		ft_putnbr((*types)->int_i);
@@ -68,10 +68,12 @@ int	ft_printf(const char *format, ...)
 	while (i < len)
 	{
 		if (format[i] == '%')
-			i += 1 + somethingsimple(format + i + 1, ap, &types);
-		ft_putchar(format[i]);
+			i += somethingsimple(format + i + 1, ap, &types);
+		else
+			ft_putchar(format[i]);
 		i++;
 	}
 	va_end(ap);
+	free(types);
 	return (0);
 }
