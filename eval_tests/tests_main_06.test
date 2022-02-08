@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/08 11:44:12 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:14:15 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,39 @@ int	main(void)
 	ft_printf(format_trick2, COLOR_PURPLE, -1234, '|');
 
 	printf("%s\n- and 0 flags with width (3) less than digit count (4):\n", COLOR_RESET);
-	// Trick compiler error checking (to not get error: flag '0' is ignored when flag '-' is present [-Werror,-Wformat])
 	char	*format_trick3 = "%s%-03d%c\n";
 	printf(format_trick3, COLOR_CYAN, 1234, '|');
 	ft_printf(format_trick3, COLOR_PURPLE, 1234, '|');
+
+	printf("%s\nBlank flag (A blank should be left before a positive number (or empty string)):\n", COLOR_RESET);
+	printf("%s%c% d%c\n", COLOR_CYAN, '|', 42, '|');
+	ft_printf("%s%c% d%c\n", COLOR_PURPLE, '|', 42, '|');
+	printf("%s%c% d%c\n", COLOR_CYAN, '|', -42, '|');
+	ft_printf("%s%c% d%c\n", COLOR_PURPLE, '|', -42, '|');
+
+	printf("%s\nBlank flag when width (5) is less than digit count (6):\n", COLOR_RESET);
+	printf("%s%c% 5d%c\n", COLOR_CYAN, '|', 123456, '|');
+	ft_printf("%s%c% 5d%c\n", COLOR_PURPLE, '|', 123456, '|');
+
+	printf("%s\nBlank flag when width (7) is more than digit count (6):\n", COLOR_RESET);
+	printf("%s%c% 7d%c\n", COLOR_CYAN, '|', 123456, '|');
+	ft_printf("%s%c% 7d%c\n", COLOR_PURPLE, '|', 123456, '|');
+
+	printf("%s\n+ flag. Adds sign before number (even with positives):\n", COLOR_RESET);
+	printf("%s%c%+d%c\n", COLOR_CYAN, '|', 42, '|');
+	ft_printf("%s%c%+d%c\n", COLOR_PURPLE, '|', 42, '|');
+	printf("%s%c%+d%c\n", COLOR_CYAN, '|', -42, '|');
+	ft_printf("%s%c%+d%c\n", COLOR_PURPLE, '|', -42, '|');
+	printf("%s%c%+d%c\n", COLOR_CYAN, '|', 0, '|');
+	ft_printf("%s%c%+d%c\n", COLOR_PURPLE, '|', 0, '|');
+
+	printf("%s\n+ flag with width (7) and digit count (6):\n", COLOR_RESET);
+	printf("%s%c%+7d%c\n", COLOR_CYAN, '|', 123456, '|');
+	ft_printf("%s%c%+7d%c\n", COLOR_PURPLE, '|', 123456, '|');
+
+	printf("%s\n+ flag with width (5) and digit count (6):\n", COLOR_RESET);
+	printf("%s%c%+5d%c\n", COLOR_CYAN, '|', 123456, '|');
+	ft_printf("%s%c%+5d%c\n", COLOR_PURPLE, '|', 123456, '|');
 
 	printf(COLOR_RESET);
 	return (0);
