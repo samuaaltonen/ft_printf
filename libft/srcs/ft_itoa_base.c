@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:49:53 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 16:01:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 16:08:11 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	append_digit(char **ptr, long long n, int base)
 	last_empty = 0;
 	while (str[last_empty])
 		last_empty++;
-	if (base <= 10)
+	if (n % base < 10)
 		str[last_empty] = n % base + '0';
 	else
 		str[last_empty] = (n % base - 10) + 'A';
