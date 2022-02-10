@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 16:56:04 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:01:29 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	ft_putchar_n_repeat(char c, int *n, int repeat);
 void	conversion_string(t_conf **conf);
 void	conversion_char(t_conf **conf);
 void	conversion_pointer(t_conf **conf);
+void	conversion_n(t_conf **conf);
 
 #endif

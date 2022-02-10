@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 16:58:59 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:03:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	handle_conversion(t_conf **conf, char **cursor)
 		conversion_char(conf);
 	if (**cursor == 'p')
 		conversion_pointer(conf);
+	if (**cursor == 'n')
+		conversion_n(conf);
 	(*cursor)++;
 }
 
@@ -63,5 +65,5 @@ int	ft_printf(const char *format, ...)
 		handle_args(&conf, &cursor);
 	va_end(conf->ap);
 	free(conf);
-	return (0);
+	return (conf->n);
 }
