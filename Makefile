@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/10 10:35:22 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/10 13:20:14 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS=-Wall -Werror -Wextra
 LIBFT=./libft
 LIBFT_INCLUDES=./libft/includes
 
-FT_PRINTF_SOURCE_FILES=ft_printf.c
+FT_PRINTF_SOURCE_FILES=ft_printf.c conf.c flags.c output.c
 FT_PRINTF_SOURCES=$(FT_PRINTF_SOURCE_FILES:%.c=srcs/%.c)
 FT_PRINTF_OBJECTS=$(FT_PRINTF_SOURCE_FILES:.c=.o)
 FT_PRINTF_INCLUDES=./includes
@@ -37,8 +37,8 @@ fclean: clean
 	make -C $(LIBFT) fclean
 
 comp:
-	gcc $(FLAGS) -I . -I $(LIBFT_INCLUDES) -c $(SOURCES)
-	ar rcs $(NAME) $(OBJECTS)
+	gcc $(FLAGS) -I $(FT_PRINTF_INCLUDES) -I $(LIBFT_INCLUDES) -c $(FT_PRINTF_SOURCES)
+	ar rcs $(NAME) $(FT_PRINTF_OBJECTS)
 
 re: fclean all
 

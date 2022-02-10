@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 12:09:24 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:19:02 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 */
 static void	handle_conversion(t_conf **conf, char **cursor)
 {
-	
+	(void)conf;
+	if (**cursor == 's')
+		ft_putstr(va_arg((*conf)->ap, char *));
 }
 
 /*
@@ -25,19 +27,24 @@ static void	handle_conversion(t_conf **conf, char **cursor)
 */
 static void	handle_length(t_conf **conf, char **cursor)
 {
-	
+	(void)conf;
+	(void)cursor;
 }
 
 static void	handle_args(t_conf **conf, char **cursor)
 {
-	if (*cursor != '%')
+	if (!(*cursor) || !(**cursor))
+		return ;
+	if (**cursor != '%')
 	{
-		ft_putchar_n(*cursor, (*conf)->n);
+		ft_putchar_n(**cursor, &((*conf)->n));
 		(*cursor)++;
 		return ;
 	}
 	(*cursor)++;
 	handle_flags(conf, cursor);
+	//handle_width(conf, cursor);
+	//handle_precision(conf, cursor);
 	handle_length(conf, cursor);
 	handle_conversion(conf, cursor);
 }
@@ -48,17 +55,16 @@ static void	handle_args(t_conf **conf, char **cursor)
 */
 int	ft_printf(const char *format, ...)
 {
-	va_list		ap;
 	t_conf		*conf;
 	char		*cursor;
 
 	if (!init_conf(&conf))
 		exit_error(MSG_ALLOC_FAILED);
-	cursor = format;
-	va_start(ap, format);
+	cursor = (char *) format;
+	va_start(conf->ap, format);
 	while (*cursor)
 		handle_args(&conf, &cursor);
-	va_end(ap);
+	va_end(conf->ap);
 	free(conf);
 	return (0);
 }
