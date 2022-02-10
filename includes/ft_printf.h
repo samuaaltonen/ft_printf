@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 13:14:42 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:35:43 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int		ft_printf(const char *format, ...);
 int		init_conf(t_conf **conf);
 
 void	handle_flags(t_conf **conf, char **cursor);
+void	handle_width(t_conf **conf, char **cursor);
+void	handle_precision(t_conf **conf, char **cursor);
 
 void	exit_error(char	*message);
 void	ft_putchar_n(char c, int *n);
+void	ft_putstr_n(char *str, int *n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:07:49 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 13:24:21 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:29:13 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,28 @@ void	handle_flags(t_conf **conf, char **cursor)
 		(*conf)->flag_addsign = 1;
 	(*cursor)++;
 	handle_flags(conf, cursor);
+}
+
+/*
+ * Parses width and saves it to conf.
+*/
+void	handle_width(t_conf **conf, char **cursor)
+{
+	if (ft_isdigit(**cursor))
+	{
+		(*conf)->width = ft_atoi(*cursor);
+		*cursor += ft_count_digits((*conf)->width);
+	}
+}
+
+/*
+ * Parses precision and saves it to conf.
+*/
+void	handle_precision(t_conf **conf, char **cursor)
+{
+	if (**cursor == '.')
+	{
+		(*conf)->precision = ft_atoi(*cursor + 1);
+		*cursor += 1 + ft_count_digits((*conf)->precision);
+	}
 }

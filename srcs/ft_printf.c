@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 13:19:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:35:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 */
 static void	handle_conversion(t_conf **conf, char **cursor)
 {
-	(void)conf;
+	if (!(**cursor))
+		return ;
 	if (**cursor == 's')
-		ft_putstr(va_arg((*conf)->ap, char *));
+		ft_putstr_n(va_arg((*conf)->ap, char *), &((*conf)->n));
+	(*cursor)++;
 }
 
 /*
@@ -43,8 +45,8 @@ static void	handle_args(t_conf **conf, char **cursor)
 	}
 	(*cursor)++;
 	handle_flags(conf, cursor);
-	//handle_width(conf, cursor);
-	//handle_precision(conf, cursor);
+	handle_width(conf, cursor);
+	handle_precision(conf, cursor);
 	handle_length(conf, cursor);
 	handle_conversion(conf, cursor);
 }
