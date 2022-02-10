@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 11:50:41 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 12:08:28 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_conf
 int		ft_printf(const char *format, ...);
 
 int		init_conf(t_conf **conf);
+
+void	handle_flags(t_conf **conf, char **cursor);
 
 void	exit_error(char	*message);
 void	ft_putchar_n(char c, int *n);
