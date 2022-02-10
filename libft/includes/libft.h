@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/01/28 11:55:48 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:56:28 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,5 @@ void	ft_array_foreach(t_array **array, void (*f)(void *));
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 int		ft_toggle(int value);
+char	*ft_itoa_base(long long number, int base);
 #endif
