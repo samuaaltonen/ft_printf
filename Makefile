@@ -6,17 +6,22 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/10 13:45:59 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/10 15:09:43 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libftprintf.a
-FLAGS=-Wall -Werror -Wextra
+FLAGS=-Wall -Werror -Wextra -O3
 
 LIBFT=./libft
 LIBFT_INCLUDES=./libft/includes
 
-FT_PRINTF_SOURCE_FILES=ft_printf.c conf.c flags.c output.c \
+FT_PRINTF_SOURCE_FILES=ft_printf.c \
+						conf.c \
+						flags.c \
+						width.c \
+						precision.c \
+						length.c output.c \
 						conversion_string.c \
 						conversion_char.c
 FT_PRINTF_SOURCES=$(FT_PRINTF_SOURCE_FILES:%.c=srcs/%.c)

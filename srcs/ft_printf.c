@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 13:45:14 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:07:13 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@ static void	handle_conversion(t_conf **conf, char **cursor)
 	if (**cursor == 'c')
 		conversion_char(conf);
 	(*cursor)++;
-}
-
-/*
- * Handles length modifieds (l, llu, hh etc.).
-*/
-static void	handle_length(t_conf **conf, char **cursor)
-{
-	(void)conf;
-	(void)cursor;
 }
 
 static void	handle_args(t_conf **conf, char **cursor)
@@ -59,8 +50,8 @@ static void	handle_args(t_conf **conf, char **cursor)
 */
 int	ft_printf(const char *format, ...)
 {
-	t_conf		*conf;
-	char		*cursor;
+	t_conf	*conf;
+	char	*cursor;
 
 	if (!init_conf(&conf))
 		exit_error(MSG_ALLOC_FAILED);
