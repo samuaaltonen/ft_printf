@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 13:35:57 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:45:14 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static void	handle_conversion(t_conf **conf, char **cursor)
 	if (!(**cursor))
 		return ;
 	if (**cursor == 's')
-		ft_putstr_n(va_arg((*conf)->ap, char *), &((*conf)->n));
+		conversion_string(conf);
+	if (**cursor == 'c')
+		conversion_char(conf);
 	(*cursor)++;
 }
 

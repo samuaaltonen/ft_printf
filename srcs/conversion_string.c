@@ -1,53 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output.c                                           :+:      :+:    :+:   */
+/*   conversion_string.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 11:49:16 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 14:27:43 by saaltone         ###   ########.fr       */
+/*   Created: 2022/02/10 13:38:20 by saaltone          #+#    #+#             */
+/*   Updated: 2022/02/10 14:27:32 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	exit_error(char	*message)
+void	conversion_string(t_conf **conf)
 {
-	ft_putstr(message);
-	exit(EXIT_FAILURE);
-}
+	char	*str;
+	int		i;
+	int		len;
 
-void	ft_putchar_n(char c, int *n)
-{
-	ft_putchar(c);
-	(*n)++;
-}
-
-void	ft_putchar_n_repeat(char c, int *n, int repeat)
-{
-	int	i;
-
+	str = va_arg((*conf)->ap, char *);
+	len = ft_strlen(str);
+	if ((*conf)->precision >= 0 && len > (*conf)->precision)
+		len = (*conf)->precision;
+	if (!(*conf)->flag_leftadjusted)
+		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
 	i = 0;
-	while (i < repeat)
-	{
-		ft_putchar(c);
-		i++;
-	}
-	(*n) += i;
-}
-
-void	ft_putstr_n(char *str, int *n)
-{
-	int	i;
-
-	if (!str)
-		return ;
-	i = 0;
-	while (str[i])
+	while (i < len)
 	{
 		ft_putchar(str[i]);
 		i++;
 	}
-	(*n) += i;
+	if ((*conf)->flag_leftadjusted)
+		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+	(*conf)->n += i;
 }

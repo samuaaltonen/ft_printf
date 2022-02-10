@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 13:35:43 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 14:24:50 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void	handle_precision(t_conf **conf, char **cursor);
 
 void	exit_error(char	*message);
 void	ft_putchar_n(char c, int *n);
+void	ft_putchar_n_repeat(char c, int *n, int repeat);
 void	ft_putstr_n(char *str, int *n);
+
+void	conversion_string(t_conf **conf);
+void	conversion_char(t_conf **conf);
 
 #endif
