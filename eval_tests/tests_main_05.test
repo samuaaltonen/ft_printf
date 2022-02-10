@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 10:43:04 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 15:21:24 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	main(void)
 
 	printf("\n%sOctal with precision 10 %.10o\n", COLOR_CYAN, 123);
 	ft_printf("%sOctal with precision 10 %.10o\n", COLOR_PURPLE, 123);
+
+	printf("%sPrecision with zeroes before: %%1.03f\n", COLOR_RESET);
+	printf("%s%1.03f\n", COLOR_CYAN, 123456.f);
+	ft_printf("%s%1.03f\n", COLOR_PURPLE, 123456.f);
 
 	printf(COLOR_RESET);
 	return (0);
