@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 15:21:24 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 16:46:04 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	main(void)
 {
+	printf("%.1000f", __DBL_MIN__);
+
 	printf("%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_CYAN, 123456.789123345678);
 	ft_printf("%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_PURPLE, 123456.789123345678);
 

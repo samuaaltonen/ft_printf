@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output.c                                           :+:      :+:    :+:   */
+/*   conversion_pointer.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 11:49:16 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 16:55:15 by saaltone         ###   ########.fr       */
+/*   Created: 2022/02/10 15:44:33 by saaltone          #+#    #+#             */
+/*   Updated: 2022/02/10 16:57:36 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	exit_error(char	*message)
+void	conversion_pointer(t_conf **conf)
 {
-	ft_putstr(message);
-	exit(EXIT_FAILURE);
-}
+	int		i;
+	char	*itoa;
 
-void	ft_putchar_n(char c, int *n)
-{
-	ft_putchar(c);
-	(*n)++;
-}
-
-void	ft_putchar_n_repeat(char c, int *n, int repeat)
-{
-	int	i;
-
-	i = 0;
-	while (i < repeat)
+	itoa = ft_itoa_base(va_arg((*conf)->ap, long long), 16);
+	if (itoa)
 	{
-		ft_putchar(c);
-		i++;
+		i = 0;
+		ft_putstr("0x");
+		while (itoa[i])
+		{
+			ft_putchar(ft_tolower(itoa[i]));
+			i++;
+		}
+		(*conf)->n += 2 + i;
+		free(itoa);
 	}
-	(*n) += i;
 }

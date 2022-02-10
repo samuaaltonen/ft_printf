@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 15:07:13 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 16:58:59 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	handle_conversion(t_conf **conf, char **cursor)
 		conversion_string(conf);
 	if (**cursor == 'c')
 		conversion_char(conf);
+	if (**cursor == 'p')
+		conversion_pointer(conf);
 	(*cursor)++;
 }
 
