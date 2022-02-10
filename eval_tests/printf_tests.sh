@@ -22,6 +22,7 @@ if [ $1 = 'all' ]; then
 	./printf_tests.sh 5
 	./printf_tests.sh 6
 	./printf_tests.sh 7
+	./printf_tests.sh 8
 	exit 1
 fi
 

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 10:43:08 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 11:09:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,10 @@ int	main(void)
 	printf("%s%c%+5d%c\n", COLOR_CYAN, '|', 123456, '|');
 	ft_printf("%s%c%+5d%c\n", COLOR_PURPLE, '|', 123456, '|');
 
-	printf("%s\nNegative precision. Kinda undefined but maybe print just 0 or nothing. Libc printf seems to print nothing:\n", COLOR_RESET);
-	char	*format_trick4 = "%s%1.-1d\n";
-	printf(format_trick4, COLOR_CYAN, 1.2345);
-	ft_printf(format_trick4, COLOR_PURPLE, 1.2345);
+	printf("%s\nNegative precision (weird stuff, kinda optional and undefined):\n", COLOR_RESET);
+	char	*format_trick4 = "%s%1.-10f%c\n";
+	printf(format_trick4, COLOR_CYAN, 1.234, '|');
+	ft_printf(format_trick4, COLOR_PURPLE, 1.234, '|');
 
 	printf(COLOR_RESET);
 	return (0);
