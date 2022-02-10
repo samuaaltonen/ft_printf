@@ -6,26 +6,30 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/03 13:27:54 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/10 10:35:22 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libftprintf.a
 FLAGS=-Wall -Werror -Wextra
+
 LIBFT=./libft
 LIBFT_INCLUDES=./libft/includes
-SOURCES=ft_printf.c
-OBJECTS=$(SOURCES:.c=.o)
+
+FT_PRINTF_SOURCE_FILES=ft_printf.c
+FT_PRINTF_SOURCES=$(FT_PRINTF_SOURCE_FILES:%.c=srcs/%.c)
+FT_PRINTF_OBJECTS=$(FT_PRINTF_SOURCE_FILES:.c=.o)
+FT_PRINTF_INCLUDES=./includes
 
 $(NAME):
 	make -C $(LIBFT)
-	gcc $(FLAGS) -I . -I $(LIBFT_INCLUDES) -c $(SOURCES)
-	ar rcs $(NAME) $(OBJECTS)
+	gcc $(FLAGS) -I $(FT_PRINTF_INCLUDES) -I $(LIBFT_INCLUDES) -c $(FT_PRINTF_SOURCES)
+	ar rcs $(NAME) $(FT_PRINTF_OBJECTS)
 
 all: $(NAME)
 
 clean:
-	/bin/rm -f $(OBJECTS)
+	/bin/rm -f $(FT_PRINTF_OBJECTS)
 	make -C $(LIBFT) clean
 
 fclean: clean

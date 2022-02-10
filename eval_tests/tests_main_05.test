@@ -6,24 +6,11 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/08 10:33:44 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 10:43:04 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-#ifndef PRINTF_TESTS_H
-
-#define PRINTF_TESTS_H
-#define COLOR_GREEN "\033[0;32m"
-#define COLOR_RED "\033[0;31m"
-#define COLOR_PURPLE "\033[0;35m"
-#define COLOR_CYAN "\033[0;36m"
-#define COLOR_RESET "\033[0m"
-
-#include <stdio.h>
-
-#endif
+#include "tests.h"
 
 int	main(void)
 {

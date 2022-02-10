@@ -6,24 +6,11 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/08 14:14:15 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/10 10:43:08 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-#ifndef PRINTF_TESTS_H
-
-#define PRINTF_TESTS_H
-#define COLOR_GREEN "\033[0;32m"
-#define COLOR_RED "\033[0;31m"
-#define COLOR_PURPLE "\033[0;35m"
-#define COLOR_CYAN "\033[0;36m"
-#define COLOR_RESET "\033[0m"
-
-#include <stdio.h>
-
-#endif
+#include "tests.h"
 
 int	main(void)
 {
@@ -122,6 +109,11 @@ int	main(void)
 	printf("%s\n+ flag with width (5) and digit count (6):\n", COLOR_RESET);
 	printf("%s%c%+5d%c\n", COLOR_CYAN, '|', 123456, '|');
 	ft_printf("%s%c%+5d%c\n", COLOR_PURPLE, '|', 123456, '|');
+
+	printf("%s\nNegative precision. Kinda undefined but maybe print just 0 or nothing. Libc printf seems to print nothing:\n", COLOR_RESET);
+	char	*format_trick4 = "%s%1.-1d\n";
+	printf(format_trick4, COLOR_CYAN, 1.2345);
+	ft_printf(format_trick4, COLOR_PURPLE, 1.2345);
 
 	printf(COLOR_RESET);
 	return (0);
