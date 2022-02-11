@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:07:49 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 15:08:40 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:39:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	handle_flags(t_conf **conf, char **cursor)
 		(*conf)->flag_addspace = 1;
 	if (**cursor == '+')
 		(*conf)->flag_addsign = 1;
+	if ((*conf)->flag_zeropadded && (*conf)->flag_leftadjusted)
+		(*conf)->flag_zeropadded = 0;
 	(*cursor)++;
 	handle_flags(conf, cursor);
 }
