@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:00:54 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 17:06:40 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:17:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	conversion_n(t_conf **conf)
 {
 	int	*nbr;
 
-	nbr = va_arg((*conf)->ap, int*);
+	nbr = va_arg((*conf)->ap, int *);
 	*nbr = (*conf)->n;
 }
