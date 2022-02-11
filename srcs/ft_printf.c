@@ -6,29 +6,11 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 17:03:52 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:20:20 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*
- * Handles conversion.
-*/
-static void	handle_conversion(t_conf **conf, char **cursor)
-{
-	if (!(**cursor))
-		return ;
-	if (**cursor == 's')
-		conversion_string(conf);
-	if (**cursor == 'c')
-		conversion_char(conf);
-	if (**cursor == 'p')
-		conversion_pointer(conf);
-	if (**cursor == 'n')
-		conversion_n(conf);
-	(*cursor)++;
-}
 
 static void	handle_args(t_conf **conf, char **cursor)
 {
