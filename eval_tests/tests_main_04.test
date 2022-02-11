@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 17:07:09 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:17:31 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,15 @@ int	main(void)
 	printf("\n%sPointer to NULL %p\n", COLOR_CYAN, ptr);
 	ft_printf("%sPointer to NULL %p\n\n", COLOR_PURPLE, ptr);
 
-	printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
+	printf("%sPointer with width\n", COLOR_RESET);
+	printf("%s%20p%c\n", COLOR_CYAN, something, '|');
+	ft_printf("%s%20p%c\n", COLOR_PURPLE, something, '|');
+	printf("%s%-20p%c\n", COLOR_CYAN, something, '|');
+	ft_printf("%s%-20p%c\n", COLOR_PURPLE, something, '|');
+	printf("%s%3p%c\n", COLOR_CYAN, something, '|');
+	ft_printf("%s%3p%c\n", COLOR_PURPLE, something, '|');
+
+	printf("\n%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
 	printf("nbr: %d\n", nbr);
 	ft_printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_PURPLE, &nbr2);
 	ft_printf("nbr: %d\n", nbr2);
