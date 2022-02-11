@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 10:42:57 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/11 13:13:49 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ int	main(void)
 
 	printf("\n%sHexadecimal %X\n", COLOR_CYAN, 16777215);
 	ft_printf("%sHexadecimal %X\n", COLOR_PURPLE, 16777215);
+
+	printf("\n%sHexadecimal with width and precision:", COLOR_RESET);
+	printf("\n%s%12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%12X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%2X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%2X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%-12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%-12X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#-12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#-12X%c\n", COLOR_PURPLE, 16777215, '|');
 
 	printf("\n%sBONUS:%s\nExponential notation %e\n", COLOR_GREEN, COLOR_CYAN, 1000000.123);
 	ft_printf("%sExponential notation %e\n", COLOR_PURPLE, 1000000.123);
