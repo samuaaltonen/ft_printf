@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:25:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/11 13:25:07 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:05:02 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	init_conf(t_conf **conf)
 	(*conf)->flag_leftadjusted = 0;
 	(*conf)->flag_addspace = 0;
 	(*conf)->flag_addsign = 0;
+	(*conf)->is_uppercase = 0;
 	return (1);
 }

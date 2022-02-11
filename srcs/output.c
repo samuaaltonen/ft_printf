@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:49:16 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 16:55:15 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:56:36 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,21 @@ void	ft_putchar_n_repeat(char c, int *n, int repeat)
 		i++;
 	}
 	(*n) += i;
+}
+
+void	ft_putstr_case(char *str, int is_uppercase)
+{
+	int	i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (str[i])
+	{
+		if (is_uppercase)
+			ft_putchar(ft_toupper(str[i]));
+		else
+			ft_putchar(ft_tolower(str[i]));
+		i++;
+	}
 }
