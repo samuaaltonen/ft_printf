@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/11 15:18:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 12:05:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void	conversion_pointer(t_conf **conf);
 void	conversion_n(t_conf **conf);
 void	conversion_hexadecimal_lower(t_conf **conf);
 void	conversion_hexadecimal_upper(t_conf **conf);
+void	conversion_octal(t_conf **conf);
 
 #endif

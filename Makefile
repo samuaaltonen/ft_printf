@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/11 14:22:43 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/14 12:09:24 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ FT_PRINTF_SOURCE_FILES=ft_printf.c \
 						conversion_char.c \
 						conversion_pointer.c \
 						conversion_n.c \
-						conversion_hexadecimal.c
+						conversion_hexadecimal.c \
+						conversion_octal.c
 FT_PRINTF_SOURCES=$(FT_PRINTF_SOURCE_FILES:%.c=srcs/%.c)
 FT_PRINTF_OBJECTS=$(FT_PRINTF_SOURCE_FILES:.c=.o)
 FT_PRINTF_INCLUDES=./includes

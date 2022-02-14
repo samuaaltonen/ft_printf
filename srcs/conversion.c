@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:20:12 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/11 14:40:43 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 12:05:30 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	handle_conversion(t_conf **conf, char **cursor)
 	{'n', conversion_n},
 	{'x', conversion_hexadecimal_lower},
 	{'X', conversion_hexadecimal_upper},
+	{'o', conversion_octal},
 	{0, NULL},
 	};
 
