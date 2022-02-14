@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 15:56:28 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:06:22 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,5 @@ int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 int		ft_toggle(int value);
 char	*ft_itoa_base(long long number, int base);
+char	*ft_itoa_base_ull(unsigned long long number, int base, int is_negative);
 #endif

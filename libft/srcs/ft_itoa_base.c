@@ -6,13 +6,13 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:49:53 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 16:08:11 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:16:09 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_digits_and_sign(long long n, int base)
+static int	count_digits_and_sign(unsigned long long n, int base)
 {
 	int	digits;
 
@@ -29,13 +29,13 @@ static int	count_digits_and_sign(long long n, int base)
 	return (digits);
 }
 
-static void	append_digit(char **ptr, long long n, int base)
+static void	append_digit(char **ptr, unsigned long long n, int base)
 {
 	char	*str;
 	int		last_empty;
 
 	str = *ptr;
-	if (n >= base)
+	if (n >= (unsigned int) base)
 		append_digit(ptr, n / base, base);
 	last_empty = 0;
 	while (str[last_empty])
@@ -56,11 +56,37 @@ char	*ft_itoa_base(long long number, int base)
 	int		digits;
 	char	*str;
 
-	digits = count_digits_and_sign(number, base);
+	if (number < 0)
+		digits = count_digits_and_sign(-number, base);
+	else
+		digits = count_digits_and_sign(number, base);
 	str = ft_strnew(sizeof(char) * digits);
 	if (!str)
 		return (NULL);
 	if (number < 0)
+		str[0] = '-';
+	if (number < 0)
+		append_digit(&str, -number, base);
+	else
+		append_digit(&str, number, base);
+	str[digits] = '\0';
+	return (str);
+}
+
+/*
+ * Same as ft_itoa_base but supports unsigned long long integers with an option
+ * to add minus sign to the string (when is_negative is set to 1)
+*/
+char	*ft_itoa_base_ull(unsigned long long number, int base, int is_negative)
+{
+	int		digits;
+	char	*str;
+
+	digits = count_digits_and_sign(number, base);
+	str = ft_strnew(sizeof(char) * digits);
+	if (!str)
+		return (NULL);
+	if (is_negative)
 		str[0] = '-';
 	append_digit(&str, number, base);
 	str[digits] = '\0';
