@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 13:07:34 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:39:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(void)
 	printf("\n%sHexadecimal %X\n", COLOR_CYAN, 16777215);
 	ft_printf("%sHexadecimal %X\n", COLOR_PURPLE, 16777215);
 
-	printf("\n%sOverflows with octal and hexadecimal (lengths hh, h, l, ll):\n", COLOR_RESET);
+	printf("\n%sOverflows with octal (lengths hh, h, l, ll):\n", COLOR_RESET);
 	char	*format = "%s%hho\n";
 	printf(format, COLOR_CYAN, 277);
 	ft_printf(format, COLOR_PURPLE, 277);
@@ -43,7 +43,12 @@ int	main(void)
 	int	trick_compiler = 2;
 	printf(format, COLOR_CYAN, __LONG_LONG_MAX__ * trick_compiler);
 	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__ * trick_compiler);
-	
+	printf(format, COLOR_CYAN, - __LONG_LONG_MAX__ * trick_compiler);
+	ft_printf(format, COLOR_PURPLE, - __LONG_LONG_MAX__ * trick_compiler);
+	printf(format, COLOR_CYAN, -2);
+	ft_printf(format, COLOR_PURPLE, -2);
+
+	printf("\n%sOverflows with hexadecimal (lengths hh, h, l, ll):\n", COLOR_RESET);
 	format = "%s%hhX\n";
 	printf(format, COLOR_CYAN, 277);
 	ft_printf(format, COLOR_PURPLE, 277);

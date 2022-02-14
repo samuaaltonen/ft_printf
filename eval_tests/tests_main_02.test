@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 10:42:53 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:41:16 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ int	main(void)
 
 	printf("\n%sLong long %lld\n", COLOR_CYAN, ((long long) 1) << 42);
 	ft_printf("%sLong long %lld\n", COLOR_PURPLE, ((long long) 1) << 42);
+
+	printf("\n%sLong long %lld\n", COLOR_CYAN, (long long) -123);
+	ft_printf("%sLong long %lld\n", COLOR_PURPLE, (long long) -123);
 
 	printf("\n%sUnsigned long long %llu\n", COLOR_CYAN, ((unsigned long long) 1) << 63);
 	ft_printf("%sUnsigned long long %llu\n", COLOR_PURPLE, ((unsigned long long) 1) << 63);
