@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/14 12:09:24 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/14 12:29:45 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ FT_PRINTF_SOURCE_FILES=ft_printf.c \
 						length.c \
 						output.c \
 						conversion.c \
+						conversion_skip.c \
 						conversion_string.c \
 						conversion_char.c \
 						conversion_pointer.c \

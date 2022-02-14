@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 12:05:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 12:28:23 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_putstr_case(char *str, int is_uppercase);
 
 void	print_str(t_conf **conf, char *str, int len);
 
+void	conversion_skip(t_conf **conf);
 void	conversion_string(t_conf **conf);
 void	conversion_char(t_conf **conf);
 void	conversion_pointer(t_conf **conf);
