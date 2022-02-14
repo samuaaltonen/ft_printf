@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 17:11:13 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 12:15:38 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,58 @@ int	main(void)
 	printf("%sPrecision with zeroes before: %%1.03f\n", COLOR_RESET);
 	printf("%s%1.03f\n", COLOR_CYAN, 123456.f);
 	ft_printf("%s%1.03f\n", COLOR_PURPLE, 123456.f);
+
+	printf("\n%sOctal with width and precision:", COLOR_RESET);
+	printf("\n%s%12o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%12o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%2o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%2o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%-12o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%-12o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#12o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#12o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#-12o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#-12o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#012o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#012o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#12o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#12o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#12.10o%c\n", COLOR_CYAN, 0, '|');
+	ft_printf("%s%#12.10o%c\n", COLOR_PURPLE, 0, '|');
+	printf("\n%s%#12.1o%c\n", COLOR_CYAN, 123, '|');
+	ft_printf("%s%#12.1o%c\n", COLOR_PURPLE, 123, '|');
+	printf("\n%s%#12.30o%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#12.30o%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#12.30o%c\n", COLOR_CYAN, 0, '|');
+	ft_printf("%s%#12.30o%c\n", COLOR_PURPLE, 0, '|');
+	printf("\n%s%#o%c\n", COLOR_CYAN, 0, '|');
+	ft_printf("%s%#o%c\n", COLOR_PURPLE, 0, '|');
+
+	printf("\n%sHexadecimal with width and precision:", COLOR_RESET);
+	printf("\n%s%12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%12X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%2X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%2X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%-12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%-12X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#12X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#-12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#-12X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#012X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#012X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#12X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#12X%c\n", COLOR_PURPLE, 16777215, '|');
+	printf("\n%s%#12.10X%c\n", COLOR_CYAN, 0, '|');
+	ft_printf("%s%#12.10X%c\n", COLOR_PURPLE, 0, '|');
+	printf("\n%s%#12.1X%c\n", COLOR_CYAN, 123, '|');
+	ft_printf("%s%#12.1X%c\n", COLOR_PURPLE, 123, '|');
+	printf("\n%s%#12.30X%c\n", COLOR_CYAN, 16777215, '|');
+	ft_printf("%s%#12.30X%c\n", COLOR_PURPLE, 16777215, '|');
 
 	printf(COLOR_RESET);
 	return (0);
