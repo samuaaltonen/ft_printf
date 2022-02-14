@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:09:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/11 15:30:50 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 12:03:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,14 @@ static void	conversion_hexadecimal(t_conf **conf)
 		hex_precision(conf, &itoa);
 		hex_prefix(conf, &itoa, number);
 		len = ft_strlen(itoa);
-		if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted)
+		if ((*conf)->width - len > 0
+			&& !(*conf)->flag_leftadjusted
+			&& !(*conf)->flag_zeropadded)
 			ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		if ((*conf)->width - len > 0
+			&& !(*conf)->flag_leftadjusted
+			&& (*conf)->flag_zeropadded)
+			ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
 		ft_putstr_case(itoa, (*conf)->is_uppercase);
 		if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
 			ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
