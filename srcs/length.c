@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 13:43:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 17:26:44 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,23 @@
 */
 long long	get_va_arg(t_conf **conf)
 {
+	long long	temp;
+
+	if ((*conf)->length == 0)
+		temp = va_arg((*conf)->ap, int);
 	if ((*conf)->length == 1)
-		return ((char) va_arg((*conf)->ap, int));
+		temp = (char) va_arg((*conf)->ap, int);
 	if ((*conf)->length == 2)
-		return ((short) va_arg((*conf)->ap, int));
+		temp = (short) va_arg((*conf)->ap, int);
 	if ((*conf)->length == 3)
-		return (va_arg((*conf)->ap, long));
+		temp = va_arg((*conf)->ap, long);
 	if ((*conf)->length == 4)
-		return (va_arg((*conf)->ap, long long));
-	if ((*conf)->length == 5)
-		return (va_arg((*conf)->ap, long double));
-	return (va_arg((*conf)->ap, int));
+		temp = va_arg((*conf)->ap, long long);
+	if (temp < 0)
+		(*conf)->is_negative = 1;
+	else
+		(*conf)->is_negative = 0;
+	return (temp);
 }
 
 /*
@@ -42,6 +48,7 @@ long long	get_va_arg(t_conf **conf)
 */
 void	handle_length(t_conf **conf, char **cursor)
 {
+	(*conf)->length = 0;
 	if (!(*cursor) || !(**cursor == 'h' || **cursor == 'l' || **cursor == 'L'))
 		return ;
 	if (**cursor == 'h')

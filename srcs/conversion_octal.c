@@ -6,11 +6,12 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:06:14 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 13:38:58 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:50:08 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static void	octal_precision(t_conf **conf, char **output)
 {
@@ -55,14 +56,17 @@ static void	octal_prefix(t_conf **conf, char **output, long long number)
 	}
 }
 
+/*
+ * Handles octal conversion. Treats given numbers as unsigned.
+*/
 void	conversion_octal(t_conf **conf)
 {
-	int			len;
-	char		*itoa;
-	long long	number;
+	int					len;
+	char				*itoa;
+	unsigned long long	number;
 
 	number = get_va_arg(conf);
-	itoa = ft_itoa_base(number, 8);
+	itoa = ft_itoa_base_ull(number, 8, 0);
 	if (itoa)
 	{
 		octal_precision(conf, &itoa);

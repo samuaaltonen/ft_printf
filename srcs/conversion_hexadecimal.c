@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:09:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 13:41:37 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 17:27:53 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,17 @@ static void	hex_prefix(t_conf **conf, char **output, long long number)
 	}
 }
 
+/*
+ * Handles hexadecimal conversion. Treats given numbers as unsigned.
+*/
 static void	conversion_hexadecimal(t_conf **conf)
 {
-	int			len;
-	char		*itoa;
-	long long	number;
+	int					len;
+	char				*itoa;
+	unsigned long long	number;
 
 	number = get_va_arg(conf);
-	itoa = ft_itoa_base(number, 16);
+	itoa = ft_itoa_base_ull(number, 16, 0);
 	if (itoa)
 	{
 		hex_precision(conf, &itoa);
