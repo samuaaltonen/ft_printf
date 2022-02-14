@@ -6,11 +6,31 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/11 13:07:13 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/14 13:43:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+ * Uses va_arg to get given argument with correct lenght. For char and short
+ * (hh, h) it gets the argument as int but then truncates it to char/short by
+ * casting. (Because va_arg automatically promotes it to int)
+*/
+long long	get_va_arg(t_conf **conf)
+{
+	if ((*conf)->length == 1)
+		return ((char) va_arg((*conf)->ap, int));
+	if ((*conf)->length == 2)
+		return ((short) va_arg((*conf)->ap, int));
+	if ((*conf)->length == 3)
+		return (va_arg((*conf)->ap, long));
+	if ((*conf)->length == 4)
+		return (va_arg((*conf)->ap, long long));
+	if ((*conf)->length == 5)
+		return (va_arg((*conf)->ap, long double));
+	return (va_arg((*conf)->ap, int));
+}
 
 /*
  * Handles length modifieds (l, llu, hh etc.):
