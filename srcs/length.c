@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 17:26:44 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:14:10 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,27 @@ long long	get_va_arg(t_conf **conf)
 		temp = va_arg((*conf)->ap, long);
 	if ((*conf)->length == 4)
 		temp = va_arg((*conf)->ap, long long);
+	if (temp < 0)
+		(*conf)->is_negative = 1;
+	else
+		(*conf)->is_negative = 0;
+	return (temp);
+}
+
+unsigned long long	get_va_arg_unsigned(t_conf **conf)
+{
+	unsigned long long	temp;
+
+	if ((*conf)->length == 0)
+		temp = va_arg((*conf)->ap, unsigned int);
+	if ((*conf)->length == 1)
+		temp = (unsigned char) va_arg((*conf)->ap, unsigned int);
+	if ((*conf)->length == 2)
+		temp = (unsigned short) va_arg((*conf)->ap, unsigned int);
+	if ((*conf)->length == 3)
+		temp = va_arg((*conf)->ap, unsigned long);
+	if ((*conf)->length == 4)
+		temp = va_arg((*conf)->ap, unsigned long long);
 	if (temp < 0)
 		(*conf)->is_negative = 1;
 	else

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 17:27:31 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:14:21 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void		handle_precision(t_conf **conf, char **cursor);
 void		handle_length(t_conf **conf, char **cursor);
 void		handle_conversion(t_conf **conf, char **cursor);
 
-long long	get_va_arg(t_conf **conf);
+long long			get_va_arg(t_conf **conf);
+unsigned long long	get_va_arg_unsigned(t_conf **conf);
 
 void		exit_error(char	*message);
 void		ft_putchar_n(char c, int *n);
@@ -65,5 +66,7 @@ void		conversion_n(t_conf **conf);
 void		conversion_hexadecimal_lower(t_conf **conf);
 void		conversion_hexadecimal_upper(t_conf **conf);
 void		conversion_octal(t_conf **conf);
+void		conversion_int(t_conf **conf);
+void		conversion_unsigned(t_conf **conf);
 
 #endif
