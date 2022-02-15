@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   length.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 14:14:10 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:11:44 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ long long	get_va_arg(t_conf **conf)
 {
 	long long	temp;
 
+	temp = 0;
 	if ((*conf)->length == 0)
 		temp = va_arg((*conf)->ap, int);
 	if ((*conf)->length == 1)
@@ -42,6 +43,7 @@ unsigned long long	get_va_arg_unsigned(t_conf **conf)
 {
 	unsigned long long	temp;
 
+	temp = 0;
 	if ((*conf)->length == 0)
 		temp = va_arg((*conf)->ap, unsigned int);
 	if ((*conf)->length == 1)
@@ -52,10 +54,7 @@ unsigned long long	get_va_arg_unsigned(t_conf **conf)
 		temp = va_arg((*conf)->ap, unsigned long);
 	if ((*conf)->length == 4)
 		temp = va_arg((*conf)->ap, unsigned long long);
-	if (temp < 0)
-		(*conf)->is_negative = 1;
-	else
-		(*conf)->is_negative = 0;
+	(*conf)->is_negative = 0;
 	return (temp);
 }
 
