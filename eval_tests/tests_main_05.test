@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 15:38:09 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:45:50 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,26 @@ int	main(void)
 	printf("%s0 with precision 0:\n", COLOR_RESET);
 	printf("%sShould be empty: %.0d\n", COLOR_CYAN, 0);
 	ft_printf("%sShould be empty: %.0d\n", COLOR_PURPLE, 0);
+
+	printf("%s\nSigned integers with width and precisions:\n", COLOR_RESET);
+	char *format = "%s%.0d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%11.0d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%11.11d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%3.3d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%3.1d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%.d\n";
+	printf(format, COLOR_CYAN, 42);
+	ft_printf(format, COLOR_PURPLE, 42);
 
 	printf("\n%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_CYAN, 123456.789123345678);
 	ft_printf("%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_PURPLE, 123456.789123345678);
