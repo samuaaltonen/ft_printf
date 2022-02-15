@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 11:48:41 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:52:56 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(void)
 	ft_printf(format, COLOR_PURPLE, 2);
 
 	printf("%s\nUndefined behaviour:%s\nHexadecimal with + flags:\n", COLOR_GREEN, COLOR_RESET);
-	format = "%s%X\n";
+	format = "%s%+X\n";
 	printf(format, COLOR_CYAN, 42);
 	ft_printf(format, COLOR_PURPLE, 42);
 	printf(format, COLOR_CYAN, -2);
