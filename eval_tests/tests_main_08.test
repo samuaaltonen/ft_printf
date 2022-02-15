@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_08.test                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 11:52:56 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 22:22:53 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 int	main(void)
 {
+	char	*format = "";
+
+	printf("\n%sBig long double (more than unsigned long long):\n", COLOR_RESET);
+	format = "%s%Lf\n";
+	printf(format, COLOR_CYAN, 3.1415926535897932383e+50L);
+	ft_printf(format, COLOR_PURPLE, 3.1415926535897932383e+50L);
+	
 	printf("\n%sOverflows with octal (lengths hh, h, l, ll):\n", COLOR_RESET);
-	char	*format = "%s%hho\n";
+	format = "%s%hho\n";
 	printf(format, COLOR_CYAN, 277);
 	ft_printf(format, COLOR_PURPLE, 277);
 	format = "%s%ho\n";

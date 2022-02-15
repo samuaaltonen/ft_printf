@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_02.test                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 15:41:16 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:10:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	main(void)
 
 	printf("\n%sFloat %f\n", COLOR_CYAN, 1.23);
 	ft_printf("%sFloat %f\n", COLOR_PURPLE, 1.23);
+
+	printf("\n%sFloat %f\n", COLOR_CYAN, 123.456);
+	ft_printf("%sFloat %f\n", COLOR_PURPLE, 123.456);
 
 	printf("\n%sSigned short %hi\n", COLOR_CYAN, (short) -42);
 	ft_printf("%sSigned short %hi\n", COLOR_PURPLE, (short) -42);
