@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 10:43:34 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:48:41 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,51 @@
 
 int	main(void)
 {
-	// TODO RANDOMIZED TESTS
+	printf("\n%sOverflows with octal (lengths hh, h, l, ll):\n", COLOR_RESET);
+	char	*format = "%s%hho\n";
+	printf(format, COLOR_CYAN, 277);
+	ft_printf(format, COLOR_PURPLE, 277);
+	format = "%s%ho\n";
+	printf(format, COLOR_CYAN, 69420);
+	ft_printf(format, COLOR_PURPLE, 69420);
+	format = "%s%lo\n";
+	printf(format, COLOR_CYAN, __LONG_LONG_MAX__);
+	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__);
+	format = "%s%llo\n";
+	int	trick_compiler = 2;
+	printf(format, COLOR_CYAN, __LONG_LONG_MAX__ * trick_compiler);
+	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__ * trick_compiler);
+	printf(format, COLOR_CYAN, - __LONG_LONG_MAX__ * trick_compiler);
+	ft_printf(format, COLOR_PURPLE, - __LONG_LONG_MAX__ * trick_compiler);
+	printf(format, COLOR_CYAN, -2);
+	ft_printf(format, COLOR_PURPLE, -2);
+
+	printf("\n%sOverflows with hexadecimal (lengths hh, h, l, ll):\n", COLOR_RESET);
+	format = "%s%hhX\n";
+	printf(format, COLOR_CYAN, 277);
+	ft_printf(format, COLOR_PURPLE, 277);
+	format = "%s%hX\n";
+	printf(format, COLOR_CYAN, 69420);
+	ft_printf(format, COLOR_PURPLE, 69420);
+	format = "%s%lX\n";
+	printf(format, COLOR_CYAN, __LONG_LONG_MAX__);
+	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__);
+	format = "%s%llX\n";
+	printf(format, COLOR_CYAN, __LONG_LONG_MAX__ * trick_compiler);
+	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__ * trick_compiler);
+	printf(format, COLOR_CYAN, -2);
+	ft_printf(format, COLOR_PURPLE, -2);
+	printf(format, COLOR_CYAN, 2);
+	ft_printf(format, COLOR_PURPLE, 2);
+
+	printf("%s\nUndefined behaviour:%s\nHexadecimal with + flags:\n", COLOR_GREEN, COLOR_RESET);
+	format = "%s%X\n";
+	printf(format, COLOR_CYAN, 42);
+	ft_printf(format, COLOR_PURPLE, 42);
+	printf(format, COLOR_CYAN, -2);
+	ft_printf(format, COLOR_PURPLE, -2);
+	printf(format, COLOR_CYAN, 0);
+	ft_printf(format, COLOR_PURPLE, 0);
 	printf(COLOR_RESET);
 	return (0);
 }
