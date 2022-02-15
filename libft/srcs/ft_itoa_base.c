@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:49:53 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 15:16:09 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:10:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_digits_and_sign(unsigned long long n, int base)
+static int	count_digits(unsigned long long n, int base)
 {
 	int	digits;
 
 	digits = 0;
 	if (n == 0)
 		return (1);
-	if (n < 0)
-		digits++;
 	while (n != 0)
 	{
 		n = n / base;
@@ -57,10 +55,10 @@ char	*ft_itoa_base(long long number, int base)
 	char	*str;
 
 	if (number < 0)
-		digits = count_digits_and_sign(-number, base);
+		digits = count_digits(-number, base);
 	else
-		digits = count_digits_and_sign(number, base);
-	str = ft_strnew(sizeof(char) * digits);
+		digits = count_digits(number, base);
+	str = ft_strnew(sizeof(char) * (digits + 1));
 	if (!str)
 		return (NULL);
 	if (number < 0)
@@ -82,8 +80,8 @@ char	*ft_itoa_base_ull(unsigned long long number, int base, int is_negative)
 	int		digits;
 	char	*str;
 
-	digits = count_digits_and_sign(number, base);
-	str = ft_strnew(sizeof(char) * digits);
+	digits = count_digits(number, base);
+	str = ft_strnew(sizeof(char) * (digits + 1));
 	if (!str)
 		return (NULL);
 	if (is_negative)
