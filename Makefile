@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
+#    By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/15 14:08:56 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/15 21:00:16 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ FT_PRINTF_SOURCE_FILES=ft_printf.c \
 						conversion_hexadecimal.c \
 						conversion_octal.c \
 						conversion_int.c \
-						conversion_unsigned.c
+						conversion_unsigned.c \
+						conversion_float.c
 FT_PRINTF_SOURCES=$(FT_PRINTF_SOURCE_FILES:%.c=srcs/%.c)
 FT_PRINTF_OBJECTS=$(FT_PRINTF_SOURCE_FILES:.c=.o)
 FT_PRINTF_INCLUDES=./includes

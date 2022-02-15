@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 14:49:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:04:19 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void				conversion_hexadecimal_upper(t_conf **conf);
 void				conversion_octal(t_conf **conf);
 void				conversion_int(t_conf **conf);
 void				conversion_unsigned(t_conf **conf);
+void				conversion_float(t_conf **conf);
 
 #endif
