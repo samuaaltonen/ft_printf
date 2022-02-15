@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_06.test                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 11:43:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:41:27 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,33 @@ int	main(void)
 	ft_printf("%s%03d\n", COLOR_PURPLE, -1234);
 
 	printf("%s\nZero padded value, number with 0 zero-padding (%%00d):\n", COLOR_RESET);
-	printf("%s%00d\n", COLOR_CYAN, 1234);
-	ft_printf("%s%00d\n", COLOR_PURPLE, 1234);
-	printf("%s%00d\n", COLOR_CYAN, 0);
-	ft_printf("%s%00d\n", COLOR_PURPLE, 0);
+	char	*format_trick = "%s%00d\n";
+	printf(format_trick, COLOR_CYAN, 1234);
+	ft_printf(format_trick, COLOR_PURPLE, 1234);
+	printf(format_trick, COLOR_CYAN, 0);
+	ft_printf(format_trick, COLOR_PURPLE, 0);
 
 	printf("%s\nBoth, - and 0 flags. - should override 0. Positive, zero, negative and also different order of flags:\n", COLOR_RESET);
 	// Trick compiler error checking (to not get error: flag '0' is ignored when flag '-' is present [-Werror,-Wformat])
-	char	*format_trick = "%s%-010d%c\n";
+	format_trick = "%s%-010d%c\n";
 	printf(format_trick, COLOR_CYAN, 1234, '|');
 	ft_printf(format_trick, COLOR_PURPLE, 1234, '|');
 	printf(format_trick, COLOR_CYAN, 0, '|');
 	ft_printf(format_trick, COLOR_PURPLE, 0, '|');
 	printf(format_trick, COLOR_CYAN, -1234, '|');
 	ft_printf(format_trick, COLOR_PURPLE, -1234, '|');
-	char	*format_trick2 = "%s%0-10d%c\n";
-	printf(format_trick2, COLOR_CYAN, 1234, '|');
-	ft_printf(format_trick2, COLOR_PURPLE, 1234, '|');
-	printf(format_trick2, COLOR_CYAN, 0, '|');
-	ft_printf(format_trick2, COLOR_PURPLE, 0, '|');
-	printf(format_trick2, COLOR_CYAN, -1234, '|');
-	ft_printf(format_trick2, COLOR_PURPLE, -1234, '|');
+	format_trick = "%s%0-10d%c\n";
+	printf(format_trick, COLOR_CYAN, 1234, '|');
+	ft_printf(format_trick, COLOR_PURPLE, 1234, '|');
+	printf(format_trick, COLOR_CYAN, 0, '|');
+	ft_printf(format_trick, COLOR_PURPLE, 0, '|');
+	printf(format_trick, COLOR_CYAN, -1234, '|');
+	ft_printf(format_trick, COLOR_PURPLE, -1234, '|');
 
 	printf("%s\n- and 0 flags with width (3) less than digit count (4):\n", COLOR_RESET);
-	char	*format_trick3 = "%s%-03d%c\n";
-	printf(format_trick3, COLOR_CYAN, 1234, '|');
-	ft_printf(format_trick3, COLOR_PURPLE, 1234, '|');
+	format_trick = "%s%-03d%c\n";
+	printf(format_trick, COLOR_CYAN, 1234, '|');
+	ft_printf(format_trick, COLOR_PURPLE, 1234, '|');
 
 	printf("%s\nBlank flag (A blank should be left before a positive number (or empty string)):\n", COLOR_RESET);
 	printf("%s%c% d%c\n", COLOR_CYAN, '|', 42, '|');
@@ -111,15 +112,17 @@ int	main(void)
 	ft_printf("%s%c%+5d%c\n", COLOR_PURPLE, '|', 123456, '|');
 
 	printf("%s\nNegative precision (weird stuff, kinda optional and undefined):\n", COLOR_RESET);
-	char	*format_trick4 = "%s%1.-10f%c\n";
-	printf(format_trick4, COLOR_CYAN, 1.234, '|');
-	ft_printf(format_trick4, COLOR_PURPLE, 1.234, '|');
+	format_trick = "%s%1.-10f%c\n";
+	printf(format_trick, COLOR_CYAN, 1.234, '|');
+	ft_printf(format_trick, COLOR_PURPLE, 1.234, '|');
 
 	printf("%s\nMultiple same flags:\n", COLOR_RESET);
-	printf("%s%c%+++++5d%c\n", COLOR_CYAN, '|', 123456, '|');
-	ft_printf("%s%c%+++++5d%c\n", COLOR_PURPLE, '|', 123456, '|');
-	printf("%s%c%      5d%c\n", COLOR_CYAN, '|', 123456, '|');
-	ft_printf("%s%c%      5d%c\n", COLOR_PURPLE, '|', 123456, '|');
+	format_trick = "%s%c%+++++5d%c\n";
+	printf(format_trick, COLOR_CYAN, '|', 123456, '|');
+	ft_printf(format_trick, COLOR_PURPLE, '|', 123456, '|');
+	format_trick = "%s%c%      5d%c\n";
+	printf(format_trick, COLOR_CYAN, '|', 123456, '|');
+	ft_printf(format_trick, COLOR_PURPLE, '|', 123456, '|');
 
 	printf(COLOR_RESET);
 	return (0);
