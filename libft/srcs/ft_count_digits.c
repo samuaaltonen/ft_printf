@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_digits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:59:36 by saaltone          #+#    #+#             */
-/*   Updated: 2021/11/12 11:25:21 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:46:42 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_count_digits(int number)
+int	ft_count_digits(long long number)
 {
 	int	digits;
 
