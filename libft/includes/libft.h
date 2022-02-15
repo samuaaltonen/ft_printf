@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 14:07:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:35:32 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,5 @@ int		ft_max(int a, int b);
 int		ft_toggle(int value);
 char	*ft_itoa_base(long long number, int base);
 char	*ft_itoa_base_ull(unsigned long long number, int base, int is_negative);
+char	*ft_ftoa(long double number, int precision);
 #endif

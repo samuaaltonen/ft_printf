@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
+#    By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 10:36:08 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/10 15:56:09 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/15 20:59:58 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ FUNCTIONS = ft_putchar.c ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c \
 		  ft_lstpop.c ft_get_next_line.c ft_rgbtoint.c ft_array_create.c \
 		  ft_array_insert.c ft_array_expand.c ft_array_foreach.c \
 		  ft_color_between.c ft_str_isalnum.c ft_hextoint.c \
-		  ft_max.c ft_min.c ft_toggle.c ft_itoa_base.c
+		  ft_max.c ft_min.c ft_toggle.c ft_itoa_base.c ft_ftoa.c
 SOURCES = $(FUNCTIONS:%.c=srcs/%.c)
 OBJECTS = $(FUNCTIONS:.c=.o)
 HEADERS = includes
