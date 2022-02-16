@@ -27,8 +27,8 @@ if [ $1 = 'all' ]; then
 fi
 
 TESTMAIN="tests_main_0$1"
-gcc -Wall -Wextra -Werror -g -o $TESTMAIN.o -I ../ -I ../includes/ -I ../libft/includes -c -x c $TESTMAIN.test
-gcc -g -o tests_printf $TESTMAIN.o -I ../ -I ../includes/ -I ../libft/includes -L ../ -L ../libft -lftprintf -lft
+gcc -Wall -Wextra -Werror -g -o $TESTMAIN.o -I ../includes/ -c -x c $TESTMAIN.test
+gcc -g -o tests_printf $TESTMAIN.o -I ../includes/ -L ../ -lftprintf
 
 if [ $1 -eq 1 ]; then
 
