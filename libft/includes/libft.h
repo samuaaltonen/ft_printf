@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 13:55:23 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:09:46 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int			ft_split_count(char *str, char c);
 int			ft_count_digits(long long number);
 int			ft_count_digits_ull(unsigned long long number);
+int			ft_count_digits_ld(long double number);
 void		ft_putstr_color(char *str, char *color);
 double		ft_pow(double number, double power);
 int			ft_abs(int number);
@@ -123,5 +124,6 @@ int			ft_toggle(int value);
 char		*ft_itoa_base(long long number, int base);
 char		*ft_itoa_base_ull(unsigned long long number, int base, int isneg);
 char		*ft_ftoa(long double number, int precision);
-long double	ft_dfloor(long double number);
+long double	ft_floor(long double number);
+int			ft_fa_round(char **number, int rounding_start, int leftover);
 #endif

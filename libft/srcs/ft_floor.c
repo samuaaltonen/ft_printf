@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dfloor.c                                        :+:      :+:    :+:   */
+/*   ft_floor.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 /*
  * Floors given long double.
 */
-long double	ft_dfloor(long double number)
+long double	ft_floor(long double number)
 {
 	long long	max_ull;
 
