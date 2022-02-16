@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 11:45:57 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 13:52:59 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,23 @@
 
 int	main(void)
 {
-	printf("%sDouble %lf\n", COLOR_CYAN, 123456.789123345678);
+	char	*format = "";
+
+	printf("%sFloat rounding:\n", COLOR_RESET);
+	format = "%s%.2f\n";
+	printf(format, COLOR_CYAN, 99.9999);
+	ft_printf(format, COLOR_PURPLE, 99.9999);
+	format = "%s%.3f\n";
+	printf(format, COLOR_CYAN, 0.5595f);
+	ft_printf(format, COLOR_PURPLE, 0.5595f);
+	format = "%s%.12f\n";
+	printf(format, COLOR_CYAN, 0.5595f);
+	ft_printf(format, COLOR_PURPLE, 0.5595f);
+	format = "%s%.10f\n";
+	printf(format, COLOR_CYAN, 99999.999999);
+	ft_printf(format, COLOR_PURPLE, 99999.999999);
+
+	printf("%s\nDouble %lf\n", COLOR_CYAN, 123456.789123345678);
 	ft_printf("%sDouble %lf\n", COLOR_PURPLE, 123456.789123345678);
 
 	printf("\n%sLong double %Lf\n", COLOR_CYAN, (long double) 123456123.789123345678 * (long double) 123456123.789123345678);
