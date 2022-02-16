@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:49:53 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 20:10:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 13:55:45 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ char	*ft_itoa_base(long long number, int base)
 
 /*
  * Same as ft_itoa_base but supports unsigned long long integers with an option
- * to add minus sign to the string (when is_negative is set to 1)
+ * to add minus sign to the string (when isneg is set to 1)
 */
-char	*ft_itoa_base_ull(unsigned long long number, int base, int is_negative)
+char	*ft_itoa_base_ull(unsigned long long number, int base, int isneg)
 {
 	int		digits;
 	char	*str;
@@ -84,7 +84,7 @@ char	*ft_itoa_base_ull(unsigned long long number, int base, int is_negative)
 	str = ft_strnew(sizeof(char) * (digits + 1));
 	if (!str)
 		return (NULL);
-	if (is_negative)
+	if (isneg)
 		str[0] = '-';
 	append_digit(&str, number, base);
 	str[digits] = '\0';
