@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:59:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 14:09:32 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:27:40 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int	ft_count_digits_ld(long double number)
 	int	digits;
 
 	digits = 0;
-	while (number > 10)
+	if (number == 0)
+		return (1);
+	while (number > 0.5)
 	{
 		number /= 10;
 		digits++;

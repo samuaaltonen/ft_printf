@@ -6,21 +6,11 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 20:50:11 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 14:11:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:56:05 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	append_dot(char **str)
-{
-	int		last_empty;
-
-	last_empty = 0;
-	while ((*str)[last_empty])
-		last_empty++;
-	(*str)[last_empty] = '.';
-}
 
 static void	fill_zeroes(char **str)
 {
@@ -71,6 +61,24 @@ static long double	get_precision_magnitude(int precision)
 	return (magnitude);
 }
 
+static void	trim_to_precision(char **str, int precision)
+{
+	int	dot_pos;
+
+	if (!str)
+		return ;
+	dot_pos = 0;
+	while ((*str)[dot_pos] && (*str)[dot_pos] != '.')
+		dot_pos++;
+	if ((*str)[dot_pos] != '.')
+		return ;
+	if ((int) ft_strlen(*str) < dot_pos + precision)
+		return ;
+	(*str)[dot_pos + precision] = 0;
+	if ((*str)[ft_strlen(*str) - 1] == '.')
+		(*str)[ft_strlen(*str) - 1] = 0;
+}
+
 char	*ft_ftoa(long double number, int precision)
 {
 	char		*str;
@@ -87,11 +95,13 @@ char	*ft_ftoa(long double number, int precision)
 		return (NULL);
 	str[digits + 2] = '|';
 	append_digit(&str, number);
-	append_dot(&str);
+	ft_append_char(&str, '.');
+	if (temp < magnitude / 10)
+		ft_append_char(&str, '0');
 	append_digit(&str, temp);
 	fill_zeroes(&str);
 	str[digits + 2] = 0;
-	ft_fa_round(&str, digits + 1, 0);
-	str[ft_strlen(str) - 1] = 0;
+	ft_fa_round(&str, digits, 0);
+	trim_to_precision(&str, precision);
 	return (str);
 }
