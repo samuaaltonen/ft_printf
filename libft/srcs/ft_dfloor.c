@@ -6,12 +6,15 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 13:39:42 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 13:58:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 13:59:31 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
+ * Floors given long double.
+*/
 long double	ft_dfloor(long double number)
 {
 	long long	max_ull;
