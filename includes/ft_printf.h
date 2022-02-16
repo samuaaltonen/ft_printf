@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 21:04:19 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:41:25 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ unsigned long long	get_va_arg_unsigned(t_conf **conf);
 void				exit_error(char	*message);
 void				ft_putchar_n(char c, int *n);
 void				ft_putchar_n_repeat(char c, int *n, int repeat);
+void				ft_putstr_n(char *str, int *n);
 void				ft_putstr_case(char *str, int is_uppercase);
 
 void				print_str(t_conf **conf, char *str, int len);
