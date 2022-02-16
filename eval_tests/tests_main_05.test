@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 17:15:32 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:02:01 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,65 @@ int	main(void)
 	format = "%s%+010.5u\n";
 	printf(format, COLOR_CYAN, 1122);
 	ft_printf(format, COLOR_PURPLE, 1122);
+
+	printf("%s\nFloats with width and precisions:\n", COLOR_RESET);
+	format = "%s%.0f\n";
+	printf(format, COLOR_CYAN, 123.123);
+	ft_printf(format, COLOR_PURPLE, 123.123);
+	format = "%s%11.0f\n";
+	printf(format, COLOR_CYAN, 123.123);
+	ft_printf(format, COLOR_PURPLE, 123.123);
+	format = "%s%11.11f\n";
+	printf(format, COLOR_CYAN, 123.123);
+	ft_printf(format, COLOR_PURPLE, 123.123);
+	format = "%s%2.11f\n";
+	printf(format, COLOR_CYAN, 123.123);
+	ft_printf(format, COLOR_PURPLE, 123.123);
+	format = "%s%3.3f\n";
+	printf(format, COLOR_CYAN, -1.1);
+	ft_printf(format, COLOR_PURPLE, -1.1);
+	format = "%s%3.1f\n";
+	printf(format, COLOR_CYAN, 123.123);
+	ft_printf(format, COLOR_PURPLE, 123.123);
+	format = "%s%.f\n";
+	printf(format, COLOR_CYAN, 42.42);
+	ft_printf(format, COLOR_PURPLE, 42.42);
+	format = "%s%1.3f\n";
+	printf(format, COLOR_CYAN, -1.1);
+	ft_printf(format, COLOR_PURPLE, -1.1);
+	format = "%s%10.3f\n";
+	printf(format, COLOR_CYAN, -1.1);
+	ft_printf(format, COLOR_PURPLE, -1.1);
+	format = "%s%10.3f\n";
+	printf(format, COLOR_CYAN, 1.1);
+	ft_printf(format, COLOR_PURPLE, 1.1);
+	format = "%s%+10.3f\n";
+	printf(format, COLOR_CYAN, 1.1);
+	ft_printf(format, COLOR_PURPLE, 1.1);
+	format = "%s%+10.3f\n";
+	printf(format, COLOR_CYAN, 11.1);
+	ft_printf(format, COLOR_PURPLE, 11.1);
+	format = "%s%+10.5f\n";
+	printf(format, COLOR_CYAN, 1122.2);
+	ft_printf(format, COLOR_PURPLE, 1122.2);
+	format = "%s%+-10.5f\n";
+	printf(format, COLOR_CYAN, 1122.2);
+	ft_printf(format, COLOR_PURPLE, 1122.2);
+	format = "%s%+010.5f\n";
+	printf(format, COLOR_CYAN, 1122.2);
+	ft_printf(format, COLOR_PURPLE, 1122.2);
+	format = "%s%+-010.5f%c\n";
+	printf(format, COLOR_CYAN, 1122.2, '|');
+	ft_printf(format, COLOR_PURPLE, 1122.2, '|');
+	format = "%s%010f%c\n";
+	printf(format, COLOR_CYAN, 1122.2, '|');
+	ft_printf(format, COLOR_PURPLE, 1122.2, '|');
+	format = "%s%010f%c\n";
+	printf(format, COLOR_CYAN, -2.1, '|');
+	ft_printf(format, COLOR_PURPLE, -2.1, '|');
+	format = "%s%-010f%c\n";
+	printf(format, COLOR_CYAN, 1122.2, '|');
+	ft_printf(format, COLOR_PURPLE, 1122.2, '|');
 
 	printf("\n%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_CYAN, 123456.789123345678);
 	ft_printf("%sDouble with width 2 and precision 2 %2.2lf\n", COLOR_PURPLE, 123456.789123345678);

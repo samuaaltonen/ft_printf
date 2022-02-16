@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tests_main_09.test                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
+/*   Updated: 2022/02/16 15:06:32 by saaltone         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "tests.h"
+
+int	main(void)
+{
+	char	*format = "";
+
+	format = "%s%+10.3f\n";
+	printf(format, COLOR_CYAN, 11.1);
+	ft_printf(format, COLOR_PURPLE, 11.1);
+	format = "%s%+10.10f\n";
+	printf(format, COLOR_CYAN, 11.1);
+	ft_printf(format, COLOR_PURPLE, 11.1);
+	printf(COLOR_RESET);
+	return (0);
+}

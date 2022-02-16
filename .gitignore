@@ -1,4 +1,4 @@
 *.o
 *.a
 tests
-tests_*
+tests_printf
