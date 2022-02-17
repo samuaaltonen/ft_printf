@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:03:23 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 17:22:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:01:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	unsigned_output_zeroes(t_conf **conf, long long number)
 	len = ft_count_digits(number);
 	if ((*conf)->precision > len)
 		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->precision - len);
+	if ((*conf)->flag_zeropadded && (*conf)->width > len)
+		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
 }
 
 /*
