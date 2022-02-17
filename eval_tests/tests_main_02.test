@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_02.test                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 21:10:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:11:49 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 int	main(void)
 {
-	printf("%sChar %c\n", COLOR_CYAN, 'a');
-	ft_printf("%sChar %c\n", COLOR_PURPLE, 'a');
+	char *format;
+	printf("%sChar:\n", COLOR_RESET);
+	format = "%s%c\n";
+	printf(format, COLOR_CYAN, 'a');
+	ft_printf(format, COLOR_PURPLE, 'a');
+	format = "%s%3c\n";
+	printf(format, COLOR_CYAN, 'a');
+	ft_printf(format, COLOR_PURPLE, 'a');
+	format = "%s%-3c%c\n";
+	printf(format, COLOR_CYAN, 'a', '|');
+	ft_printf(format, COLOR_PURPLE, 'a', '|');
 
 	printf("\n%sSigned integer %d\n", COLOR_CYAN, -42);
 	ft_printf("%sSigned integer %d\n", COLOR_PURPLE, -42);
