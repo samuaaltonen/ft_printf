@@ -6,11 +6,12 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/16 15:55:36 by saaltone         ###   ########.fr        #
+#    Updated: 2022/02/17 12:30:42 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libftprintf.a
+FLAGS_DEBUG=-Wall -Werror -Wextra -g -fsanitize=address
 FLAGS=-Wall -Werror -Wextra -O3
 
 LIBFT=./libft
@@ -74,10 +75,10 @@ fclean: clean
 	/bin/rm -f $(NAME)
 	make -C $(LIBFT) fclean
 
-comp:
-	gcc $(FLAGS) -I $(FT_PRINTF_INCLUDES) -I $(LIBFT_INCLUDES) -c $(FT_PRINTF_SOURCES)
-	ar rcs $(NAME) $(FT_PRINTF_OBJECTS)
+comp_dev:
+	gcc $(FLAGS_DEBUG) -I $(FT_PRINTF_INCLUDES) -I $(LIBFT_INCLUDES) -c $(FT_PRINTF_SOURCES)
+	ar rcs $(NAME) $(FT_PRINTF_OBJECTS) $(LIBFT_OBJECTS)
 
 re: fclean all
 
-.PHONY: all clean fclean comp re
+.PHONY: all clean fclean comp_dev re
