@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:09:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 17:27:53 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:39:38 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	conversion_hexadecimal(t_conf **conf)
 	char				*itoa;
 	unsigned long long	number;
 
-	number = get_va_arg(conf);
+	number = get_va_arg_unsigned(conf);
 	itoa = ft_itoa_base_ull(number, 16, 0);
 	if (itoa)
 	{

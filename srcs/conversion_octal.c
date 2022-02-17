@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:06:14 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/14 17:28:56 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:40:02 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	conversion_octal(t_conf **conf)
 	char				*itoa;
 	unsigned long long	number;
 
-	number = get_va_arg(conf);
+	number = get_va_arg_unsigned(conf);
 	itoa = ft_itoa_base_ull(number, 8, 0);
 	if (itoa)
 	{
