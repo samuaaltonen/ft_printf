@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 12:47:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:20:49 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_dispatch_identifier
 int					ft_printf(const char *format, ...);
 
 int					init_conf(t_conf **conf);
+void				reset_conf(t_conf **conf);
 
 void				handle_flags(t_conf **conf, char **cursor);
 void				handle_width(t_conf **conf, char **cursor);

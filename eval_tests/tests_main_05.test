@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:07:51 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:14:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,12 +254,19 @@ int	main(void)
 	format = "%s%3.0o%c\n";
 	printf(format, COLOR_CYAN, 0, '|');
 	ft_printf(format, COLOR_PURPLE, 0, '|');
+	format = "%s%.o%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+
 
 	printf("\n%sHexadecimal zero with zero precision:\n", COLOR_RESET);
 	format = "%s%#.0X%c\n";
 	printf(format, COLOR_CYAN, 0, '|');
 	ft_printf(format, COLOR_PURPLE, 0, '|');
 	format = "%s%#3.0X%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+	format = "%s%#.X%c\n";
 	printf(format, COLOR_CYAN, 0, '|');
 	ft_printf(format, COLOR_PURPLE, 0, '|');
 
