@@ -6,20 +6,31 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:55:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:40:29 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:58:24 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
+ * Outputs integer up to long long. If number is LLONG_MIN -9223372036854775808
+ * prints 9 and truncates number to -223372036854775808 until continues with
+ * recursive printing.
+*/
 static void	int_output(long long number, int *n)
 {
 	if (number < 0)
+	{
+		if (number == (long long) -9223372036854775807 - 1)
+		{
+			ft_putchar_n('9', n);
+			number = -223372036854775808;
+		}
 		number = -1 * number;
+	}
 	if (number >= 10)
 		int_output(number / 10, n);
-	ft_putchar(number % 10 + '0');
-	(*n)++;
+	ft_putchar_n(number % 10 + '0', n);
 }
 
 static void	int_output_sign(t_conf **conf, long long number)

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:11:49 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:45:28 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,11 @@ int	main(void)
 
 	printf("\n%sUnsigned long long %llu\n", COLOR_CYAN, ((unsigned long long) 1) << 63);
 	ft_printf("%sUnsigned long long %llu\n", COLOR_PURPLE, ((unsigned long long) 1) << 63);
+
+	printf("\n%sMinimum signed long long:\n", COLOR_RESET);
+	format = "%s%lld\n";
+	printf(format, COLOR_CYAN, (long long) -9223372036854775807 - 1);
+	ft_printf(format, COLOR_PURPLE, (long long) -9223372036854775807 - 1);
 
 	printf(COLOR_RESET);
 	return (0);
