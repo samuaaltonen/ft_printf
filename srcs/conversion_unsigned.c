@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:03:23 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 15:12:32 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:54:34 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int	unsigned_width(t_conf **conf, long long number)
 	width = ft_count_digits(number);
 	if ((*conf)->precision > width)
 		width = (*conf)->precision;
-	if ((*conf)->flag_addspace)
-		width++;
 	return (width);
 }
 

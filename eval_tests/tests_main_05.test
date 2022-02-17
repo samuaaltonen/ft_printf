@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 15:14:31 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:57:23 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,6 +303,12 @@ int	main(void)
 	format = "%s%015u\n";
 	printf(format, COLOR_CYAN, 4294967295);
 	ft_printf(format, COLOR_PURPLE, 4294967295);
+	format = "%s% 10.5d\n";
+	printf(format, COLOR_CYAN, 4242);
+	ft_printf(format, COLOR_PURPLE, 4242);
+	format = "%s% 10.5u\n";
+	printf(format, COLOR_CYAN, 4242);
+	ft_printf(format, COLOR_PURPLE, 4242);
 
 	printf(COLOR_RESET);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:55:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 15:14:49 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:59:14 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ static void	int_output_zeroes(t_conf **conf, long long number)
 	int	len;
 
 	len = ft_count_digits(number);
-	if ((*conf)->flag_addspace)
-		len++;
 	if ((*conf)->precision > len)
 		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->precision - len);
+	if ((*conf)->flag_addspace)
+		len++;
 	if ((*conf)->flag_zeropadded && (*conf)->width > len)
 	{
 		if (number < 0 || (*conf)->flag_addsign)
@@ -91,12 +91,12 @@ void	conversion_int(t_conf **conf)
 	len = int_width(conf, number);
 	if (!number && (*conf)->precision == 0)
 		len--;
+	if (!(*conf)->flag_addsign && (*conf)->flag_addspace && number >= 0)
+		ft_putchar_n(' ', &((*conf)->n));
 	if ((*conf)->width > len
 		&& !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-	if (!(*conf)->flag_addsign && (*conf)->flag_addspace && number >= 0)
-		ft_putchar_n(' ', &((*conf)->n));
 	int_output_sign(conf, number);
 	int_output_zeroes(conf, number);
 	if (!(!number && (*conf)->precision == 0))
