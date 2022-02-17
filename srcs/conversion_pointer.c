@@ -6,39 +6,11 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:44:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 16:38:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:39:58 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/* void	conversion_pointer(t_conf **conf)
-{
-	int			i;
-	int			len;
-	char		*itoa;
-	long long	ptr;
-
-	ptr = va_arg((*conf)->ap, long long);
-	itoa = ft_itoa_base(ptr, 16);
-	if (!itoa)
-		return ;
-	len = ft_strlen(itoa) + 2;
-	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-	ft_putstr_n("0x", &((*conf)->n));
-	i = 0;
-	if (!(!ptr && (*conf)->precision == 0))
-	{
-		i = -1;
-		while (itoa[++i])
-			ft_putchar(ft_tolower(itoa[i]));
-	}
-	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-	(*conf)->n += i;
-	free(itoa);
-} */
 
 static void	pointer_precision(t_conf **conf, char **output)
 {
