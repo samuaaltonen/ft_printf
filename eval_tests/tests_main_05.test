@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 15:02:01 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:03:06 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ int	main(void)
 	printf("\n%sOctal with precision 10 %.10o\n", COLOR_CYAN, 123);
 	ft_printf("%sOctal with precision 10 %.10o\n", COLOR_PURPLE, 123);
 
-	printf("%sPrecision with zeroes before: %%1.03f\n", COLOR_RESET);
+	printf("\n%sPrecision with zeroes before: %%1.03f\n", COLOR_RESET);
 	printf("%s%1.03f\n", COLOR_CYAN, 123456.f);
 	ft_printf("%s%1.03f\n", COLOR_PURPLE, 123456.f);
 
@@ -238,6 +238,22 @@ int	main(void)
 	ft_printf("%s%#12.1X%c\n", COLOR_PURPLE, 123, '|');
 	printf("\n%s%#12.30X%c\n", COLOR_CYAN, 16777215, '|');
 	ft_printf("%s%#12.30X%c\n", COLOR_PURPLE, 16777215, '|');
+
+	printf("\n%sOctal zero with zero precision:\n", COLOR_RESET);
+	format = "%s%.0o%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+	format = "%s%3.0o%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+
+	printf("\n%sHexadecimal zero with zero precision:\n", COLOR_RESET);
+	format = "%s%#.0X%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+	format = "%s%#3.0X%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
 
 	printf(COLOR_RESET);
 	return (0);

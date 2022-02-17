@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:06:14 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 12:40:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:02:40 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static void	octal_precision(t_conf **conf, char **output)
 	}
 }
 
-static void	octal_prefix(t_conf **conf, char **output, long long number)
+static void	octal_prefix(t_conf **conf, char **output, unsigned long long nbr)
 {
 	char	*joined;
 
-	if (!number)
+	if (!nbr)
 		return ;
 	if ((*conf)->flag_hashtag && **output != '0')
 	{
@@ -53,6 +53,18 @@ static void	octal_prefix(t_conf **conf, char **output, long long number)
 		free(*output);
 		*output = joined;
 	}
+}
+
+static void	octal_width(t_conf **conf, char **itoa, unsigned long long number,
+						int *len)
+{
+	if (*itoa && !number && (*conf)->precision == 0)
+	{
+		**itoa = '\0';
+		*len = 0;
+		return ;
+	}
+	*len = ft_strlen(*itoa);
 }
 
 /*
@@ -66,23 +78,22 @@ void	conversion_octal(t_conf **conf)
 
 	number = get_va_arg_unsigned(conf);
 	itoa = ft_itoa_base_ull(number, 8, 0);
-	if (itoa)
-	{
-		octal_precision(conf, &itoa);
-		octal_prefix(conf, &itoa, number);
-		len = ft_strlen(itoa);
-		if ((*conf)->width - len > 0
-			&& !(*conf)->flag_leftadjusted
-			&& !(*conf)->flag_zeropadded)
-			ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-		if ((*conf)->width - len > 0
-			&& !(*conf)->flag_leftadjusted
-			&& (*conf)->flag_zeropadded)
-			ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
-		ft_putstr_case(itoa, (*conf)->is_uppercase);
-		if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
-			ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-		(*conf)->n += len;
-		free(itoa);
-	}
+	if (!itoa)
+		return ;
+	octal_precision(conf, &itoa);
+	octal_prefix(conf, &itoa, number);
+	octal_width(conf, &itoa, number, &len);
+	if ((*conf)->width - len > 0
+		&& !(*conf)->flag_leftadjusted
+		&& !(*conf)->flag_zeropadded)
+		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+	if ((*conf)->width - len > 0
+		&& !(*conf)->flag_leftadjusted
+		&& (*conf)->flag_zeropadded)
+		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
+	ft_putstr_case(itoa, (*conf)->is_uppercase);
+	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
+		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+	(*conf)->n += len;
+	free(itoa);
 }
