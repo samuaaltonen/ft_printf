@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 13:52:59 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:05:54 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int	main(void)
 
 	printf("\n%sHexadecimal %X\n", COLOR_CYAN, 16777215);
 	ft_printf("%sHexadecimal %X\n", COLOR_PURPLE, 16777215);
+
+	printf("\n%sHexadecimal with negative value:\n", COLOR_RESET);
+	format = "%s%x\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
 
 	printf("\n%sBONUS:%s\nExponential notation %e\n", COLOR_GREEN, COLOR_CYAN, 1000000.123);
 	ft_printf("%sExponential notation %e\n", COLOR_PURPLE, 1000000.123);

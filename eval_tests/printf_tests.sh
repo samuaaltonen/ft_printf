@@ -10,7 +10,7 @@ if [ $1 = 'make' ]; then
 fi
 
 if [ $1 = 'comp' ]; then
-	make comp -C ../
+	make comp_dev -C ../
 	exit 1
 fi
 
@@ -28,7 +28,7 @@ fi
 
 TESTMAIN="tests_main_0$1"
 gcc -Wall -Wextra -Werror -g -o $TESTMAIN.o -I ../includes/ -c -x c $TESTMAIN.test
-gcc -g -o tests_printf $TESTMAIN.o -I ../includes/ -L ../ -lftprintf
+gcc -g -fsanitize=address -o tests_printf $TESTMAIN.o -I ../includes/ -L ../ -lftprintf
 
 if [ $1 -eq 1 ]; then
 
