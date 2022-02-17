@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:20:49 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:30:23 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void				exit_error(char	*message);
 void				ft_putchar_n(char c, int *n);
 void				ft_putchar_n_repeat(char c, int *n, int repeat);
 void				ft_putstr_n(char *str, int *n);
-void				ft_putstr_case(char *str, int is_uppercase);
+void				ft_putstr_n_case(char *str, int *n, int is_uppercase);
 
 void				print_str(t_conf **conf, char *str, int len);
 
@@ -65,6 +65,7 @@ void				conversion_string(t_conf **conf);
 void				conversion_char(t_conf **conf);
 void				conversion_pointer(t_conf **conf);
 void				conversion_n(t_conf **conf);
+void				conversion_hexadecimal(t_conf **conf);
 void				conversion_hexadecimal_lower(t_conf **conf);
 void				conversion_hexadecimal_upper(t_conf **conf);
 void				conversion_octal(t_conf **conf);

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:06:14 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:33:12 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:31:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,8 @@ void	conversion_octal(t_conf **conf)
 		&& !(*conf)->flag_leftadjusted
 		&& (*conf)->flag_zeropadded)
 		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
-	ft_putstr_case(itoa, (*conf)->is_uppercase);
+	ft_putstr_n_case(itoa, &((*conf)->n), (*conf)->is_uppercase);
 	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-	(*conf)->n += len;
 	free(itoa);
 }

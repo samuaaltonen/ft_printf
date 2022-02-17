@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:09:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 13:59:22 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:30:39 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	hex_prefix(t_conf **conf, char **output, long long number)
 /*
  * Handles hexadecimal conversion. Treats given numbers as unsigned.
 */
-static void	conversion_hexadecimal(t_conf **conf)
+void	conversion_hexadecimal(t_conf **conf)
 {
 	int					len;
 	char				*itoa;
@@ -92,10 +92,9 @@ static void	conversion_hexadecimal(t_conf **conf)
 		&& (*conf)->flag_zeropadded)
 		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
 	if (!(!number && (*conf)->precision == 0))
-		ft_putstr_case(itoa, (*conf)->is_uppercase);
+		ft_putstr_n_case(itoa, &((*conf)->n), (*conf)->is_uppercase);
 	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-	(*conf)->n += len;
 	free(itoa);
 }
 

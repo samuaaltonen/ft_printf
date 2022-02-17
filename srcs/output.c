@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:49:16 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 14:23:46 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 16:31:23 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_putstr_n(char *str, int *n)
 	}
 }
 
-void	ft_putstr_case(char *str, int is_uppercase)
+void	ft_putstr_n_case(char *str, int *n, int is_uppercase)
 {
 	int	i;
 
@@ -62,9 +62,9 @@ void	ft_putstr_case(char *str, int is_uppercase)
 	while (str[i])
 	{
 		if (is_uppercase)
-			ft_putchar(ft_toupper(str[i]));
+			ft_putchar_n(ft_toupper(str[i]), n);
 		else
-			ft_putchar(ft_tolower(str[i]));
+			ft_putchar_n(ft_tolower(str[i]), n);
 		i++;
 	}
 }
