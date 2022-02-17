@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/11 11:31:15 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:40:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ int	main(void)
 	printf("%s\nString yoyo with width 30 aligned to left and precision 3\n", COLOR_RESET);
 	printf("%s%-30.3s%c\n", COLOR_CYAN, "yoyo", '|');
 	ft_printf("%s%-30.3s%c\n", COLOR_PURPLE, "yoyo", '|');
+
+	printf("\n%sNULL string\n", COLOR_RESET);
+	printf("%s%s\n", COLOR_CYAN, NULL);
+	ft_printf("%s%s\n", COLOR_PURPLE, NULL);
+
+	printf("\n%sNULL string width and alignment\n", COLOR_RESET);
+	printf("%s%-30s%c\n", COLOR_CYAN, NULL, '|');
+	ft_printf("%s%-30s%c\n", COLOR_PURPLE, NULL, '|');
+
+	printf("\n%sNULL string precision\n", COLOR_RESET);
+	printf("%s%30.3s%c\n", COLOR_CYAN, NULL, '|');
+	ft_printf("%s%30.3s%c\n", COLOR_PURPLE, NULL, '|');
 
 	printf(COLOR_RESET);
 	return (0);

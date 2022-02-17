@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:38:20 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/11 11:38:10 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:40:30 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	conversion_string(t_conf **conf)
 	int		len;
 
 	str = va_arg((*conf)->ap, char *);
+	if (!str)
+		str = "(null)";
 	len = ft_strlen(str);
 	if ((*conf)->precision >= 0 && len > (*conf)->precision)
 		len = (*conf)->precision;
