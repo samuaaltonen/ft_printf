@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:20:12 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 21:04:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:46:42 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	dispatch_conversion(t_dispatch_identifier	*conversions,
 void	handle_conversion(t_conf **conf, char **cursor)
 {
 	static t_dispatch_identifier	conversions[] = {
-	{'%', conversion_skip},
+	{'%', conversion_percent},
 	{'s', conversion_string},
 	{'c', conversion_char},
 	{'p', conversion_pointer},

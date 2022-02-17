@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 14:49:06 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 13:32:56 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
+	char	*format;
 	void	*something;
 	void	*ptr;
 	int		nbr;
@@ -42,8 +43,19 @@ int	main(void)
 	ft_printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_PURPLE, &nbr2);
 	ft_printf("nbr: %d\n", nbr2);
 
-	printf("\n%s6x percent signs %%%%%%%%%%%%\n", COLOR_CYAN);
-	ft_printf("%s6x percent signs %%%%%%%%%%%%\n", COLOR_PURPLE);
+	printf("\n%s%% conversion:\n", COLOR_RESET);
+	format = "%s%%%%%%%%%%%%\n";
+	printf(format, COLOR_CYAN);
+	ft_printf(format, COLOR_PURPLE);
+	format = "%s%4%%c\n";
+	printf(format, COLOR_CYAN, '|');
+	ft_printf(format, COLOR_PURPLE, '|');
+	format = "%s%4.4%%c\n";
+	printf(format, COLOR_CYAN, '|');
+	ft_printf(format, COLOR_PURPLE, '|');
+	format = "%s%-4.4%%c\n";
+	printf(format, COLOR_CYAN, '|');
+	ft_printf(format, COLOR_PURPLE, '|');
 
 	printf("\n%sReturn values:\n", COLOR_RESET);
 	printf(" %sRETURNED: %i\n", COLOR_RESET, printf("%syoyoyo", COLOR_CYAN));
