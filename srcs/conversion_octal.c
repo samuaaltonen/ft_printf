@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:06:14 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:02:40 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:33:12 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void	octal_prefix(t_conf **conf, char **output, unsigned long long nbr)
 
 	if (!nbr)
 		return ;
-	if ((*conf)->flag_hashtag && **output != '0')
+	if ((*conf)->flag_hashtag
+		&& (**output != '0' || (!nbr && (*conf)->precision == 0)))
 	{
 		joined = ft_strjoin("0", *output);
 		if (!joined)
@@ -58,7 +59,7 @@ static void	octal_prefix(t_conf **conf, char **output, unsigned long long nbr)
 static void	octal_width(t_conf **conf, char **itoa, unsigned long long number,
 						int *len)
 {
-	if (*itoa && !number && (*conf)->precision == 0)
+	if (*itoa && !number && (*conf)->precision == 0 && !(*conf)->flag_hashtag)
 	{
 		**itoa = '\0';
 		*len = 0;
