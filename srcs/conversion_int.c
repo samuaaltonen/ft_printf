@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:55:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:58:24 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:07:07 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static void	int_output_zeroes(t_conf **conf, long long number)
 	int	len;
 
 	len = ft_count_digits(number);
+	if ((*conf)->flag_addspace)
+		len++;
 	if ((*conf)->precision > len)
 		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->precision - len);
 	if ((*conf)->flag_zeropadded && (*conf)->width > len)
