@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:55:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 17:19:15 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:06:12 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,16 @@ void	conversion_int(t_conf **conf)
 
 	number = get_va_arg(conf);
 	len = int_width(conf, number);
+	if (!number && (*conf)->precision == 0)
+		len--;
 	if ((*conf)->width > len
 		&& !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
 	int_output_sign(conf, number);
 	int_output_zeroes(conf, number);
-	int_output(number, &((*conf)->n));
+	if (!(!number && (*conf)->precision == 0))
+		int_output(number, &((*conf)->n));
 	if ((*conf)->width > len
 		&& (*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)

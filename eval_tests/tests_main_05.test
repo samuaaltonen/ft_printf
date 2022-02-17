@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:03:06 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:07:51 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 int	main(void)
 {
+	char *format;
 	printf("%s0 with precision 0:\n", COLOR_RESET);
-	printf("%sShould be empty: %.0d\n", COLOR_CYAN, 0);
-	ft_printf("%sShould be empty: %.0d\n", COLOR_PURPLE, 0);
+	format = "%s%.0d\n";
+	printf(format, COLOR_CYAN, 0);
+	ft_printf(format, COLOR_PURPLE, 0);
+	format = "%s%3.0d%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+	format = "%s%-3.0d%c\n";
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
 
 	printf("%s\nSigned integers with width and precisions:\n", COLOR_RESET);
-	char *format = "%s%.0d\n";
+	format = "%s%.0d\n";
 	printf(format, COLOR_CYAN, 123);
 	ft_printf(format, COLOR_PURPLE, 123);
 	format = "%s%11.0d\n";
