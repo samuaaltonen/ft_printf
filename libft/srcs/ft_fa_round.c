@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fa_round.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:03:06 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 14:17:18 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:20:53 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,13 @@ int	ft_fa_round(char **number, int rounding_start, int leftover)
 		return (prepend_one(number));
 	if ((*number)[rounding_start] == '.')
 		return (ft_fa_round(number, rounding_start - 1, leftover));
-	if ((*number)[rounding_start] + leftover < '5')
-	{
-		if (!leftover)
-			(*number)[rounding_start] = '0';
-		else
-			(*number)[rounding_start]++;
-		return (1);
-	}
 	if (!leftover)
 	{
+		if ((*number)[rounding_start] < '5')
+		{
+			(*number)[rounding_start] = '0';
+			return (1);
+		}
 		(*number)[rounding_start] = '0';
 		return (ft_fa_round(number, rounding_start - 1, 1));
 	}
