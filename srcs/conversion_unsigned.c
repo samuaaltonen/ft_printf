@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:03:23 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 15:01:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:12:32 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,15 @@ void	conversion_unsigned(t_conf **conf)
 
 	number = get_va_arg_unsigned(conf);
 	len = unsigned_width(conf, number);
+	if (!number && (*conf)->precision == 0)
+		len--;
 	if ((*conf)->width > len
 		&& !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
 	unsigned_output_zeroes(conf, number);
-	unsigned_output(number, &((*conf)->n));
+	if (!(!number && (*conf)->precision == 0))
+		unsigned_output(number, &((*conf)->n));
 	if ((*conf)->width > len
 		&& (*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
