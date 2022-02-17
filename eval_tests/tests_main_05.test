@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:22:44 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:40:02 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,6 +272,26 @@ int	main(void)
 	format = "%s%#.X%c\n";
 	printf(format, COLOR_CYAN, 0, '|');
 	ft_printf(format, COLOR_PURPLE, 0, '|');
+
+	printf("%s\nIntegers with other flags:\n", COLOR_RESET);
+	format = "%s% 0.0d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s% +0.0d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s% 6.0d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s% 0.0d\n";
+	printf(format, COLOR_CYAN, -123);
+	ft_printf(format, COLOR_PURPLE, -123);
+	format = "%s% 0.0u\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%015u\n";
+	printf(format, COLOR_CYAN, 4294967295);
+	ft_printf(format, COLOR_PURPLE, 4294967295);
 
 	printf(COLOR_RESET);
 	return (0);

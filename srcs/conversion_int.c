@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:55:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:06:12 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:40:29 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	conversion_int(t_conf **conf)
 		&& !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+	if (!(*conf)->flag_addsign && (*conf)->flag_addspace && number > 0)
+		ft_putchar_n(' ', &((*conf)->n));
 	int_output_sign(conf, number);
 	int_output_zeroes(conf, number);
 	if (!(!number && (*conf)->precision == 0))
