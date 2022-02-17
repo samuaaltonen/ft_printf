@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 16:05:54 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:40:14 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,35 @@ int	main(void)
 
 	printf("\n%sHexadecimal with negative value:\n", COLOR_RESET);
 	format = "%s%x\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%hhx\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%hx\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%lx\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%llx\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+
+	printf("\n%sOctal with negative value:\n", COLOR_RESET);
+	format = "%s%x\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%hhx\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%hx\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%lx\n";
+	printf(format, COLOR_CYAN, -5);
+	ft_printf(format, COLOR_PURPLE, -5);
+	format = "%s%llx\n";
 	printf(format, COLOR_CYAN, -5);
 	ft_printf(format, COLOR_PURPLE, -5);
 
