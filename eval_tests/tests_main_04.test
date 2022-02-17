@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 13:32:56 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:20:53 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,17 @@ int	main(void)
 	ft_printf("%sPointer to something %p\n", COLOR_PURPLE, something);
 
 	printf("\n%sPointer to NULL %p\n", COLOR_CYAN, ptr);
-	ft_printf("%sPointer to NULL %p\n\n", COLOR_PURPLE, ptr);
+	ft_printf("%sPointer to NULL %p\n", COLOR_PURPLE, ptr);
 
-	printf("%sPointer with width\n", COLOR_RESET);
+	printf("\n%sPointer with zero precision:\n", COLOR_RESET);
+	format = "%s%.0p\n";
+	printf(format, COLOR_CYAN, something);
+	ft_printf(format, COLOR_PURPLE, something);
+	format = "%s%.0p\n";
+	printf(format, COLOR_CYAN, ptr);
+	ft_printf(format, COLOR_PURPLE, ptr);
+
+	printf("\n%sPointer with width\n", COLOR_RESET);
 	printf("%s%20p%c\n", COLOR_CYAN, something, '|');
 	ft_printf("%s%20p%c\n", COLOR_PURPLE, something, '|');
 	printf("%s%-20p%c\n", COLOR_CYAN, something, '|');
