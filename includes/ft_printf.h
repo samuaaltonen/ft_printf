@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 16:30:23 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:04:25 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_conf
 	int		precision;
 	int		flag_hashtag;
 	int		flag_zeropadded;
+	int		flag_zeropadded_override;
 	int		flag_leftadjusted;
 	int		flag_addspace;
 	int		flag_addsign;

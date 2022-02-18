@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:07:49 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:19:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:03:44 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void	handle_flags(t_conf **conf, char **cursor)
 	if (**cursor == '#')
 		(*conf)->flag_hashtag = 1;
 	if (**cursor == '0')
+	{
 		(*conf)->flag_zeropadded = 1;
+		(*conf)->flag_zeropadded_override = 1;
+	}
 	if (**cursor == '-')
 		(*conf)->flag_leftadjusted = 1;
 	if (**cursor == ' ')

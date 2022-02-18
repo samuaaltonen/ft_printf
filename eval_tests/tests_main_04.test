@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 16:17:42 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 14:47:49 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ int	main(void)
 	printf(format, COLOR_CYAN, '|');
 	ft_printf(format, COLOR_PURPLE, '|');
 	format = "%s%-4.4%%c\n";
+	printf(format, COLOR_CYAN, '|');
+	ft_printf(format, COLOR_PURPLE, '|');
+	format = "%s%05%%c\n";
+	printf(format, COLOR_CYAN, '|');
+	ft_printf(format, COLOR_PURPLE, '|');
+	format = "%s%0-5%%c\n";
+	printf(format, COLOR_CYAN, '|');
+	ft_printf(format, COLOR_PURPLE, '|');
+	format = "%s%05.10%%c\n";
 	printf(format, COLOR_CYAN, '|');
 	ft_printf(format, COLOR_PURPLE, '|');
 

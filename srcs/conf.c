@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:25:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:33:36 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:03:56 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	init_conf(t_conf **conf)
 	(*conf)->precision = -1;
 	(*conf)->flag_hashtag = 0;
 	(*conf)->flag_zeropadded = 0;
+	(*conf)->flag_zeropadded_override = 0;
 	(*conf)->flag_leftadjusted = 0;
 	(*conf)->flag_addspace = 0;
 	(*conf)->flag_addsign = 0;
@@ -44,6 +45,7 @@ void	reset_conf(t_conf **conf)
 	(*conf)->precision = -1;
 	(*conf)->flag_hashtag = 0;
 	(*conf)->flag_zeropadded = 0;
+	(*conf)->flag_zeropadded_override = 0;
 	(*conf)->flag_leftadjusted = 0;
 	(*conf)->flag_addspace = 0;
 	(*conf)->flag_addsign = 0;
