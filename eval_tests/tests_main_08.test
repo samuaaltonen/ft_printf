@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 11:32:52 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:41:09 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,17 @@ int	main(void)
 	ft_printf(format, COLOR_PURPLE, -2);
 	printf(format, COLOR_CYAN, 0);
 	ft_printf(format, COLOR_PURPLE, 0);
+
+	printf("%sRandom stuff:\n", COLOR_RESET);
+	format = "%s%jx\n";
+	printf(format, COLOR_CYAN, 4294967295);
+	ft_printf(format, COLOR_PURPLE, 4294967295);
+	format = "%s%z\n";
+	printf(format, COLOR_CYAN);
+	ft_printf(format, COLOR_PURPLE);
+	format = "%s%Z\n";
+	printf(format, COLOR_CYAN);
+	ft_printf(format, COLOR_PURPLE);
 	printf(COLOR_RESET);
 	return (0);
 }

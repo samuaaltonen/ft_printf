@@ -6,11 +6,20 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:08:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 14:34:54 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:20:05 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	move_cursor_to_nondigit(char **cursor)
+{
+	if (ft_isdigit(**cursor))
+	{
+		(*cursor)++;
+		move_cursor_to_nondigit(cursor);
+	}
+}
 
 /*
  * Parses precision and saves it to conf.
@@ -34,6 +43,7 @@ void	handle_precision(t_conf **conf, char **cursor)
 		if (!ft_isdigit(**cursor))
 			digits = 0;
 		*cursor += digits;
+		move_cursor_to_nondigit(cursor);
 		if (**cursor == '*')
 		{
 			va_arg((*conf)->ap, int);

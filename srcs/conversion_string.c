@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:38:20 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 13:40:30 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:13:06 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void	print_str(t_conf **conf, char *str, int len)
 {
 	int		i;
+	char	left_filler;
 
+	left_filler = ' ';
+	if ((*conf)->flag_zeropadded || (*conf)->flag_zeropadded_override)
+		left_filler = '0';
 	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		ft_putchar_n_repeat(left_filler, &((*conf)->n), (*conf)->width - len);
 	i = 0;
 	while (i < len)
 	{

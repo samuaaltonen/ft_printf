@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   length.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/15 20:11:44 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 15:41:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,16 @@ unsigned long long	get_va_arg_unsigned(t_conf **conf)
  * l	= 3 (long)
  * ll	= 4 (long long)
  * L	= 5 (long double)
+ * 
+ * q	= 4 synonym for ll
+ * j	= 4 intmax_t or uintmax_t
+ * z	= 0 size_t or ssize_t
 */
 void	handle_length(t_conf **conf, char **cursor)
 {
 	(*conf)->length = 0;
-	if (!(*cursor) || !(**cursor == 'h' || **cursor == 'l' || **cursor == 'L'))
+	if (!(*cursor) || !(**cursor == 'h' || **cursor == 'l' || **cursor == 'L'
+		|| **cursor == 'q' || **cursor == 'j' || **cursor == 'z'))
 		return ;
 	if (**cursor == 'h')
 	{
@@ -88,5 +93,7 @@ void	handle_length(t_conf **conf, char **cursor)
 	if ((**cursor == 'l' && *((*cursor) + 1) == 'l')
 		|| (**cursor == 'h' && *((*cursor) + 1) == 'h'))
 			(*cursor)++;
+	if (**cursor == 'q' || **cursor == 'j')
+		(*conf)->length = 4;
 	(*cursor)++;
 }
