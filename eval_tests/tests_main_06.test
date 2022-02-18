@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 17:43:21 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 14:38:51 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,33 @@ int	main(void)
 	ft_printf("%s%03d\n", COLOR_PURPLE, -1234);
 
 	printf("%s\nZero padded value, number with 0 zero-padding (%%00d):\n", COLOR_RESET);
-	char	*format_trick = "%s%00d\n";
-	printf(format_trick, COLOR_CYAN, 1234);
-	ft_printf(format_trick, COLOR_PURPLE, 1234);
-	printf(format_trick, COLOR_CYAN, 0);
-	ft_printf(format_trick, COLOR_PURPLE, 0);
+	char	*format = "%s%00d\n";
+	printf(format, COLOR_CYAN, 1234);
+	ft_printf(format, COLOR_PURPLE, 1234);
+	printf(format, COLOR_CYAN, 0);
+	ft_printf(format, COLOR_PURPLE, 0);
 
 	printf("%s\nBoth, - and 0 flags. - should override 0. Positive, zero, negative and also different order of flags:\n", COLOR_RESET);
 	// Trick compiler error checking (to not get error: flag '0' is ignored when flag '-' is present [-Werror,-Wformat])
-	format_trick = "%s%-010d%c\n";
-	printf(format_trick, COLOR_CYAN, 1234, '|');
-	ft_printf(format_trick, COLOR_PURPLE, 1234, '|');
-	printf(format_trick, COLOR_CYAN, 0, '|');
-	ft_printf(format_trick, COLOR_PURPLE, 0, '|');
-	printf(format_trick, COLOR_CYAN, -1234, '|');
-	ft_printf(format_trick, COLOR_PURPLE, -1234, '|');
-	format_trick = "%s%0-10d%c\n";
-	printf(format_trick, COLOR_CYAN, 1234, '|');
-	ft_printf(format_trick, COLOR_PURPLE, 1234, '|');
-	printf(format_trick, COLOR_CYAN, 0, '|');
-	ft_printf(format_trick, COLOR_PURPLE, 0, '|');
-	printf(format_trick, COLOR_CYAN, -1234, '|');
-	ft_printf(format_trick, COLOR_PURPLE, -1234, '|');
+	format = "%s%-010d%c\n";
+	printf(format, COLOR_CYAN, 1234, '|');
+	ft_printf(format, COLOR_PURPLE, 1234, '|');
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+	printf(format, COLOR_CYAN, -1234, '|');
+	ft_printf(format, COLOR_PURPLE, -1234, '|');
+	format = "%s%0-10d%c\n";
+	printf(format, COLOR_CYAN, 1234, '|');
+	ft_printf(format, COLOR_PURPLE, 1234, '|');
+	printf(format, COLOR_CYAN, 0, '|');
+	ft_printf(format, COLOR_PURPLE, 0, '|');
+	printf(format, COLOR_CYAN, -1234, '|');
+	ft_printf(format, COLOR_PURPLE, -1234, '|');
 
 	printf("%s\n- and 0 flags with width (3) less than digit count (4):\n", COLOR_RESET);
-	format_trick = "%s%-03d%c\n";
-	printf(format_trick, COLOR_CYAN, 1234, '|');
-	ft_printf(format_trick, COLOR_PURPLE, 1234, '|');
+	format = "%s%-03d%c\n";
+	printf(format, COLOR_CYAN, 1234, '|');
+	ft_printf(format, COLOR_PURPLE, 1234, '|');
 
 	printf("%s\nBlank flag (A blank should be left before a positive number (or empty string)):\n", COLOR_RESET);
 	printf("%s%c% d%c\n", COLOR_CYAN, '|', 42, '|');
@@ -112,43 +112,52 @@ int	main(void)
 	ft_printf("%s%c%+5d%c\n", COLOR_PURPLE, '|', 123456, '|');
 
 	printf("%s\nNegative precision (weird stuff, kinda optional and undefined):\n", COLOR_RESET);
-	format_trick = "%s%1.-10f%c\n";
-	printf(format_trick, COLOR_CYAN, 1.234, '|');
-	ft_printf(format_trick, COLOR_PURPLE, 1.234, '|');
+	format = "%s%1.-10f%c\n";
+	printf(format, COLOR_CYAN, 1.234, '|');
+	ft_printf(format, COLOR_PURPLE, 1.234, '|');
 
 	printf("%s\nMultiple same flags:\n", COLOR_RESET);
-	format_trick = "%s%c%+++++5d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 123456, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 123456, '|');
-	format_trick = "%s%c%      5d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 123456, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 123456, '|');
-	format_trick = "%s%c% 02d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 1, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 1, '|');
+	format = "%s%c%+++++5d%c\n";
+	printf(format, COLOR_CYAN, '|', 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 123456, '|');
+	format = "%s%c%      5d%c\n";
+	printf(format, COLOR_CYAN, '|', 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 123456, '|');
+	format = "%s%c% 02d%c\n";
+	printf(format, COLOR_CYAN, '|', 1, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 1, '|');
 
 	printf("%s\nBONUS: * for width and precision:\n", COLOR_GREEN);
-	format_trick = "%s%c%*15d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 3, 12, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 3, 12, '|');
-	format_trick = "%s%c%*15d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 0, 12, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 0, 12, '|');
-	format_trick = "%s%c%15*d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 12, 123456, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 12, 123456, '|');
-	format_trick = "%s%c%*d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', -12, 123456, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', -12, 123456, '|');
-	format_trick = "%s%c%*d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 12, 123456, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 12, 123456, '|');
-	format_trick = "%s%c%*.*d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 12, 12, 123456, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 12, 12, 123456, '|');
-	format_trick = "%s%c%.*d%c\n";
-	printf(format_trick, COLOR_CYAN, '|', 12, 123456, '|');
-	ft_printf(format_trick, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%*15d%c\n";
+	printf(format, COLOR_CYAN, '|', 3, 12, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 3, 12, '|');
+	format = "%s%c%*15d%c\n";
+	printf(format, COLOR_CYAN, '|', 0, 12, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 0, 12, '|');
+	format = "%s%c%15*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%*d%c\n";
+	printf(format, COLOR_CYAN, '|', -12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|');
+	format = "%s%c%*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%*.*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 12, 123456, '|');
+	format = "%s%c%.*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%20.20*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%-*d%c\n";
+	printf(format, COLOR_CYAN, '|', -12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|');
+	format = "%s%c%0*d%c\n";
+	printf(format, COLOR_CYAN, '|', -12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|');
 
 	printf(COLOR_RESET);
 	return (0);

@@ -6,11 +6,23 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:08:11 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 17:43:48 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 14:39:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	handle_width_star(t_conf **conf, char **cursor)
+{
+	(*conf)->width = va_arg((*conf)->ap, int);
+	if ((*conf)->width < 0)
+	{
+		(*conf)->width *= -1;
+		(*conf)->flag_leftadjusted = 1;
+		(*conf)->flag_zeropadded = 0;
+	}
+	(*cursor)++;
+}
 
 /*
  * Parses width and saves it to conf.
@@ -18,20 +30,12 @@
 void	handle_width(t_conf **conf, char **cursor)
 {
 	if (**cursor == '*')
-	{
-		(*conf)->width = va_arg((*conf)->ap, int);
-		if ((*conf)->width < 0)
-		{
-			(*conf)->width *= -1;
-			(*conf)->flag_leftadjusted = 1;
-		}
-		(*cursor)++;
-	}
+		handle_width_star(conf, cursor);
 	if (ft_isdigit(**cursor))
 	{
 		(*conf)->width = ft_atoi(*cursor);
 		*cursor += ft_count_digits((*conf)->width);
 	}
 	if (**cursor == '*')
-		(*cursor)++;
+		handle_width_star(conf, cursor);
 }

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:08:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 17:30:48 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/18 14:34:54 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,23 @@ void	handle_precision(t_conf **conf, char **cursor)
 
 	if (**cursor == '.')
 	{
-		if (*(*cursor + 1) == '*')
+		(*cursor)++;
+		if (**cursor == '*')
 		{
 			(*conf)->precision = va_arg((*conf)->ap, int);
-			(*cursor) += 2;
+			(*cursor)++;
 			return ;
 		}
 		(*conf)->flag_zeropadded = 0;
-		(*conf)->precision = ft_atoi(*cursor + 1);
+		(*conf)->precision = ft_atoi(*cursor);
 		digits = ft_count_digits((*conf)->precision);
-		if (!ft_isdigit(*(*cursor + 1)))
+		if (!ft_isdigit(**cursor))
 			digits = 0;
-		*cursor += 1 + digits;
+		*cursor += digits;
+		if (**cursor == '*')
+		{
+			va_arg((*conf)->ap, int);
+			(*cursor)++;
+		}
 	}
 }
