@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:03:23 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 16:54:34 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:47:18 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,10 @@ void	conversion_unsigned(t_conf **conf)
 		&& (*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+}
+
+void	conversion_unsigned_capital_u(t_conf **conf)
+{
+	(*conf)->length = 3;
+	conversion_unsigned(conf);
 }

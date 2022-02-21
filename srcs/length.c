@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 14:02:22 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:01:25 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,28 +72,21 @@ unsigned long long	get_va_arg_unsigned(t_conf **conf)
 */
 void	handle_length(t_conf **conf, char **cursor)
 {
-	(*conf)->length = 0;
 	if (!(*cursor) || !(**cursor == 'h' || **cursor == 'l' || **cursor == 'L'
-		|| **cursor == 'q' || **cursor == 'j' || **cursor == 'z'))
+			|| **cursor == 'q' || **cursor == 'j' || **cursor == 'z'))
 		return ;
-	if (**cursor == 'h')
-	{
+	if ((*conf)->length == 2 && **cursor == 'h')
+		(*conf)->length = 1;
+	else if ((*conf)->length < 3 && **cursor == 'h')
 		(*conf)->length = 2;
-		if (*((*cursor) + 1) == 'h')
-			(*conf)->length = 1;
-	}
-	if (**cursor == 'l')
-	{
+	if ((*conf)->length == 3 && **cursor == 'l')
+		(*conf)->length = 4;
+	else if (**cursor == 'l')
 		(*conf)->length = 3;
-		if (*((*cursor) + 1) == 'l')
-			(*conf)->length = 4;
-	}
 	if (**cursor == 'L')
 		(*conf)->length = 5;
-	if ((**cursor == 'l' && *((*cursor) + 1) == 'l')
-		|| (**cursor == 'h' && *((*cursor) + 1) == 'h'))
-			(*cursor)++;
 	if (**cursor == 'q' || **cursor == 'j' || **cursor == 'z')
 		(*conf)->length = 4;
 	(*cursor)++;
+	handle_length(conf, cursor);
 }
