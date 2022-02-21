@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:08:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 15:20:05 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:56:18 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,27 @@ void	handle_precision(t_conf **conf, char **cursor)
 {
 	int	digits;
 
-	if (**cursor == '.')
+	if (**cursor != '.')
+		return ;
+	(*conf)->precision = -1;
+	(*cursor)++;
+	if (**cursor == '*')
 	{
+		(*conf)->precision = va_arg((*conf)->ap, int);
 		(*cursor)++;
-		if (**cursor == '*')
-		{
-			(*conf)->precision = va_arg((*conf)->ap, int);
-			(*cursor)++;
-			return ;
-		}
-		(*conf)->flag_zeropadded = 0;
-		(*conf)->precision = ft_atoi(*cursor);
-		digits = ft_count_digits((*conf)->precision);
-		if (!ft_isdigit(**cursor))
-			digits = 0;
-		*cursor += digits;
-		move_cursor_to_nondigit(cursor);
-		if (**cursor == '*')
-		{
-			va_arg((*conf)->ap, int);
-			(*cursor)++;
-		}
+		return ;
 	}
+	(*conf)->flag_zeropadded = 0;
+	(*conf)->precision = ft_atoi(*cursor);
+	digits = ft_count_digits((*conf)->precision);
+	if (!ft_isdigit(**cursor))
+		digits = 0;
+	*cursor += digits;
+	move_cursor_to_nondigit(cursor);
+	if (**cursor == '*')
+	{
+		va_arg((*conf)->ap, int);
+		(*cursor)++;
+	}
+	handle_precision(conf, cursor);
 }
