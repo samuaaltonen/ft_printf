@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:07:49 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 15:03:44 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:15:56 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ static int	is_flag_character(char c)
 }
 
 /*
+ * Skip flag chars
+*/
+void	skip_extra_flags(char **cursor)
+{
+	if (**cursor == '#'
+		|| **cursor == '0'
+		|| **cursor == '-'
+		|| **cursor == ' '
+		|| **cursor == '+')
+	{
+		(*cursor)++;
+		skip_extra_flags(cursor);
+	}
+}
+
+/*
  * Saves flag data to configuration.
 */
 void	handle_flags(t_conf **conf, char **cursor)
@@ -35,7 +51,7 @@ void	handle_flags(t_conf **conf, char **cursor)
 		return ;
 	if (**cursor == '#')
 		(*conf)->flag_hashtag = 1;
-	if (**cursor == '0')
+	if (**cursor == '0' && (*conf)->precision == -1)
 	{
 		(*conf)->flag_zeropadded = 1;
 		(*conf)->flag_zeropadded_override = 1;
