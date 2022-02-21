@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 15:47:18 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:18:15 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,39 @@ int	main(void)
 	format = "%s%hd\n";
 	printf(format, COLOR_CYAN, 4294967296);
 	ft_printf(format, COLOR_PURPLE, 4294967296);
+	format = "%s%4.d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%4..8d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%12..6.. d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%##0012..6..#00d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%##00ll #00d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%##0012 #00d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%##00  12..6..d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s%#0 12.6.d\n";
+	printf(format, COLOR_CYAN, 123);
+	ft_printf(format, COLOR_PURPLE, 123);
+	format = "%s% -20.d%c\n";
+	printf(format, COLOR_CYAN, 123, '|');
+	ft_printf(format, COLOR_PURPLE, 123, '|');
+	format = "%s%# 0-# 20......8..#0 +-0d%c\n";
+	printf(format, COLOR_CYAN, 123, '|');
+	ft_printf(format, COLOR_PURPLE, 123, '|');
+	format = "%s%# 0-# 20#0 +-0d%c\n";
+	printf(format, COLOR_CYAN, 123, '|');
+	ft_printf(format, COLOR_PURPLE, 123, '|');
 	printf(COLOR_RESET);
 	return (0);
 }
