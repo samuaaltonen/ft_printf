@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 14:15:53 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 13:48:36 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	handle_args(t_conf **conf, char **cursor)
 	handle_width(conf, cursor);
 	handle_precision(conf, cursor);
 	handle_length(conf, cursor);
+	handle_flags(conf, cursor);
 	handle_conversion(conf, cursor);
 }
 

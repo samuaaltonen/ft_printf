@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 15:41:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:02:22 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	handle_length(t_conf **conf, char **cursor)
 	if ((**cursor == 'l' && *((*cursor) + 1) == 'l')
 		|| (**cursor == 'h' && *((*cursor) + 1) == 'h'))
 			(*cursor)++;
-	if (**cursor == 'q' || **cursor == 'j')
+	if (**cursor == 'q' || **cursor == 'j' || **cursor == 'z')
 		(*conf)->length = 4;
 	(*cursor)++;
 }
