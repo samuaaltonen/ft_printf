@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:55:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 16:59:14 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:20:44 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	int_width(t_conf **conf, long long number)
 		width = (*conf)->precision;
 	if ((*conf)->flag_addsign || number < 0)
 		width++;
-	if ((*conf)->flag_addspace)
+	if (!(*conf)->flag_addsign && (*conf)->flag_addspace)
 		width++;
 	return (width);
 }
