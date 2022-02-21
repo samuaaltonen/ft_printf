@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:07:49 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 17:15:56 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:28:20 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,6 @@ static int	is_flag_character(char c)
 		|| c == '+')
 		return (1);
 	return (0);
-}
-
-/*
- * Skip flag chars
-*/
-void	skip_extra_flags(char **cursor)
-{
-	if (**cursor == '#'
-		|| **cursor == '0'
-		|| **cursor == '-'
-		|| **cursor == ' '
-		|| **cursor == '+')
-	{
-		(*cursor)++;
-		skip_extra_flags(cursor);
-	}
 }
 
 /*
