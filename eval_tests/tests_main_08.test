@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 15:41:09 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:01:02 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,18 @@ int	main(void)
 	format = "%s%z\n";
 	printf(format, COLOR_CYAN);
 	ft_printf(format, COLOR_PURPLE);
-	format = "%s%Z\n";
-	printf(format, COLOR_CYAN);
-	ft_printf(format, COLOR_PURPLE);
+	format = "%s%ll#x\n";
+	printf(format, COLOR_CYAN, 9223372036854775807);
+	ft_printf(format, COLOR_PURPLE, 9223372036854775807);
+	format = "%s%#llx\n";
+	printf(format, COLOR_CYAN, 9223372036854775807);
+	ft_printf(format, COLOR_PURPLE, 9223372036854775807);
+	format = "%s%05c\n";
+	printf(format, COLOR_CYAN, '*');
+	ft_printf(format, COLOR_PURPLE, '*');
+	format = "%s%zd\n";
+	printf(format, COLOR_CYAN, 4294967295);
+	ft_printf(format, COLOR_PURPLE, 4294967295);
 	printf(COLOR_RESET);
 	return (0);
 }
