@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 14:47:32 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:32:10 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void				conversion_int(t_conf **conf);
 void				conversion_unsigned(t_conf **conf);
 void				conversion_unsigned_capital_u(t_conf **conf);
 void				conversion_float(t_conf **conf);
+void				conversion_binary(t_conf **conf);
 
 #endif
