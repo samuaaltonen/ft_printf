@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 13:17:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:26:34 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,6 @@ int	main(void)
 	format = "%s%llx\n";
 	printf(format, COLOR_CYAN, -5);
 	ft_printf(format, COLOR_PURPLE, -5);
-
-	printf("\n%sBONUS:%s\nExponential notation %e\n", COLOR_GREEN, COLOR_CYAN, 1000000.123);
-	ft_printf("%sExponential notation %e\n", COLOR_PURPLE, 1000000.123);
 
 	printf(COLOR_RESET);
 	return (0);

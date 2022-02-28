@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 15:17:53 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:25:24 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,9 @@ int	main(void)
 	char	*format;
 	void	*something;
 	void	*ptr;
-	int		nbr;
-	int		nbr2;
 
 	something = "asd";
 	ptr = NULL;
-	nbr = 0;
-	nbr2 = 0;
 	printf("%sPointer to something %p\n", COLOR_CYAN, something);
 	ft_printf("%sPointer to something %p\n", COLOR_PURPLE, something);
 
@@ -57,11 +53,6 @@ int	main(void)
 	ft_printf("%s%-20p%c\n", COLOR_PURPLE, something, '|');
 	printf("%s%3p%c\n", COLOR_CYAN, something, '|');
 	ft_printf("%s%3p%c\n", COLOR_PURPLE, something, '|');
-
-	printf("\n%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
-	printf("nbr: %d\n", nbr);
-	ft_printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_PURPLE, &nbr2);
-	ft_printf("nbr: %d\n", nbr2);
 
 	printf("\n%s%% conversion:\n", COLOR_RESET);
 	format = "%s%%%%%%%%%%%%\n";

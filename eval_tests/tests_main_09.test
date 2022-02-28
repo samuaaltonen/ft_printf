@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 14:49:26 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 15:40:49 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,31 @@
 int	main(void)
 {
 	char	*format = "";
+	int		nbr = 0;
+	int		nbr2 = 0;
 
-	format = "%s%.0f\n";
-	printf(format, COLOR_CYAN, 5);
-	ft_printf(format, COLOR_PURPLE, 5);
+	printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
+	printf("nbr: %d\n", nbr);
+	ft_printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_PURPLE, &nbr2);
+	ft_printf("nbr: %d\n", nbr2);
+
+	printf("\n%sExponential notation%s\n", COLOR_GREEN, COLOR_RESET);
+	format = "%s%e\n";
+	printf(format, COLOR_CYAN, 1000000.123);
+	ft_printf(format, COLOR_PURPLE, 1000000.123);
+
+	printf("\n%sBinary simple%s\n", COLOR_GREEN, COLOR_RESET);
+	ft_printf("%s%b%c\n", COLOR_PURPLE, 1, '|');
+	ft_printf("%s%b%c\n", COLOR_PURPLE, -1, '|');
+	ft_printf("%s%b%c\n", COLOR_PURPLE, 16777215, '|');
+	ft_printf("%s%b%c\n", COLOR_PURPLE, 44739242, '|');
+
+	printf("\n%sBinary with flags%s\n", COLOR_GREEN, COLOR_RESET);
+	ft_printf("%s%b%c\n", COLOR_PURPLE, 1, '|');
+	ft_printf("%s%-10b%c\n", COLOR_PURPLE, 1, '|');
+	ft_printf("%s%.10b%c\n", COLOR_PURPLE, 1, '|');
+	ft_printf("%s%-#010.5b%c\n", COLOR_PURPLE, 1, '|');
+
 	printf(COLOR_RESET);
 	return (0);
 }
