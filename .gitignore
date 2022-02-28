@@ -2,3 +2,4 @@
 *.a
 tests
 tests_printf
+temp

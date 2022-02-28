@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 15:40:49 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:52:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 int	main(void)
 {
-	char	*format = "";
+	/* char	*format = "";
 	int		nbr = 0;
-	int		nbr2 = 0;
+	int		nbr2 = 0; */
 
-	printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
+	printf_tester("%s", "yo2");
+
+	/* printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
 	printf("nbr: %d\n", nbr);
 	ft_printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_PURPLE, &nbr2);
 	ft_printf("nbr: %d\n", nbr2);
@@ -39,6 +41,38 @@ int	main(void)
 	ft_printf("%s%-10b%c\n", COLOR_PURPLE, 1, '|');
 	ft_printf("%s%.10b%c\n", COLOR_PURPLE, 1, '|');
 	ft_printf("%s%-#010.5b%c\n", COLOR_PURPLE, 1, '|');
+
+	printf("%s\nStar (*) for width and precision:\n", COLOR_GREEN);
+	format = "%s%c%*15d%c\n";
+	printf(format, COLOR_CYAN, '|', 3, 12, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 3, 12, '|');
+	format = "%s%c%*15d%c\n";
+	printf(format, COLOR_CYAN, '|', 0, 12, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 0, 12, '|');
+	format = "%s%c%15*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%*d%c\n";
+	printf(format, COLOR_CYAN, '|', -12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|');
+	format = "%s%c%*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%*.*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 12, 123456, '|');
+	format = "%s%c%.*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%20.20*d%c\n";
+	printf(format, COLOR_CYAN, '|', 12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', 12, 123456, '|');
+	format = "%s%c%-*d%c\n";
+	printf(format, COLOR_CYAN, '|', -12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|');
+	format = "%s%c%0*d%c\n";
+	printf(format, COLOR_CYAN, '|', -12, 123456, '|');
+	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|'); */
 
 	printf(COLOR_RESET);
 	return (0);

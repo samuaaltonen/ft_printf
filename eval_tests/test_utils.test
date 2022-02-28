@@ -1,0 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/28 17:52:45 by saaltone          #+#    #+#             */
+/*   Updated: 2022/02/28 17:53:02 by saaltone         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "tests.h"
+
+FILE	*ob_start()
+{
+	// Duplicate stdout to backup
+	stdout_backup = dup(1);
+	ob = fopen("temp", "w");
+	if(ob < 0)
+	{
+		printf("%sCreating tempfile for output buffering failed.%s", COLOR_RED, COLOR_RESET);
+		exit(EXIT_FAILURE);
+	}
+	// Replace stdout
+	dup2(fileno(ob), 1);
+	return (ob);
+}
+
+char	*ob_end()
+{
+	FILE	*temp;
+	char	buffer[1000];
+	char	*output;
+
+	fflush(stdout);
+	fclose(ob);
+	// Restore stdout
+	dup2(stdout_backup, 1);
+	close(stdout_backup);
+	temp = fopen("temp", "r");
+	if (temp < 0)
+	{
+		printf("%sOpening tempfile failed.%s", COLOR_RED, COLOR_RESET);
+		exit(EXIT_FAILURE);
+	}
+	output = strdup(fgets(buffer, 1000, temp));
+	return (output);
+}
+
+void	save_input(const char *format, ...)
+{
+	printf_format = strdup(format);
+}
+
+void	printf_compare()
+{
+	printf("FORMAT: %s%30s%s    printf %s%30s%s    ft_printf %s%30s%s    RESULT ",
+		COLOR_YELLOW, printf_format, COLOR_RESET,
+		COLOR_CYAN, output_printf, COLOR_RESET,
+		COLOR_PURPLE, output_ft_printf, COLOR_RESET);
+	if (return_printf != return_ft_printf)
+		printf("%sKO (different return values)%s\n", COLOR_RED, COLOR_RESET);
+	if (strcmp(output_printf, output_ft_printf) == 0)
+		printf("%sOK%s\n", COLOR_GREEN, COLOR_RESET);
+	else
+		printf("%sKO%s\n", COLOR_RED, COLOR_RESET);
+}
