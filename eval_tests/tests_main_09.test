@@ -6,21 +6,19 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 17:52:57 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:22:15 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "tests.test"
 
 int	main(void)
 {
-	/* char	*format = "";
+	char	*format = "";
 	int		nbr = 0;
-	int		nbr2 = 0; */
+	int		nbr2 = 0;
 
-	printf_tester("%s", "yo2");
-
-	/* printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
+	printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_CYAN, &nbr);
 	printf("nbr: %d\n", nbr);
 	ft_printf("%sPrint nothing but save number of printed characters to nbr %n\n", COLOR_PURPLE, &nbr2);
 	ft_printf("nbr: %d\n", nbr2);
@@ -72,7 +70,7 @@ int	main(void)
 	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|');
 	format = "%s%c%0*d%c\n";
 	printf(format, COLOR_CYAN, '|', -12, 123456, '|');
-	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|'); */
+	ft_printf(format, COLOR_PURPLE, '|', -12, 123456, '|');
 
 	printf(COLOR_RESET);
 	return (0);

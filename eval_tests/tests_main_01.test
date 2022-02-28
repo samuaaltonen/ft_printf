@@ -6,50 +6,22 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 13:40:52 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:21:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "tests.test"
 
 int	main(void)
 {
-	printf("%sBasic string\n", COLOR_RESET);
-	printf("%s%s\n", COLOR_CYAN, "yo");
-	ft_printf("%s%s\n", COLOR_PURPLE, "yo");
-
-	printf("%s\nString with width 30 aligned to right\n", COLOR_RESET);
-	printf("%s%30s%c\n", COLOR_CYAN, "yo", '|');
-	ft_printf("%s%30s%c\n", COLOR_PURPLE, "yo", '|');
-
-	printf("%s\nString with width 30 aligned to left\n", COLOR_RESET);
-	printf("%s%-30s%c\n", COLOR_CYAN, "yo", '|');
-	ft_printf("%s%-30s%c\n", COLOR_PURPLE, "yo", '|');
-
-	printf("%s\nString yoyo with precision 3\n", COLOR_RESET);
-	printf("%s%.3s\n", COLOR_CYAN, "yoyo");
-	ft_printf("%s%.3s\n", COLOR_PURPLE, "yoyo");
-
-	printf("%s\nString yoyo with width 30 and precision 3\n", COLOR_RESET);
-	printf("%s%30.3s%c\n", COLOR_CYAN, "yoyo", '|');
-	ft_printf("%s%30.3s%c\n", COLOR_PURPLE, "yoyo", '|');
-
-	printf("%s\nString yoyo with width 30 aligned to left and precision 3\n", COLOR_RESET);
-	printf("%s%-30.3s%c\n", COLOR_CYAN, "yoyo", '|');
-	ft_printf("%s%-30.3s%c\n", COLOR_PURPLE, "yoyo", '|');
-
-	printf("\n%sNULL string\n", COLOR_RESET);
-	printf("%s%s\n", COLOR_CYAN, NULL);
-	ft_printf("%s%s\n", COLOR_PURPLE, NULL);
-
-	printf("\n%sNULL string width and alignment\n", COLOR_RESET);
-	printf("%s%-30s%c\n", COLOR_CYAN, NULL, '|');
-	ft_printf("%s%-30s%c\n", COLOR_PURPLE, NULL, '|');
-
-	printf("\n%sNULL string precision\n", COLOR_RESET);
-	printf("%s%30.3s%c\n", COLOR_CYAN, NULL, '|');
-	ft_printf("%s%30.3s%c\n", COLOR_PURPLE, NULL, '|');
-
-	printf(COLOR_RESET);
+	printf_tester("%s", "yo");
+	printf_tester("%30s%c", "yo", '|');
+	printf_tester("%-30s%c", "yo", '|');
+	printf_tester("%.3s", "yoyo");
+	printf_tester("%30.3s%c",  "yoyo", '|');
+	printf_tester("%-30.3s%c",  "yoyo", '|');
+	printf_tester("%s",  NULL);
+	printf_tester("%-30s%c",  NULL, '|');
+	printf_tester("%30.3s%c",  NULL, '|');
 	return (0);
 }

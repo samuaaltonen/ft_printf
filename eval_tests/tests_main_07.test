@@ -6,11 +6,11 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/10 11:21:26 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:22:10 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "tests.test"
 
 int	main(void)
 {

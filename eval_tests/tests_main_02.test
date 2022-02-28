@@ -6,73 +6,31 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 14:45:28 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:21:55 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "tests.test"
 
 int	main(void)
 {
-	char *format;
-	printf("%sChar:\n", COLOR_RESET);
-	format = "%s%c\n";
-	printf(format, COLOR_CYAN, 'a');
-	ft_printf(format, COLOR_PURPLE, 'a');
-	format = "%s%3c\n";
-	printf(format, COLOR_CYAN, 'a');
-	ft_printf(format, COLOR_PURPLE, 'a');
-	format = "%s%-3c%c\n";
-	printf(format, COLOR_CYAN, 'a', '|');
-	ft_printf(format, COLOR_PURPLE, 'a', '|');
-
-	printf("\n%sSigned integer %d\n", COLOR_CYAN, -42);
-	ft_printf("%sSigned integer %d\n", COLOR_PURPLE, -42);
-
-	printf("\n%sFloat %f\n", COLOR_CYAN, 1.23);
-	ft_printf("%sFloat %f\n", COLOR_PURPLE, 1.23);
-
-	printf("\n%sFloat %f\n", COLOR_CYAN, 123.456);
-	ft_printf("%sFloat %f\n", COLOR_PURPLE, 123.456);
-
-	printf("\n%sSigned short %hi\n", COLOR_CYAN, (short) -42);
-	ft_printf("%sSigned short %hi\n", COLOR_PURPLE, (short) -42);
-
-	printf("\n%sUnsigned short %hu\n", COLOR_CYAN, (unsigned short) -42);
-	ft_printf("%sUnsigned short %hu\n", COLOR_PURPLE, (unsigned short) -42);
-
-	printf("\n%sInteger %i\n", COLOR_CYAN, (int) 123);
-	ft_printf("%sInteger %i\n", COLOR_PURPLE, (int) 123);
-
-	printf("\n%sUnsigned integer %u\n", COLOR_CYAN, (unsigned int) 123);
-	ft_printf("%sUnsigned integer %u\n", COLOR_PURPLE, (unsigned int) 123);
-
-	printf("\n%sLong %li\n", COLOR_CYAN, ((long) 1) << 18);
-	ft_printf("%sLong %li\n", COLOR_PURPLE, ((long) 1) << 18);
-
-	printf("\n%sLong %ld\n", COLOR_CYAN, -(((long) 1) << 18));
-	ft_printf("%sLong %ld\n", COLOR_PURPLE, -(((long) 1) << 18));
-
-	printf("\n%sUnsigned long %lu\n", COLOR_CYAN, ((unsigned long) 1) << 18);
-	ft_printf("%sUnsigned long %lu\n", COLOR_PURPLE, ((unsigned long) 1) << 18);
-
-	printf("\n%sLong long %lli\n", COLOR_CYAN, ((long long) 1) << 42);
-	ft_printf("%sLong long %lli\n", COLOR_PURPLE, ((long long) 1) << 42);
-
-	printf("\n%sLong long %lld\n", COLOR_CYAN, ((long long) 1) << 42);
-	ft_printf("%sLong long %lld\n", COLOR_PURPLE, ((long long) 1) << 42);
-
-	printf("\n%sLong long %lld\n", COLOR_CYAN, (long long) -123);
-	ft_printf("%sLong long %lld\n", COLOR_PURPLE, (long long) -123);
-
-	printf("\n%sUnsigned long long %llu\n", COLOR_CYAN, ((unsigned long long) 1) << 63);
-	ft_printf("%sUnsigned long long %llu\n", COLOR_PURPLE, ((unsigned long long) 1) << 63);
-
-	printf("\n%sMinimum signed long long:\n", COLOR_RESET);
-	format = "%s%lld\n";
-	printf(format, COLOR_CYAN, (long long) -9223372036854775807 - 1);
-	ft_printf(format, COLOR_PURPLE, (long long) -9223372036854775807 - 1);
-
-	printf(COLOR_RESET);
+	printf_tester("%c", 'a');
+	printf_tester("%3c", 'a');
+	printf_tester("%-3c", 'a');
+	printf_tester("%d", -42);
+	printf_tester("%f", 1.23);
+	printf_tester("%f", 123.456);
+	printf_tester("%hi", (short) -42);
+	printf_tester("%hu", (unsigned short) -42);
+	printf_tester("%i", 123);
+	printf_tester("%u", (unsigned int) 123);
+	printf_tester("%li", ((long) 1) << 18);
+	printf_tester("%ld", -(((long) 1) << 18));
+	printf_tester("%lu", ((unsigned long) 1) << 18);
+	printf_tester("%lli", ((long long) 1) << 42);
+	printf_tester("%lld", ((long long) 1) << 42);
+	printf_tester("%lld", (long long) -123);
+	printf_tester("%llu", ((unsigned long long) 1) << 63);
+	printf_tester("%lld", (long long) -9223372036854775807 - 1);
 	return (0);
 }

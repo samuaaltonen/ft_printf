@@ -6,95 +6,40 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 15:25:24 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/02/28 19:22:01 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "tests.test"
 
 int	main(void)
 {
-	char	*format;
 	void	*something;
-	void	*ptr;
 
 	something = "asd";
-	ptr = NULL;
-	printf("%sPointer to something %p\n", COLOR_CYAN, something);
-	ft_printf("%sPointer to something %p\n", COLOR_PURPLE, something);
 
-	printf("\n%sPointer to NULL %p\n", COLOR_CYAN, ptr);
-	ft_printf("%sPointer to NULL %p\n", COLOR_PURPLE, ptr);
+	printf_tester("%p", something);
+	printf_tester("%p", NULL);
+	printf_tester("%.0p", something);
+	printf_tester("%.5p", something);
+	printf_tester("%.0p", NULL);
+	printf_tester("%.5p", NULL);
+	printf_tester("%15.15p", something);
+	printf_tester("%15.15p", NULL);
 
-	printf("\n%sPointer with precision:\n", COLOR_RESET);
-	format = "%s%.0p\n";
-	printf(format, COLOR_CYAN, something);
-	ft_printf(format, COLOR_PURPLE, something);
-	format = "%s%.5p\n";
-	printf(format, COLOR_CYAN, something);
-	ft_printf(format, COLOR_PURPLE, something);
-	format = "%s%.0p\n";
-	printf(format, COLOR_CYAN, ptr);
-	ft_printf(format, COLOR_PURPLE, ptr);
-	format = "%s%.5p\n";
-	printf(format, COLOR_CYAN, ptr);
-	ft_printf(format, COLOR_PURPLE, ptr);
-	format = "%s%15.15p\n";
-	printf(format, COLOR_CYAN, ptr);
-	ft_printf(format, COLOR_PURPLE, ptr);
-	format = "%s%15.15p\n";
-	printf(format, COLOR_CYAN, something);
-	ft_printf(format, COLOR_PURPLE, something);
+	printf_tester("%20p%c", something, '|');
+	printf_tester("%-20p%c", something, '|');
+	printf_tester("%3p%c", something, '|');
 
-	printf("\n%sPointer with width\n", COLOR_RESET);
-	printf("%s%20p%c\n", COLOR_CYAN, something, '|');
-	ft_printf("%s%20p%c\n", COLOR_PURPLE, something, '|');
-	printf("%s%-20p%c\n", COLOR_CYAN, something, '|');
-	ft_printf("%s%-20p%c\n", COLOR_PURPLE, something, '|');
-	printf("%s%3p%c\n", COLOR_CYAN, something, '|');
-	ft_printf("%s%3p%c\n", COLOR_PURPLE, something, '|');
+	printf_tester("%%%%%%%%%%%%%c", '|');
+	printf_tester("%4%%c", '|');
+	printf_tester("%4.4%%c", '|');
+	printf_tester("%-4.4%%c", '|');
+	printf_tester("%05%%c", '|');
+	printf_tester("%05.10%%c", '|');
 
-	printf("\n%s%% conversion:\n", COLOR_RESET);
-	format = "%s%%%%%%%%%%%%\n";
-	printf(format, COLOR_CYAN);
-	ft_printf(format, COLOR_PURPLE);
-	format = "%s%4%%c\n";
-	printf(format, COLOR_CYAN, '|');
-	ft_printf(format, COLOR_PURPLE, '|');
-	format = "%s%4.4%%c\n";
-	printf(format, COLOR_CYAN, '|');
-	ft_printf(format, COLOR_PURPLE, '|');
-	format = "%s%-4.4%%c\n";
-	printf(format, COLOR_CYAN, '|');
-	ft_printf(format, COLOR_PURPLE, '|');
-	format = "%s%05%%c\n";
-	printf(format, COLOR_CYAN, '|');
-	ft_printf(format, COLOR_PURPLE, '|');
-	format = "%s%0-5%%c\n";
-	printf(format, COLOR_CYAN, '|');
-	ft_printf(format, COLOR_PURPLE, '|');
-	format = "%s%05.10%%c\n";
-	printf(format, COLOR_CYAN, '|');
-	ft_printf(format, COLOR_PURPLE, '|');
-
-	printf("\n%sStrings with zeropadding and precision:\n", COLOR_RESET);
-	format = "%s%06s%c\n";
-	printf(format, COLOR_CYAN, "yoyo", '|');
-	ft_printf(format, COLOR_PURPLE, "yoyo", '|');
-	format = "%s%.6s%c\n";
-	printf(format, COLOR_CYAN, "yoyo", '|');
-	ft_printf(format, COLOR_PURPLE, "yoyo", '|');
-	format = "%s%.06s%c\n";
-	printf(format, COLOR_CYAN, "yoyo", '|');
-	ft_printf(format, COLOR_PURPLE, "yoyo", '|');
-	format = "%s%.006s%c\n";
-	printf(format, COLOR_CYAN, "yoyo", '|');
-	ft_printf(format, COLOR_PURPLE, "yoyo", '|');
-
-	printf("\n%sReturn values:\n", COLOR_RESET);
-	printf(" %sRETURNED: %i\n", COLOR_RESET, printf("%syoyoyo", COLOR_CYAN));
-	printf(" %sRETURNED: %i\n", COLOR_RESET, ft_printf("%syoyoyo", COLOR_PURPLE));
-
-	printf(COLOR_RESET);
+	printf_tester("%06s%c", "yoyo", '|');
+	printf_tester("%.06s%c", "yoyo", '|');
+	printf_tester("%.006s%c", "yoyo", '|');
 	return (0);
 }
