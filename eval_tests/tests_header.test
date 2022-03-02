@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.test                                         :+:      :+:    :+:   */
+/*   tests_header.test                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:37:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 14:32:31 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 16:39:49 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#ifndef TESTS_HEADER_H
+# define TESTS_HEADER_H
 # define COLOR_GREEN "\033[0;32m"
 # define COLOR_YELLOW "\033[0;33m"
 # define COLOR_RED "\033[0;31m"
