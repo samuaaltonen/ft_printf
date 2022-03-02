@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 19:22:04 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:45:35 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int	main(void)
 	printf_tester("%#012X%c", 16777215, '|');
 	printf_tester("%#12.10X%c", 0, '|');
 	printf_tester("%#12.1X%c", 123, '|');
-	printf_tester("%#12.30X%c", 16777215, '|');
-	printf_tester("%#12.30X%c", 0, '|');
+	printf_tester("%#12.20X%c", 16777215, '|');
+	printf_tester("%#12.20X%c", 0, '|');
 	printf_tester("%#X%c", 0, '|');
 
 	printf("\nOctal zero with zero precision:\n");

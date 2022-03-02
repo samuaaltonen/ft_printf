@@ -56,7 +56,7 @@ fi
 
 if [ $1 -eq 4 ]; then
 
-printf "\n\033[0;35m======================= 04 OTHER STUFF =======================\033[0m\n\n"
+printf "\n\033[0;35m======================= 04 POINTERS, CHAR WITH WIDTH AND % =======================\033[0m\n\n"
 
 ./tests_printf
 

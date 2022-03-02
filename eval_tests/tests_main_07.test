@@ -6,31 +6,57 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 15:33:43 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 16:15:58 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.test"
 
+void	capture_mem_usage(char **str)
+{
+	int		temp;
+	char	buffer[1000];
+
+	system("top -l 1 | grep \"printf\" | awk '{ print $8 }' > temp");
+	temp = open("temp", O_RDONLY);
+	if (read(temp, buffer, 999) < 0)
+		return ;
+	strcpy(*str, buffer);
+	close(temp);
+}
+
 int	main(void)
 {
 	char	*str = "yo";
 	int		i = 0;
+	char	*mem_usage_at_1s = (char *)malloc(200);
+	char	*mem_usage_at_19s = (char *)malloc(200);
 	time_t	end_loop;
 	time_t	start_loop = time(NULL);
+	time_t	start_initial = start_loop;
 
-	end_loop = start_loop + (time_t) 30;
+	end_loop = start_loop + (time_t) 20;
 
-	printf("%sRuns infinite loop for 30 seconds. While the test is running, you can monitor \nmemory usage with %stop | grep \"printf\"%s or maybe something like %s\nfor i in {1..30}; do top -l 1 | grep \"printf\" | awk '{ print $8 }'; sleep 1; done%s \nto show only memory usage. Note that memory usage should not keep increasing.\n\n\n", COLOR_CYAN, COLOR_PURPLE, COLOR_CYAN, COLOR_PURPLE, COLOR_CYAN);
+	printf("%sRuns infinite loop for 20 seconds. While the test is running, you can monitor \nmemory usage with %stop | grep \"printf\"%s or maybe something like %s\nfor i in {1..30}; do top -l 1 | grep \"printf\" | awk '{ print $8 }'; sleep 1; done%s \nto show only memory usage. Note that memory usage should not keep increasing.\n\n\n", COLOR_CYAN, COLOR_PURPLE, COLOR_CYAN, COLOR_PURPLE, COLOR_CYAN);
 
 	while (start_loop < end_loop)
 	{
 		start_loop = time(NULL);
 		ft_printf("\033[1A\rPrint stuff: %p%d%f%s%x%o%c%i\n", str, 1, 1.f, str, 1, 1, 'x', 1);
 		ft_printf("\r%sTotal calls: %s%d%s", COLOR_RESET, COLOR_GREEN, i, COLOR_RESET);
+		if (!(*mem_usage_at_1s) && start_loop - start_initial == 1)
+			capture_mem_usage(&mem_usage_at_1s);
+		if (!(*mem_usage_at_19s) && start_loop - start_initial == 19)
+			capture_mem_usage(&mem_usage_at_19s);
 		i++;
 	}
-	printf("\n\n");
+	printf("\n\nMemory usage at  1s was: %s%10s%sMemory usage at 19s was: %s%10s%sRESULT ", COLOR_CYAN, mem_usage_at_1s, COLOR_RESET, COLOR_CYAN, mem_usage_at_19s, COLOR_RESET);
+	if (mem_usage_at_1s && mem_usage_at_19s && strcmp(mem_usage_at_1s, mem_usage_at_19s) == 0)
+		printf("%sOK%s\n", COLOR_GREEN, COLOR_RESET);
+	else
+		printf("%sKO%s\n", COLOR_RED, COLOR_RESET);
 	printf(COLOR_RESET);
+	free(mem_usage_at_1s);
+	free(mem_usage_at_19s);
 	return (0);
 }
