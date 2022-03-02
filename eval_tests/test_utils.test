@@ -3,21 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   test_utils.test                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:52:45 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 14:26:58 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:32:22 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.test"
+
+FILE	*ob;
+int		stdout_backup;
+char	*printf_format;
+int		return_printf;
+int		return_ft_printf;
+char	*output_printf;
+char	*output_ft_printf;
 
 FILE	*ob_start()
 {
 	// Duplicate stdout to backup
 	stdout_backup = dup(1);
 	ob = fopen("temp", "w");
-	if(ob < 0)
+	if(!ob)
 	{
 		printf("%sCreating tempfile for output buffering failed.%s", COLOR_RED, COLOR_RESET);
 		exit(EXIT_FAILURE);
@@ -39,7 +47,7 @@ char	*ob_end()
 	dup2(stdout_backup, 1);
 	close(stdout_backup);
 	temp = fopen("temp", "r");
-	if (temp < 0)
+	if (!temp)
 	{
 		printf("%sOpening tempfile failed.%s", COLOR_RED, COLOR_RESET);
 		exit(EXIT_FAILURE);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.test                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:37:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:13:34 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:32:31 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,19 @@
 # include <string.h>
 # include <fcntl.h>
 
-FILE	*ob;
-int		stdout_backup;
-va_list va_backup;
-
 int		ft_printf(const char *format, ...);
 void	save_input(const char *format, ...);
-void	printf_compare();
-char	*printf_format;
-FILE	*ob_start();
-char	*ob_end();
-int		return_printf;
-int		return_ft_printf;
-char	*output_printf;
-char	*output_ft_printf;
+void	printf_compare(void);
+FILE	*ob_start(void);
+char	*ob_end(void);
+
+extern FILE	*ob;
+extern int	stdout_backup;
+extern char	*printf_format;
+extern int	return_printf;
+extern int	return_ft_printf;
+extern char	*output_printf;
+extern char	*output_ft_printf;
 
 # define printf_tester(...) \
 	save_input(__VA_ARGS__); \
