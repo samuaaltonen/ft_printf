@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 19:22:10 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 15:33:43 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 int	main(void)
 {
+	char	*str = "yo";
 	int		i = 0;
 	time_t	end_loop;
 	time_t	start_loop = time(NULL);
 
-	end_loop = start_loop + (time_t) 20;
+	end_loop = start_loop + (time_t) 30;
+
+	printf("%sRuns infinite loop for 30 seconds. While the test is running, you can monitor \nmemory usage with %stop | grep \"printf\"%s or maybe something like %s\nfor i in {1..30}; do top -l 1 | grep \"printf\" | awk '{ print $8 }'; sleep 1; done%s \nto show only memory usage. Note that memory usage should not keep increasing.\n\n\n", COLOR_CYAN, COLOR_PURPLE, COLOR_CYAN, COLOR_PURPLE, COLOR_CYAN);
 
 	while (start_loop < end_loop)
 	{
 		start_loop = time(NULL);
-		ft_printf("\r%sTotal calls: %s%d", COLOR_RESET, COLOR_GREEN, i);
+		ft_printf("\033[1A\rPrint stuff: %p%d%f%s%x%o%c%i\n", str, 1, 1.f, str, 1, 1, 'x', 1);
+		ft_printf("\r%sTotal calls: %s%d%s", COLOR_RESET, COLOR_GREEN, i, COLOR_RESET);
 		i++;
 	}
-	printf("\n");
+	printf("\n\n");
 	printf(COLOR_RESET);
 	return (0);
 }

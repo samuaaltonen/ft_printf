@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 19:22:12 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:26:19 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,131 +14,58 @@
 
 int	main(void)
 {
-	char	*format = "";
+	int trick_compiler_overflow = 2;
 
-	printf("\n%sBig long double (more than unsigned long long):\n", COLOR_RESET);
-	format = "%s%Lf\n";
-	printf(format, COLOR_CYAN, 3.1415926535897932383e+22L);
-	ft_printf(format, COLOR_PURPLE, 3.1415926535897932383e+22L);
-	printf(format, COLOR_CYAN, 3.1415926535897932383e+50L);
-	ft_printf(format, COLOR_PURPLE, 3.1415926535897932383e+50L);
+	printf("\nBig long double (more than unsigned long long):\n");
+	printf_tester("%Lf", 3.1415926535897932383e+22L);
+	printf_tester("%Lf", 3.1415926535897932383e+50L);
 	
-	printf("\n%sOverflows with octal (lengths hh, h, l, ll):\n", COLOR_RESET);
-	format = "%s%hho\n";
-	printf(format, COLOR_CYAN, 277);
-	ft_printf(format, COLOR_PURPLE, 277);
-	format = "%s%ho\n";
-	printf(format, COLOR_CYAN, 69420);
-	ft_printf(format, COLOR_PURPLE, 69420);
-	format = "%s%lo\n";
-	printf(format, COLOR_CYAN, __LONG_LONG_MAX__);
-	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__);
-	format = "%s%llo\n";
-	int	trick_compiler = 2;
-	printf(format, COLOR_CYAN, __LONG_LONG_MAX__ * trick_compiler);
-	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__ * trick_compiler);
-	printf(format, COLOR_CYAN, - __LONG_LONG_MAX__ * trick_compiler);
-	ft_printf(format, COLOR_PURPLE, - __LONG_LONG_MAX__ * trick_compiler);
-	printf(format, COLOR_CYAN, -2);
-	ft_printf(format, COLOR_PURPLE, -2);
+	printf("\n%sSome overflows:\n", COLOR_RESET);
+	printf_tester("%hho", 277);
+	printf_tester("%ho", 69420);
+	printf_tester("%lo", __LONG_LONG_MAX__);
+	printf_tester("%llo", __LONG_LONG_MAX__ * trick_compiler_overflow);
+	printf_tester("%llo", - __LONG_LONG_MAX__ * trick_compiler_overflow);
+	printf_tester("%llo", -2);
+	printf_tester("%hhX", 277);
+	printf_tester("%hX", 69420);
+	printf_tester("%lX", __LONG_LONG_MAX__);
+	printf_tester("%llX", __LONG_LONG_MAX__ * trick_compiler_overflow);
+	printf_tester("%llX", -2);
+	printf_tester("%llX", 2);
 
-	printf("\n%sOverflows with hexadecimal (lengths hh, h, l, ll):\n", COLOR_RESET);
-	format = "%s%hhX\n";
-	printf(format, COLOR_CYAN, 277);
-	ft_printf(format, COLOR_PURPLE, 277);
-	format = "%s%hX\n";
-	printf(format, COLOR_CYAN, 69420);
-	ft_printf(format, COLOR_PURPLE, 69420);
-	format = "%s%lX\n";
-	printf(format, COLOR_CYAN, __LONG_LONG_MAX__);
-	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__);
-	format = "%s%llX\n";
-	printf(format, COLOR_CYAN, __LONG_LONG_MAX__ * trick_compiler);
-	ft_printf(format, COLOR_PURPLE, __LONG_LONG_MAX__ * trick_compiler);
-	printf(format, COLOR_CYAN, -2);
-	ft_printf(format, COLOR_PURPLE, -2);
-	printf(format, COLOR_CYAN, 2);
-	ft_printf(format, COLOR_PURPLE, 2);
+	printf("\nUndefined behaviour and other lenghts (z, j):\n");
+	printf_tester("%+X", 42);
+	printf_tester("%+X", -2);
+	printf_tester("%+X", 0);
+	printf_tester("%jx", 4294967295);
+	printf_tester("%z");
+	printf_tester("%ll#x", 9223372036854775807);
+	printf_tester("%#llx", 9223372036854775807);
+	printf_tester("%05c", '*');
+	printf_tester("%zd", 4294967295);
+	printf_tester("%U", 4294967296);
+	printf_tester("%hU", 4294967296);
+	printf_tester("%zhd", 4294967296);
+	printf_tester("%hzd", 4294967296);
+	printf_tester("%zd", 4294967296);
+	printf_tester("%hd", 4294967296);
 
-	printf("%s\nUndefined behaviour:%s\nHexadecimal with + flags:\n", COLOR_GREEN, COLOR_RESET);
-	format = "%s%+X\n";
-	printf(format, COLOR_CYAN, 42);
-	ft_printf(format, COLOR_PURPLE, 42);
-	printf(format, COLOR_CYAN, -2);
-	ft_printf(format, COLOR_PURPLE, -2);
-	printf(format, COLOR_CYAN, 0);
-	ft_printf(format, COLOR_PURPLE, 0);
+	printf("\nWidth, flags in wrong order, multiple precisions:\n");
+	printf_tester("%4.d", 123);
+	printf_tester("%4..8d", 123);
+	printf_tester("%12..6.. d", 123);
+	printf_tester("%##0012..6..#00d", 123);
+	printf_tester("%##00ll #00d", 123);
+	printf_tester("%##0012 #00d", 123);
+	printf_tester("%##00  12..6..d", 123);
+	printf_tester("%#0 12.6.d", 123);
+	printf_tester("% -20.d%c", 123, '|');
+	printf_tester("%# 0-# 10..8..#0 +-0d%c", 123, '|');
+	printf_tester("%# 0-# 20#0 +-0d%c", 123, '|');
 
-	printf("%sRandom stuff:\n", COLOR_RESET);
-	format = "%s%jx\n";
-	printf(format, COLOR_CYAN, 4294967295);
-	ft_printf(format, COLOR_PURPLE, 4294967295);
-	format = "%s%z\n";
-	printf(format, COLOR_CYAN);
-	ft_printf(format, COLOR_PURPLE);
-	format = "%s%ll#x\n";
-	printf(format, COLOR_CYAN, 9223372036854775807);
-	ft_printf(format, COLOR_PURPLE, 9223372036854775807);
-	format = "%s%#llx\n";
-	printf(format, COLOR_CYAN, 9223372036854775807);
-	ft_printf(format, COLOR_PURPLE, 9223372036854775807);
-	format = "%s%05c\n";
-	printf(format, COLOR_CYAN, '*');
-	ft_printf(format, COLOR_PURPLE, '*');
-	format = "%s%zd\n";
-	printf(format, COLOR_CYAN, 4294967295);
-	ft_printf(format, COLOR_PURPLE, 4294967295);
-	format = "%s%U\n";
-	printf(format, COLOR_CYAN, 4294967296);
-	ft_printf(format, COLOR_PURPLE, 4294967296);
-	format = "%s%hU\n";
-	printf(format, COLOR_CYAN, 4294967296);
-	ft_printf(format, COLOR_PURPLE, 4294967296);
-	format = "%s%zhd\n";
-	printf(format, COLOR_CYAN, 4294967296);
-	ft_printf(format, COLOR_PURPLE, 4294967296);
-	format = "%s%hzd\n";
-	printf(format, COLOR_CYAN, 4294967296);
-	ft_printf(format, COLOR_PURPLE, 4294967296);
-	format = "%s%zd\n";
-	printf(format, COLOR_CYAN, 4294967296);
-	ft_printf(format, COLOR_PURPLE, 4294967296);
-	format = "%s%hd\n";
-	printf(format, COLOR_CYAN, 4294967296);
-	ft_printf(format, COLOR_PURPLE, 4294967296);
-	format = "%s%4.d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s%4..8d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s%12..6.. d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s%##0012..6..#00d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s%##00ll #00d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s%##0012 #00d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s%##00  12..6..d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s%#0 12.6.d\n";
-	printf(format, COLOR_CYAN, 123);
-	ft_printf(format, COLOR_PURPLE, 123);
-	format = "%s% -20.d%c\n";
-	printf(format, COLOR_CYAN, 123, '|');
-	ft_printf(format, COLOR_PURPLE, 123, '|');
-	format = "%s%# 0-# 20......8..#0 +-0d%c\n";
-	printf(format, COLOR_CYAN, 123, '|');
-	ft_printf(format, COLOR_PURPLE, 123, '|');
-	format = "%s%# 0-# 20#0 +-0d%c\n";
-	printf(format, COLOR_CYAN, 123, '|');
-	ft_printf(format, COLOR_PURPLE, 123, '|');
-	printf(COLOR_RESET);
+	printf("\nFloat with width 1 and negative precision 10:\n");
+	printf_tester("%1.-10f%c", 1.234, '|');
+
 	return (0);
 }

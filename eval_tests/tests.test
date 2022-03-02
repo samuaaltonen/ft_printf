@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   tests.test                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:37:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 18:15:17 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 11:34:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define COLOR_RED "\033[0;31m"
 # define COLOR_PURPLE "\033[0;35m"
 # define COLOR_CYAN "\033[0;36m"
+# define COLOR_BLACK "\033[0;30m"
 # define COLOR_RESET "\033[0m"
 
 # include <stdarg.h>
@@ -44,10 +45,10 @@ char	*output_ft_printf;
 # define printf_tester(...) \
 	save_input(__VA_ARGS__); \
 	ob_start(); \
-	printf(__VA_ARGS__); \
+	return_printf = printf(__VA_ARGS__); \
 	output_printf = ob_end(); \
 	ob_start(); \
-	ft_printf(__VA_ARGS__); \
+	return_ft_printf = ft_printf(__VA_ARGS__); \
 	output_ft_printf = ob_end(); \
 	printf_compare(); \
 	free(printf_format); \

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 19:22:07 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 12:07:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,119 +14,58 @@
 
 int	main(void)
 {
-	printf("%sOctal with # flag (prefixing a 0 if it was not zero already). Any non-zero number:\n", COLOR_RESET);
-	printf("%s%#o\n", COLOR_CYAN, 123);
-	ft_printf("%s%#o\n", COLOR_PURPLE, 123);
+	printf("\nOctal with # flag (prefix 0 if it was not zero already):\n");
+	printf_tester("%#o", 123);
+	printf_tester("%#o", 0);
 
-	printf("%s\nOctal with # flag (prefixing a 0 if it was not zero already). Zero:\n", COLOR_RESET);
-	printf("%s%#o\n", COLOR_CYAN, 0);
-	ft_printf("%s%#o\n", COLOR_PURPLE, 0);
+	printf("\nHexadecimal with # flag (prefixing a 0x / 0X):\n");
+	printf_tester("%#x", 16777215);
+	printf_tester("%#X", 16777215);
+	printf_tester("%#x", 0);
+	printf_tester("%#X", 0);
 
-	printf("%s\nHexadecimal with # flag (prefixing a 0x / 0X). Any non-zero number:\n", COLOR_RESET);
-	printf("%s%#x\n", COLOR_CYAN, 16777215);
-	ft_printf("%s%#x\n", COLOR_PURPLE, 16777215);
-	printf("%s%#X\n", COLOR_CYAN, 16777215);
-	ft_printf("%s%#X\n", COLOR_PURPLE, 16777215);
+	printf("\nZero padding:\n");
+	printf_tester("%03d", 42);
+	printf_tester("%03d", 0);
+	printf_tester("%03d", -42);
+	printf_tester("%05d", -42);
+	printf_tester("%03d", 1234);
+	printf_tester("%03d", -1234);
+	printf_tester("%00d", 1234);
+	printf_tester("%00d", 0);
 
-	printf("%s\nHexadecimal with # flag (prefixing a 0x / 0X). Zero:\n", COLOR_RESET);
-	printf("%s%#x\n", COLOR_CYAN, 0);
-	ft_printf("%s%#x\n", COLOR_PURPLE, 0);
-	printf("%s%#X\n", COLOR_CYAN, 0);
-	ft_printf("%s%#X\n", COLOR_PURPLE, 0);
+	printf("\nBoth, - and 0 flags. - should override 0:\n");
+	printf_tester("%-010d%c", 1234, '|');
+	printf_tester("%-010d%c", 0, '|');
+	printf_tester("%-010d%c", -1234, '|');
+	printf_tester("%0-10d%c", 1234, '|');
+	printf_tester("%0-10d%c", 0, '|');
+	printf_tester("%0-10d%c", -1234, '|');
 
-	printf("%s\nZero padded value, number with 3 zero-padding (%%03d):\n", COLOR_RESET);
-	printf("%s%03d\n", COLOR_CYAN, 42);
-	ft_printf("%s%03d\n", COLOR_PURPLE, 42);
-	printf("%s%03d\n", COLOR_CYAN, 0);
-	ft_printf("%s%03d\n", COLOR_PURPLE, 0);
+	printf("\n- and 0 flags with width (3) less than digit count (4):\n");
+	printf_tester("%-03d%c", 1234, '|');
 
-	printf("%s\nZero padded value, negative number with 3 and 5 zero-padding (%%03d). Note that the zero count is 1 less than with positive numbers:\n", COLOR_RESET);
-	printf("%s%03d\n", COLOR_CYAN, -42);
-	ft_printf("%s%03d\n", COLOR_PURPLE, -42);
-	printf("%s%05d\n", COLOR_CYAN, -42);
-	ft_printf("%s%05d\n", COLOR_PURPLE, -42);
+	printf("\nBlank flag (A blank should be left before a positive number (or empty string)):\n");
+	printf_tester("%c% d%c", '|', 42, '|');
+	printf_tester("%c% d%c", '|', -42, '|');
 
-	printf("%s\nZero padded value, number with 3 zero-padding but number is bigger than 3 digits (%%03d):\n", COLOR_RESET);
-	printf("%s%03d\n", COLOR_CYAN, 1234);
-	ft_printf("%s%03d\n", COLOR_PURPLE, 1234);
-	printf("%s%03d\n", COLOR_CYAN, -1234);
-	ft_printf("%s%03d\n", COLOR_PURPLE, -1234);
+	printf("\nBlank flag when width (5) is less than digit count (6):\n");
+	printf_tester("%c% 5d%c", '|', 123456, '|');
 
-	printf("%s\nZero padded value, number with 0 zero-padding (%%00d):\n", COLOR_RESET);
-	char	*format = "%s%00d\n";
-	printf(format, COLOR_CYAN, 1234);
-	ft_printf(format, COLOR_PURPLE, 1234);
-	printf(format, COLOR_CYAN, 0);
-	ft_printf(format, COLOR_PURPLE, 0);
+	printf("\nBlank flag when width (7) is more than digit count (6):\n");
+	printf_tester("%c% 7d%c", '|', 123456, '|');
 
-	printf("%s\nBoth, - and 0 flags. - should override 0. Positive, zero, negative and also different order of flags:\n", COLOR_RESET);
-	// Trick compiler error checking (to not get error: flag '0' is ignored when flag '-' is present [-Werror,-Wformat])
-	format = "%s%-010d%c\n";
-	printf(format, COLOR_CYAN, 1234, '|');
-	ft_printf(format, COLOR_PURPLE, 1234, '|');
-	printf(format, COLOR_CYAN, 0, '|');
-	ft_printf(format, COLOR_PURPLE, 0, '|');
-	printf(format, COLOR_CYAN, -1234, '|');
-	ft_printf(format, COLOR_PURPLE, -1234, '|');
-	format = "%s%0-10d%c\n";
-	printf(format, COLOR_CYAN, 1234, '|');
-	ft_printf(format, COLOR_PURPLE, 1234, '|');
-	printf(format, COLOR_CYAN, 0, '|');
-	ft_printf(format, COLOR_PURPLE, 0, '|');
-	printf(format, COLOR_CYAN, -1234, '|');
-	ft_printf(format, COLOR_PURPLE, -1234, '|');
+	printf("\n+ flag. Adds sign before number:\n");
+	printf_tester("%c%+d%c", '|', 42, '|');
+	printf_tester("%c%+d%c", '|', -42, '|');
+	printf_tester("%c%+d%c", '|', 0, '|');
 
-	printf("%s\n- and 0 flags with width (3) less than digit count (4):\n", COLOR_RESET);
-	format = "%s%-03d%c\n";
-	printf(format, COLOR_CYAN, 1234, '|');
-	ft_printf(format, COLOR_PURPLE, 1234, '|');
+	printf("\nOther flag combinations:\n", COLOR_RESET);
+	printf_tester("%c%+7d%c", '|', 123456, '|');
+	printf_tester("%c%+5d%c", '|', 123456, '|');
+	printf_tester("%c%+++++5d%c", '|', 123456, '|');
+	printf_tester("%c%      5d%c", '|', 123456, '|');
+	printf_tester("%c% 02d%c", '|', 1, '|');
 
-	printf("%s\nBlank flag (A blank should be left before a positive number (or empty string)):\n", COLOR_RESET);
-	printf("%s%c% d%c\n", COLOR_CYAN, '|', 42, '|');
-	ft_printf("%s%c% d%c\n", COLOR_PURPLE, '|', 42, '|');
-	printf("%s%c% d%c\n", COLOR_CYAN, '|', -42, '|');
-	ft_printf("%s%c% d%c\n", COLOR_PURPLE, '|', -42, '|');
-
-	printf("%s\nBlank flag when width (5) is less than digit count (6):\n", COLOR_RESET);
-	printf("%s%c% 5d%c\n", COLOR_CYAN, '|', 123456, '|');
-	ft_printf("%s%c% 5d%c\n", COLOR_PURPLE, '|', 123456, '|');
-
-	printf("%s\nBlank flag when width (7) is more than digit count (6):\n", COLOR_RESET);
-	printf("%s%c% 7d%c\n", COLOR_CYAN, '|', 123456, '|');
-	ft_printf("%s%c% 7d%c\n", COLOR_PURPLE, '|', 123456, '|');
-
-	printf("%s\n+ flag. Adds sign before number (even with positives):\n", COLOR_RESET);
-	printf("%s%c%+d%c\n", COLOR_CYAN, '|', 42, '|');
-	ft_printf("%s%c%+d%c\n", COLOR_PURPLE, '|', 42, '|');
-	printf("%s%c%+d%c\n", COLOR_CYAN, '|', -42, '|');
-	ft_printf("%s%c%+d%c\n", COLOR_PURPLE, '|', -42, '|');
-	printf("%s%c%+d%c\n", COLOR_CYAN, '|', 0, '|');
-	ft_printf("%s%c%+d%c\n", COLOR_PURPLE, '|', 0, '|');
-
-	printf("%s\n+ flag with width (7) and digit count (6):\n", COLOR_RESET);
-	printf("%s%c%+7d%c\n", COLOR_CYAN, '|', 123456, '|');
-	ft_printf("%s%c%+7d%c\n", COLOR_PURPLE, '|', 123456, '|');
-
-	printf("%s\n+ flag with width (5) and digit count (6):\n", COLOR_RESET);
-	printf("%s%c%+5d%c\n", COLOR_CYAN, '|', 123456, '|');
-	ft_printf("%s%c%+5d%c\n", COLOR_PURPLE, '|', 123456, '|');
-
-	printf("%s\nNegative precision (weird stuff, kinda optional and undefined):\n", COLOR_RESET);
-	format = "%s%1.-10f%c\n";
-	printf(format, COLOR_CYAN, 1.234, '|');
-	ft_printf(format, COLOR_PURPLE, 1.234, '|');
-
-	printf("%s\nMultiple same flags:\n", COLOR_RESET);
-	format = "%s%c%+++++5d%c\n";
-	printf(format, COLOR_CYAN, '|', 123456, '|');
-	ft_printf(format, COLOR_PURPLE, '|', 123456, '|');
-	format = "%s%c%      5d%c\n";
-	printf(format, COLOR_CYAN, '|', 123456, '|');
-	ft_printf(format, COLOR_PURPLE, '|', 123456, '|');
-	format = "%s%c% 02d%c\n";
-	printf(format, COLOR_CYAN, '|', 1, '|');
-	ft_printf(format, COLOR_PURPLE, '|', 1, '|');
-
-	printf(COLOR_RESET);
 	return (0);
 }

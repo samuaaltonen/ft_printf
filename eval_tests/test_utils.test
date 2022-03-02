@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:52:45 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 19:21:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 14:26:58 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,14 @@ void	printf_compare()
 	}
 	else
 		cmp = strcmp(output_printf, output_ft_printf);
-	printf("%s%20s%s    %s%32s%s    RESULT ",
+	printf("%s%23s%s    %s%32s%s %s%2i%s    RESULT ",
 		COLOR_YELLOW, printf_format, COLOR_RESET,
-		COLOR_CYAN, output_printf, COLOR_RESET);
-	if (return_printf != return_ft_printf)
-		printf("%sKO (different return values)%s\n", COLOR_RED, COLOR_RESET);
-	if (!cmp)
+		COLOR_CYAN, output_printf, COLOR_RESET, COLOR_BLACK, return_printf, COLOR_RESET);
+	if (return_printf == return_ft_printf && !cmp)
 		printf("%sOK%s\n", COLOR_GREEN, COLOR_RESET);
 	else
 		printf("%sKO%s\n", COLOR_RED, COLOR_RESET);
-	printf("%24s%s%32s%s\n",
-		"", COLOR_PURPLE, output_ft_printf, COLOR_RESET);
+	printf("%27s%s%32s%s %s%2i%s\n",
+		"", COLOR_PURPLE, output_ft_printf, COLOR_RESET, COLOR_BLACK, return_ft_printf, COLOR_RESET);
 	fflush(stdout);
 }
