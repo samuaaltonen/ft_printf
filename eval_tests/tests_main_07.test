@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:39:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:23:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ void	capture_mem_usage(char **str)
 	int		temp;
 	char	buffer[1000];
 
-	system("top -l 1 | grep \"printf\" | awk '{ print $8 }' > temp");
+	#ifdef linux
+		system("cat /proc/$(pidof \"tests_printf\")/status | grep \"VmSize\" > temp");
+	#else
+		system("top -l 1 | grep \"printf\" | awk '{ print $8 }' > temp");
+	#endif
 	temp = open("temp", O_RDONLY);
 	if (read(temp, buffer, 999) < 0)
 		return ;
