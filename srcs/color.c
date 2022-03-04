@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:15:23 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 12:14:51 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:25:19 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*get_color_str(char **cursor)
 		return (NULL);
 	color = ft_strnew(i);
 	if (!color)
-		return (NULL);
+		exit_error(MSG_ALLOC_FAILED);
 	i = 0;
 	while ((*cursor)[i + 1])
 	{

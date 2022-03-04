@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/03 12:04:30 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:37:22 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ int	main(void)
 	printf_tester("%6.-5d%c", 1, '|');
 	printf_tester("%6.--5d%c", 1, '|');
 
+	printf("\nOther stuff:\n");
+	printf_tester("%");
 	return (0);
 }
