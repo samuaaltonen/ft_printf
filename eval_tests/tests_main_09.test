@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 11:59:43 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:51:06 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,21 @@ int	main(void)
 	ft_printf("{bg_red}%s{reset}\n", "yo");
 	ft_printf("{red}%s{green}%s{yellow}%s{purple}%s{cyan}%s{white}%s{blue}%s{reset}\n", "yo", "yo", "yo", "yo", "yo", "yo", "yo");
 	ft_printf("{bg_red}%s{bg_green}%s{bg_yellow}%s{bg_purple}%s{bg_cyan}%s{bg_white}%s{bg_blue}%s{reset}\n", "yo", "yo", "yo", "yo", "yo", "yo", "yo");
+
+	printf("%s\nAnybase:%s\n", COLOR_GREEN, COLOR_RESET);
+	ft_printf("Number 255 in base  2: %12.2w\n", 255);
+	ft_printf("Number 255 in base 10: %12.10w\n", 255);
+	ft_printf("Number 255 in base 16: %12.16w\n", 255);
+	ft_printf("Number 255 in base 36: %12.36w\n", 255);
+	ft_printf("Number 255 in base 37: %12.37w\n", 255);
+	ft_printf("Number 255 in base 62: %12.62w\n", 255);
+	ft_printf("Number 0 in base 62:   %12.62w\n", 0);
+
+	ft_printf("\nTrillion in base 10: %39.10llw\n", 1000000000000);
+	ft_printf("Trillion in base 62: %39.62llw\n", 1000000000000);
+
+	ft_printf("\n__LONG_LONG_MAX__ in base 10: %30.10llw\n", __LONG_LONG_MAX__);
+	ft_printf("__LONG_LONG_MAX__ in base 62: %30.62llw\n", __LONG_LONG_MAX__);
 
 	return (0);
 }

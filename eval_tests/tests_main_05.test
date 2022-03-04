@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:39:00 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:25:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int	main(void)
 	printf_tester("%+010.5u", 1122);
 
 	printf("\nFloats with width and precisions:\n");
+	printf_tester("%f", 0.999999);
+	printf_tester("%f", 0.9999999);
+	printf_tester("%f", 0.99999949);
 	printf_tester("%.0f", 123.123);
 	printf_tester("%11.0f", 123.123);
 	printf_tester("%11.11f", 123.123);

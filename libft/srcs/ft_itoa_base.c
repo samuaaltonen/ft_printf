@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:49:53 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 13:55:45 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:49:19 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static int	count_digits(unsigned long long n, int base)
 {
 	int	digits;
 
-	digits = 0;
 	if (n == 0)
 		return (1);
+	digits = 0;
 	while (n != 0)
 	{
 		n = n / base;
@@ -40,6 +40,8 @@ static void	append_digit(char **ptr, unsigned long long n, int base)
 		last_empty++;
 	if (n % base < 10)
 		str[last_empty] = n % base + '0';
+	else if (n % base >= 36)
+		str[last_empty] = (n % base - 36) + 'a';
 	else
 		str[last_empty] = (n % base - 10) + 'A';
 }

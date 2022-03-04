@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/03/03 13:18:54 by saaltone         ###   ########.fr        #
+#    Updated: 2022/03/04 16:05:43 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ FT_PRINTF_SOURCE_FILES=ft_printf.c \
 						conversion_int.c \
 						conversion_unsigned.c \
 						conversion_float.c \
-						conversion_binary.c
+						conversion_binary.c \
+						conversion_anybase.c
 FT_PRINTF_SOURCES=$(FT_PRINTF_SOURCE_FILES:%.c=srcs/%.c)
 FT_PRINTF_OBJECTS=$(FT_PRINTF_SOURCE_FILES:.c=.o)
 FT_PRINTF_INCLUDES=./includes

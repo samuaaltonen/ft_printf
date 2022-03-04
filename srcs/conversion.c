@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:20:12 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 12:16:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 16:12:28 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	handle_conversion(t_conf **conf, char **cursor)
 	{'U', conversion_unsigned_capital_u},
 	{'f', conversion_float},
 	{'b', conversion_binary},
+	{'w', conversion_anybase},
 	{0, NULL},
 	};
 
