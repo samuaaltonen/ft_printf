@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:39:02 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 13:55:45 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ int	main(void)
 	printf_tester("%c%+++++5d%c", '|', 123456, '|');
 	printf_tester("%c%      5d%c", '|', 123456, '|');
 	printf_tester("%c% 02d%c", '|', 1, '|');
+
+	printf("\nCombination with many different things:\n");
+	printf_tester("%3c%2.2s%+1i%#3p%+ .2u%hhd%llu%o%#x%3%%10.10f%#- 02.9Ld", '%', "%", 1, NULL, 1, 1, 1, 10, 20, 1.f, 1.f);
+
+	printf("\nJust %%:\n");
+	printf_tester("%");
 
 	return (0);
 }
