@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/02/28 19:13:06 by saaltone         ###   ########.fr        #
+#    Updated: 2022/03/03 13:18:54 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ FT_PRINTF_SOURCE_FILES=ft_printf.c \
 						precision.c \
 						length.c \
 						output.c \
+						color.c \
 						conversion.c \
 						conversion_percent.c \
 						conversion_string.c \

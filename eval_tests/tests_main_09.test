@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:39:07 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:59:43 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ int	main(void)
 	printf_tester("%c%20.20*d%c", '|', 12, 123456, '|');
 	printf_tester("%c%-*d%c", '|', -12, 123456, '|');
 	printf_tester("%c%0*d%c", '|', -12, 123456, '|');
+
+	printf("%s\nColors:%s\n", COLOR_GREEN, COLOR_RESET);
+	ft_printf("{red}%s{reset}\n", "yo");
+	ft_printf("{notcolor}%s{reset}\n", "yo");
+	ft_printf("{yoo}}}%s\n", "yo");
+	ft_printf("{bg_black}%s{reset}\n", "yo");
+	ft_printf("{bg_red}%s{reset}\n", "yo");
+	ft_printf("{red}%s{green}%s{yellow}%s{purple}%s{cyan}%s{white}%s{blue}%s{reset}\n", "yo", "yo", "yo", "yo", "yo", "yo", "yo");
+	ft_printf("{bg_red}%s{bg_green}%s{bg_yellow}%s{bg_purple}%s{bg_cyan}%s{bg_white}%s{bg_blue}%s{reset}\n", "yo", "yo", "yo", "yo", "yo", "yo", "yo");
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:39:05 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/03 12:04:30 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,12 @@ int	main(void)
 	printf_tester("%# 0-# 10..8..#0 +-0d%c", 123, '|');
 	printf_tester("%# 0-# 20#0 +-0d%c", 123, '|');
 
-	printf("\nFloat with width 1 and negative precision 10:\n");
+	printf("\nWidth and negative precision:\n");
 	printf_tester("%1.-10f%c", 1.234, '|');
+	printf_tester("%1.--10f%c", 1.234, '|');
+	printf_tester("%1.-5d%c", 1, '|');
+	printf_tester("%6.-5d%c", 1, '|');
+	printf_tester("%6.--5d%c", 1, '|');
 
 	return (0);
 }

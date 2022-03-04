@@ -6,13 +6,13 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:20:12 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 15:32:51 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 12:07:10 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	dispatch_conversion(t_dispatch_identifier	*conversions,
+static void	dispatch_conversion(t_dispatch_identifier *conversions,
 	t_conf **conf, char **cursor)
 {
 	int	i;

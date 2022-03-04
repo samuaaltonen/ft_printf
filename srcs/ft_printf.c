@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 13:48:36 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:34:55 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	handle_args(t_conf **conf, char **cursor)
 {
 	if (!(*cursor) || !(**cursor))
 		return ;
+	if (**cursor == '{')
+		handle_color(conf, cursor);
 	if (**cursor != '%')
 	{
 		ft_putchar_n(**cursor, &((*conf)->n));

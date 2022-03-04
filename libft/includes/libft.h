@@ -6,13 +6,30 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 15:55:13 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:56:42 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # define BUFF_SIZE 255
+# define COLOR_BLACK "\033[0;30m"
+# define COLOR_RED "\033[0;31m"
+# define COLOR_GREEN "\033[0;32m"
+# define COLOR_YELLOW "\033[0;33m"
+# define COLOR_BLUE "\033[0;34m"
+# define COLOR_PURPLE "\033[0;35m"
+# define COLOR_CYAN "\033[0;36m"
+# define COLOR_WHITE "\033[0;37m"
+# define COLOR_RESET "\033[0m"
+# define BG_BLACK "\033[0;40m"
+# define BG_RED "\033[0;41m"
+# define BG_GREEN "\033[0;42m"
+# define BG_YELLOW "\033[0;43m"
+# define BG_BLUE "\033[0;44m"
+# define BG_PURPLE "\033[0;45m"
+# define BG_CYAN "\033[0;46m"
+# define BG_WHITE "\033[0;47m"
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>

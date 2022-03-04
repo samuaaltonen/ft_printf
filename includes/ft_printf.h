@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 15:32:10 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/03 13:22:41 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,18 @@ typedef struct s_dispatch_identifier
 	void	(*function)(t_conf**);
 }	t_dispatch_identifier;
 
+typedef struct t_color_identifier
+{
+	char	*identifier;
+	char	*color;
+}	t_color_identifier;
+
 int					ft_printf(const char *format, ...);
 
 int					init_conf(t_conf **conf);
 void				reset_conf(t_conf **conf);
 
+void				handle_color(t_conf **conf, char **cursor);
 void				handle_flags(t_conf **conf, char **cursor);
 void				handle_width(t_conf **conf, char **cursor);
 void				handle_precision(t_conf **conf, char **cursor);
