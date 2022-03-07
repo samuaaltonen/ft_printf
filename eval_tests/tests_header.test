@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_header.test                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:37:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:39:49 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:19:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,25 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+
+typedef union u_double_cast {
+	double	f;
+	struct {
+		unsigned long long	mantissa : 52;
+		unsigned long long	exponent : 11;
+		unsigned long long	sign : 1;
+	} s_parts;
+}	t_double_cast;
+
+typedef union u_ldouble_cast {
+	long double	f;
+	struct {
+		unsigned long long	mantissa : 63;
+		unsigned long long	int_part : 1;
+		unsigned long long	exponent : 15;
+		unsigned long long	sign : 1;
+	} s_parts;
+}	t_ldouble_cast;
 
 int		ft_printf(const char *format, ...);
 void	save_input(const char *format, ...);

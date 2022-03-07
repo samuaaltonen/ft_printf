@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/07 21:09:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:14:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	main(void)
 	int trick_compiler_overflow = 2;
 
 	printf("\nBig long double (more than unsigned long long):\n");
-	printf_tester("%Lf", 3.1415926535897932383e+22L);
-	printf_tester("%Lf", 3.1415926535897932383e+123L);
+	printf_tester("%Lf", 3.1415926535897932383e+25L);
 	
 	printf("\n%sSome overflows:\n", COLOR_RESET);
 	printf_tester("%hho", 277);
@@ -75,8 +74,57 @@ int	main(void)
 	printf_tester("%s", "😇");
 	printf_tester("%20s", "🤩🤗🥳");
 
+	t_double_cast	d;
+	t_ldouble_cast	ld;
+
+	// Double precision bias 1023
+	// Extended double bias 16383
 	printf("\nSpecial floats (nan, inf, zero):\n");
-	printf_tester("%Lf", -0.f);
 	printf_tester("%Lf", -0.L);
+	d.s_parts.mantissa = 0;
+	d.s_parts.exponent = 2047;
+	d.s_parts.sign = 0;
+	printf_tester("%f", d.f);
+	printf_tester("%5.5f", d.f);
+	d.s_parts.mantissa = 123;
+	printf_tester("%f", d.f);
+	d.s_parts.sign = 1;
+	printf_tester("%f", d.f);
+	d.s_parts.mantissa = 0;
+	printf_tester("%f", d.f);
+	ld.s_parts.exponent = 0;
+	ld.s_parts.int_part = 0;
+	ld.s_parts.mantissa = 0;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.mantissa = 123;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.int_part = 1;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.mantissa = 123;
+	ld.s_parts.exponent = 32767;
+	ld.s_parts.int_part = 0;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.mantissa = 0;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.mantissa = 1;
+	ld.s_parts.mantissa <<= 62;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.mantissa += 1;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.int_part = 1;
+	ld.s_parts.mantissa = 0;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.mantissa = 1;
+	ld.s_parts.sign = 1;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.sign = 0;
+	ld.s_parts.mantissa = 1;
+	ld.s_parts.mantissa <<= 62;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.mantissa += 1;
+	printf_tester("%Lf", ld.f);
+	ld.s_parts.exponent = 16385;
+	ld.s_parts.int_part = 0;
+	printf_tester("%Lf", ld.f);
 	return (0);
 }

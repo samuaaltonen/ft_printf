@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 20:50:11 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/07 21:06:57 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:00:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ static long double	append_digit(char **str, long double number)
 	if ((*str)[last_empty] == '|')
 		return (0);
 	current_digit = number - remainders * 10;
-	if (current_digit < 0 || current_digit > 9)
+	if (current_digit < 0)
 		current_digit = 0;
+	if (current_digit > 9)
+		current_digit = 9;
 	(*str)[last_empty] = current_digit + '0';
 	return (ft_floor(number));
 }

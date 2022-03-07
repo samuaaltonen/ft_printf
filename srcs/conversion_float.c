@@ -6,13 +6,13 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 19:55:08 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/07 20:50:17 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:23:17 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static long double	init_float_conf_and_get_number(t_conf **conf)
+static long double	init_float(t_conf **conf)
 {
 	long double	number;
 
@@ -32,17 +32,6 @@ static long double	init_float_conf_and_get_number(t_conf **conf)
 	return (number);
 }
 
-static void	float_output_sign(t_conf **conf)
-{
-	if ((*conf)->is_negative || (*conf)->flag_addsign)
-	{
-		if ((*conf)->is_negative)
-			ft_putchar_n('-', &((*conf)->n));
-		else
-			ft_putchar_n('+', &((*conf)->n));
-	}
-}
-
 static int	float_width(t_conf **conf, char	*ftoa)
 {
 	int	width;
@@ -57,10 +46,17 @@ static int	float_width(t_conf **conf, char	*ftoa)
 	return (width);
 }
 
-static void	float_output_zeroes(t_conf **conf, char	*ftoa)
+static void	float_output_sign_zeroes(t_conf **conf, char *ftoa)
 {
 	int	len;
 
+	if ((*conf)->is_negative || (*conf)->flag_addsign)
+	{
+		if ((*conf)->is_negative)
+			ft_putchar_n('-', &((*conf)->n));
+		else
+			ft_putchar_n('+', &((*conf)->n));
+	}
 	len = ft_strlen(ftoa);
 	if ((*conf)->precision > len)
 		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->precision - len);
@@ -73,23 +69,49 @@ static void	float_output_zeroes(t_conf **conf, char	*ftoa)
 	}
 }
 
+static int	float_special_cases(char **ftoa, long double number, t_conf **conf)
+{
+	t_ldouble_cast	parts;
+
+	parts.f = number;
+	if (parts.s_parts.exponent == 32767)
+	{
+		if (parts.s_parts.mantissa == 0 && parts.s_parts.int_part)
+			*ftoa = ft_strdup("inf");
+		else
+			*ftoa = ft_strdup("nan");
+		(*conf)->precision = 3;
+		return (1);
+	}
+	if (parts.s_parts.exponent > 0 && !parts.s_parts.int_part)
+	{
+		*ftoa = ft_strdup("nan");
+		(*conf)->precision = 3;
+		return (1);
+	}
+	return (0);
+}
+
 void	conversion_float(t_conf **conf)
 {
 	char		*ftoa;
 	long double	number;
 	int			len;
 
-	number = init_float_conf_and_get_number(conf);
-	ftoa = ft_ftoa(number, (*conf)->precision);
-	if (!ftoa)
-		return ;
+	number = init_float(conf);
+	ftoa = NULL;
+	if (!float_special_cases(&ftoa, number, conf))
+	{
+		ftoa = ft_ftoa(number, (*conf)->precision);
+		if (!ftoa)
+			exit_error(MSG_ALLOC_FAILED);
+	}
 	len = float_width(conf, ftoa);
 	if ((*conf)->width > len
 		&& !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
-	float_output_sign(conf);
-	float_output_zeroes(conf, ftoa);
+	float_output_sign_zeroes(conf, ftoa);
 	ft_putstr_n(ftoa, &((*conf)->n));
 	if ((*conf)->width > len
 		&& (*conf)->flag_leftadjusted
