@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_08.test                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 14:39:23 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:09:03 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 
 	printf("\nBig long double (more than unsigned long long):\n");
 	printf_tester("%Lf", 3.1415926535897932383e+22L);
-	printf_tester("%Lf", 3.1415926535897932383e+50L);
+	printf_tester("%Lf", 3.1415926535897932383e+123L);
 	
 	printf("\n%sSome overflows:\n", COLOR_RESET);
 	printf_tester("%hho", 277);
@@ -74,5 +74,9 @@ int	main(void)
 	printf("\nEMOJIS:\n");
 	printf_tester("%s", "😇");
 	printf_tester("%20s", "🤩🤗🥳");
+
+	printf("\nSpecial floats (nan, inf, zero):\n");
+	printf_tester("%Lf", -0.f);
+	printf_tester("%Lf", -0.L);
 	return (0);
 }

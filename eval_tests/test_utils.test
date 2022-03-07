@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_utils.test                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 17:52:45 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/02 16:39:36 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:11:31 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*ob_end()
 		exit(EXIT_FAILURE);
 	}
 	output = fgets(buffer, 1000, temp);
+	fclose(temp);
 	if (!output)
 		return (NULL);
 	return (strdup(output));
