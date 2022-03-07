@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 20:50:11 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 15:56:05 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:06:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,6 @@ static long double	append_digit(char **str, long double number)
 	return (ft_floor(number));
 }
 
-static long double	get_precision_magnitude(int precision)
-{
-	long double	magnitude;
-	int			i;
-
-	i = 0;
-	magnitude = 10;
-	while (i < precision)
-	{
-		magnitude *= 10;
-		i++;
-	}
-	return (magnitude);
-}
-
 static void	trim_to_precision(char **str, int precision)
 {
 	int	dot_pos;
@@ -79,7 +64,7 @@ static void	trim_to_precision(char **str, int precision)
 		(*str)[ft_strlen(*str) - 1] = 0;
 }
 
-char	*ft_ftoa(long double number, int precision)
+char	*ft_ftoa_pos(long double number, int precision)
 {
 	char		*str;
 	long double	magnitude;
@@ -88,7 +73,7 @@ char	*ft_ftoa(long double number, int precision)
 
 	precision++;
 	digits = ft_count_digits_ld(number) + precision;
-	magnitude = get_precision_magnitude(precision);
+	magnitude = 10 * ft_pow(10, precision);
 	temp = magnitude * (number - ft_floor(number));
 	str = ft_strnew(sizeof(char) * (digits + 2));
 	if (!str)
@@ -104,4 +89,19 @@ char	*ft_ftoa(long double number, int precision)
 	ft_fa_round(&str, digits, 0);
 	trim_to_precision(&str, precision);
 	return (str);
+}
+
+char	*ft_ftoa(long double number, int precision)
+{
+	char	*temp;
+	char	*joined;
+
+	if (ft_floatsign(number))
+	{
+		temp = ft_ftoa_pos(-number, precision);
+		joined = ft_strjoin("-", temp);
+		free(temp);
+		return (joined);
+	}
+	return (ft_ftoa_pos(number, precision));
 }

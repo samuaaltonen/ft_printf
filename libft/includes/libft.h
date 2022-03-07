@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 11:56:42 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 20:35:54 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,25 @@ typedef struct s_array
 	int		allocated;
 	int		used;
 }	t_array;
+
+typedef union u_double_cast {
+	double	f;
+	struct {
+		unsigned long long	mantissa : 52;
+		unsigned long long	exponent : 11;
+		unsigned long long	sign : 1;
+	} s_parts;
+}	t_double_cast;
+
+typedef union u_ldouble_cast {
+	long double	f;
+	struct {
+		unsigned long long	mantissa : 63;
+		unsigned long long	int_part : 1;
+		unsigned long long	exponent : 15;
+		unsigned long long	sign : 1;
+	} s_parts;
+}	t_ldouble_cast;
 
 int			ft_get_next_line(const int fd, char **line);
 void		ft_putchar(char c);
@@ -141,6 +160,7 @@ int			ft_toggle(int value);
 void		ft_append_char(char **str, char append);
 char		*ft_itoa_base(long long number, int base);
 char		*ft_itoa_base_ull(unsigned long long number, int base, int isneg);
+int			ft_floatsign(long double number);
 char		*ft_ftoa(long double number, int precision);
 long double	ft_floor(long double number);
 int			ft_fa_round(char **number, int rounding_start, int leftover);
