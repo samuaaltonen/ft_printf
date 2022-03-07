@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+         #
+#    By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/03/04 16:05:43 by saaltone         ###   ########.fr        #
+#    Updated: 2022/03/07 20:38:01 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIBFT_SRC_FILES=ft_putchar.c ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c \
 		  ft_array_insert.c ft_array_expand.c ft_array_foreach.c \
 		  ft_color_between.c ft_str_isalnum.c ft_hextoint.c \
 		  ft_max.c ft_min.c ft_toggle.c ft_itoa_base.c ft_ftoa.c \
-		  ft_floor.c ft_fa_round.c ft_append_char.c
+		  ft_floor.c ft_fa_round.c ft_append_char.c ft_floatsign.c
 LIBFT_SOURCES=$(LIBFT_SRC_FILES:%.c=srcs/%.c)
 LIBFT_OBJECTS=$(LIBFT_SRC_FILES:%.c=libft/%.o)
 

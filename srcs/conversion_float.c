@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_float.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 19:55:08 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/16 14:59:48 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/07 20:50:17 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static long double	init_float_conf_and_get_number(t_conf **conf)
 		number = va_arg((*conf)->ap, double);
 	if ((*conf)->precision < 0)
 		(*conf)->precision = 6;
-	if (number < 0)
+	if (ft_floatsign(number))
 	{
 		(*conf)->is_negative = 1;
 		number = -number;
