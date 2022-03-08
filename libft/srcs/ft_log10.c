@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 19:07:55 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 20:38:16 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:06:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ int	ft_log10(long double number)
 	if (is_zero(number))
 		return (0);
 	exponent = 0;
-	if (number > 0.5L)
+	if (number > 1.L)
 	{
-		while (number > 0.5)
+		while (number > 1.L)
 		{
 			number = number / 10;
 			exponent++;
 		}
 		return (exponent - 1);
 	}
-	while (number < 0.5L)
+	while (number < 1.L)
 	{
 		number = number * 10;
 		exponent--;

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 20:44:50 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:24:23 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ static char	*division_to_string(int log10, int precision, t_ull *n, t_ull *d)
 	if (!ftoa)
 		return (NULL);
 	i = 0;
-	while (i <= (log10 + precision + 1))
+	while ((log10 >= 0 && i <= (log10 + precision + 1))
+		|| (i <= (precision + 1)))
 	{
 		temp = *n / *d;
 		ft_append_char(&ftoa, '0' + temp);
@@ -110,7 +111,7 @@ static void	set_zeroes_and_dot(int log10, int precision, char **ftoa)
 
 	if (log10 < 0)
 	{
-		ft_memmove(*ftoa + -log10 + 1, *ftoa, -log10 + 2);
+		ft_memmove(*ftoa + -log10 + 1, *ftoa, ft_strlen(*ftoa));
 		i = 0;
 		while (i <= -log10)
 		{
