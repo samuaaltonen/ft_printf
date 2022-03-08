@@ -3,48 +3,125 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 20:50:11 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 14:37:38 by saaltone         ###   ########.fr       */
+/*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
+/*   Updated: 2022/03/08 20:44:50 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	fill_zeroes(char **str)
+static int	is_zero(long double number)
 {
-	int		i;
+	t_ldouble_cast	ldouble_cast;
 
-	i = 0;
-	while ((*str)[i] != '|')
+	ldouble_cast.f = number;
+	if (ldouble_cast.s_parts.exponent == 0
+		&& ldouble_cast.s_parts.mantissa == 0)
+		return (1);
+	return (0);
+}
+
+/*
+ * Converts exponential form of float to division of 2 integers. 
+ * Example:
+ * 0.5f = 1.0 * 2^-1 [int part = 1][mantissa = 0][exponent (nonbiased) = -1]
+ * ==> (0 + 1 * 2^52) / (1 * 2^53) = 2^-1 = 0.5f
+ *     ([mantissa] + 1 * 2^52) / (1 * 2^(52 - [exponent (nonbiased)]))
+ *     numerator               / denumerator
+*/
+static void set_division_parts(double number, t_ull *n, t_ull *d)
+{
+	t_sll			exponent_normal;
+	t_ull			mantissa_sum;
+	t_double_cast	ldouble_cast;
+
+	ldouble_cast.f = number;
+	mantissa_sum = (((t_ull) 1) << 52) + ldouble_cast.s_parts.mantissa;
+	exponent_normal = ldouble_cast.s_parts.exponent - 1023 - 52;
+	*n = 0;
+	*d = mantissa_sum;
+
+	if (exponent_normal > 0)
 	{
-		if (!(*str)[i])
-			(*str)[i] = '0';
-		i++;
+		*n = mantissa_sum;
+		*n <<= exponent_normal;
+		*d = 1;
+		return ;
+	}
+	*n = mantissa_sum;
+	*d = ((t_ull) 1) << -exponent_normal;
+}
+
+/*
+ * Scales given numerator and denumerator by adding zeros so that the result
+ * of division casted to int is allways one digit.
+ * If log10 is higher than 0 it means that the original number is 10 or
+ * higher, therefore we need to scale denumerator up.
+ * Similarly if log10 is less than 0, we scale numerator up.
+ * Only scales up to avoid losing any precision.
+*/
+static void	scale_division_parts(int log10, t_ull *n, t_ull *d)
+{
+	if (log10 < 0)
+	{
+		while (log10 < 0)
+		{
+			*n *= 10;
+			log10++;
+		}
+		return ;
+	}
+	while (log10 > 0)
+	{
+		*d *= 10;
+		log10--;
 	}
 }
 
-static void	append_digit(char **str, long double number)
+static char	*division_to_string(int log10, int precision, t_ull *n, t_ull *d)
 {
-	int		current_digit;
-	int		last_empty;
-	double	remainders;
+	t_ull	temp;
+	int		i;
+	char	*ftoa;
 
-	remainders = 0;
-	if (number >= 10.L)
-		append_digit(str, number / 10);
-	last_empty = 0;
-	while ((*str)[last_empty] && (*str)[last_empty] != '|')
-		last_empty++;
-	if ((*str)[last_empty] == '|')
+	if (log10 > 0)
+		ftoa = ft_strnew(log10 + precision + 2);
+	else
+		ftoa = ft_strnew(precision + 3);
+	if (!ftoa)
+		return (NULL);
+	i = 0;
+	while (i <= (log10 + precision + 1))
+	{
+		temp = *n / *d;
+		ft_append_char(&ftoa, '0' + temp);
+		*n = *n - temp * *d;
+		*n *= 10;
+		i++;
+	}
+	return (ftoa);
+}
+
+static void	set_zeroes_and_dot(int log10, int precision, char **ftoa)
+{
+	int	i;
+
+	if (log10 < 0)
+	{
+		ft_memmove(*ftoa + -log10 + 1, *ftoa, -log10 + 2);
+		i = 0;
+		while (i <= -log10)
+		{
+			(*ftoa)[i] = '0';
+			i++;
+		}
+		(*ftoa)[1] = '.';
 		return ;
-	current_digit = number - (ft_floor(number / 10) * 10);
-	if (current_digit < 0)
-		current_digit = 0;
-	if (current_digit > 9)
-		current_digit = 9;
-	(*str)[last_empty] = current_digit + '0';
+	}
+	ft_memmove(*ftoa + log10 + 2, *ftoa + log10 + 1, precision + 1);
+	(*ftoa)[log10 + 1] = '.';
 }
 
 static void	trim_to_precision(char **str, int precision)
@@ -65,46 +142,28 @@ static void	trim_to_precision(char **str, int precision)
 		(*str)[ft_strlen(*str) - 1] = 0;
 }
 
-char	*ft_ftoa_pos(long double number, int precision)
-{
-	char		*str;
-	long double	magnitude;
-	long double	temp;
-	int			digits;
-
-	digits = ft_count_digits_ld(number) + precision + 1;
-	if (precision < 18)
-		magnitude = 10 * ft_pow(10, precision + 1);
-	else
-		magnitude = 1000000000000000000.L;
-	temp = magnitude * (number - ft_floor(number));
-	str = ft_strnew(sizeof(char) * (digits + 2));
-	if (!str)
-		return (NULL);
-	str[digits + 2] = '|';
-	append_digit(&str, number);
-	ft_append_char(&str, '.');
-	if (temp < magnitude / 10)
-		ft_append_char(&str, '0');
-	append_digit(&str, temp);
-	fill_zeroes(&str);
-	str[digits + 2] = 0;
-	ft_fa_round(&str, digits, 0);
-	trim_to_precision(&str, precision + 1);
-	return (str);
-}
-
 char	*ft_ftoa(long double number, int precision)
 {
-	char	*temp;
-	char	*joined;
+	t_ull	numerator;
+	t_ull	denumerator;
+	int		log10;
+	char	*str;
 
-	if (ft_floatsign(number))
-	{
-		temp = ft_ftoa_pos(-number, precision);
-		joined = ft_strjoin("-", temp);
-		free(temp);
-		return (joined);
-	}
-	return (ft_ftoa_pos(number, precision));
+	if (number < 0)
+		number = -number;
+	log10 = ft_log10(number);
+	set_division_parts(number, &numerator, &denumerator);
+	scale_division_parts(log10, &numerator, &denumerator);
+	if (is_zero(number))
+		numerator = 0;
+	str = division_to_string(log10, precision, &numerator, &denumerator);
+	if (!str)
+		return (NULL);
+	set_zeroes_and_dot(log10, precision, &str);
+	if (log10 < 0)
+		ft_fa_round(&str, precision + 2, 0);
+	else
+		ft_fa_round(&str, log10 + precision + 2, 0);
+	trim_to_precision(&str, precision + 1);
+	return (str);
 }

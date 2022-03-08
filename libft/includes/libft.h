@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/07 20:35:54 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/08 19:22:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 # include <stdlib.h>
 # include <string.h>
 
+typedef unsigned long long	t_ull;
+typedef signed long long	t_sll;
+
 typedef struct s_list
 {
 	void			*content;
@@ -60,19 +63,19 @@ typedef struct s_array
 typedef union u_double_cast {
 	double	f;
 	struct {
-		unsigned long long	mantissa : 52;
-		unsigned long long	exponent : 11;
-		unsigned long long	sign : 1;
+		t_ull	mantissa : 52;
+		t_ull	exponent : 11;
+		t_ull	sign : 1;
 	} s_parts;
 }	t_double_cast;
 
 typedef union u_ldouble_cast {
 	long double	f;
 	struct {
-		unsigned long long	mantissa : 63;
-		unsigned long long	int_part : 1;
-		unsigned long long	exponent : 15;
-		unsigned long long	sign : 1;
+		t_ull	mantissa : 63;
+		t_ull	int_part : 1;
+		t_ull	exponent : 15;
+		t_ull	sign : 1;
 	} s_parts;
 }	t_ldouble_cast;
 
@@ -164,4 +167,5 @@ int			ft_floatsign(long double number);
 char		*ft_ftoa(long double number, int precision);
 long double	ft_floor(long double number);
 int			ft_fa_round(char **number, int rounding_start, int leftover);
+int			ft_log10(long double number);
 #endif
