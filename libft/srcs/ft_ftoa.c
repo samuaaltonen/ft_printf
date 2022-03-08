@@ -6,22 +6,11 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 21:24:23 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:47:26 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	is_zero(long double number)
-{
-	t_ldouble_cast	ldouble_cast;
-
-	ldouble_cast.f = number;
-	if (ldouble_cast.s_parts.exponent == 0
-		&& ldouble_cast.s_parts.mantissa == 0)
-		return (1);
-	return (0);
-}
 
 /*
  * Converts exponential form of float to division of 2 integers. 
@@ -31,7 +20,7 @@ static int	is_zero(long double number)
  *     ([mantissa] + 1 * 2^52) / (1 * 2^(52 - [exponent (nonbiased)]))
  *     numerator               / denumerator
 */
-static void set_division_parts(double number, t_ull *n, t_ull *d)
+static void	set_division_parts(double number, t_ull *n, t_ull *d)
 {
 	t_sll			exponent_normal;
 	t_ull			mantissa_sum;
@@ -42,7 +31,6 @@ static void set_division_parts(double number, t_ull *n, t_ull *d)
 	exponent_normal = ldouble_cast.s_parts.exponent - 1023 - 52;
 	*n = 0;
 	*d = mantissa_sum;
-
 	if (exponent_normal > 0)
 	{
 		*n = mantissa_sum;
@@ -143,6 +131,9 @@ static void	trim_to_precision(char **str, int precision)
 		(*str)[ft_strlen(*str) - 1] = 0;
 }
 
+/*
+ * Converts long double into string with given precision.
+*/
 char	*ft_ftoa(long double number, int precision)
 {
 	t_ull	numerator;
@@ -155,7 +146,7 @@ char	*ft_ftoa(long double number, int precision)
 	log10 = ft_log10(number);
 	set_division_parts(number, &numerator, &denumerator);
 	scale_division_parts(log10, &numerator, &denumerator);
-	if (is_zero(number))
+	if (ft_iszero(number))
 		numerator = 0;
 	str = division_to_string(log10, precision, &numerator, &denumerator);
 	if (!str)

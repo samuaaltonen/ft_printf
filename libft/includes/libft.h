@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 19:22:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:31:25 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,4 +168,5 @@ char		*ft_ftoa(long double number, int precision);
 long double	ft_floor(long double number);
 int			ft_fa_round(char **number, int rounding_start, int leftover);
 int			ft_log10(long double number);
+int			ft_iszero(long double number);
 #endif
