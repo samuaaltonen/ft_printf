@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_08.test                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/07 22:14:33 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:19:37 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(void)
 	// Double precision bias 1023
 	// Extended double bias 16383
 	printf("\nSpecial floats (nan, inf, zero):\n");
-	printf_tester("%Lf", -0.L);
+	printf_tester("1. %Lf", -0.L);
 	d.s_parts.mantissa = 0;
 	d.s_parts.exponent = 2047;
 	d.s_parts.sign = 0;
@@ -95,7 +95,7 @@ int	main(void)
 	ld.s_parts.exponent = 0;
 	ld.s_parts.int_part = 0;
 	ld.s_parts.mantissa = 0;
-	printf_tester("%Lf", ld.f);
+	printf_tester("%6Lf", ld.f);
 	ld.s_parts.mantissa = 123;
 	printf_tester("%Lf", ld.f);
 	ld.s_parts.int_part = 1;
@@ -105,12 +105,12 @@ int	main(void)
 	ld.s_parts.int_part = 0;
 	printf_tester("%Lf", ld.f);
 	ld.s_parts.mantissa = 0;
-	printf_tester("%Lf", ld.f);
+	printf_tester("%4.1Lf", ld.f);
 	ld.s_parts.mantissa = 1;
 	ld.s_parts.mantissa <<= 62;
 	printf_tester("%Lf", ld.f);
 	ld.s_parts.mantissa += 1;
-	printf_tester("%Lf", ld.f);
+	printf_tester("%8Lf", ld.f);
 	ld.s_parts.int_part = 1;
 	ld.s_parts.mantissa = 0;
 	printf_tester("%Lf", ld.f);
@@ -123,8 +123,8 @@ int	main(void)
 	printf_tester("%Lf", ld.f);
 	ld.s_parts.mantissa += 1;
 	printf_tester("%Lf", ld.f);
-	ld.s_parts.exponent = 16385;
-	ld.s_parts.int_part = 0;
-	printf_tester("%Lf", ld.f);
+	printf_tester("%.1000f", __DBL_MIN__);
+	printf_tester("%Lf", __LDBL_MIN__);
+	printf_tester("%.10Lf", __LDBL_MAX__);
 	return (0);
 }

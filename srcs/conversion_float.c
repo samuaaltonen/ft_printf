@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_float.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 19:55:08 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/07 22:23:17 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:19:22 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,13 @@ static int	float_special_cases(char **ftoa, long double number, t_conf **conf)
 	parts.f = number;
 	if (parts.s_parts.exponent == 32767)
 	{
-		if (parts.s_parts.mantissa == 0 && parts.s_parts.int_part)
+		if (parts.s_parts.mantissa == 0)
 			*ftoa = ft_strdup("inf");
 		else
+		{
 			*ftoa = ft_strdup("nan");
-		(*conf)->precision = 3;
-		return (1);
-	}
-	if (parts.s_parts.exponent > 0 && !parts.s_parts.int_part)
-	{
-		*ftoa = ft_strdup("nan");
+			(*conf)->is_negative = 0;
+		}
 		(*conf)->precision = 3;
 		return (1);
 	}
