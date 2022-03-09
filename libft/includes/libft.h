@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 22:03:13 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 11:13:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ typedef union u_ldouble_cast {
 		t_ull	sign : 1;
 	} s_parts;
 }	t_ldouble_cast;
+
+typedef struct s_superint
+{
+	int	count;
+	int	*numbers;
+}	t_superint;
 
 int			ft_get_next_line(const int fd, char **line);
 void		ft_putchar(char c);
@@ -171,4 +177,5 @@ int			ft_log10(long double number);
 int			ft_iszero(long double number);
 void		ft_ftdiv(double number, t_ull *n, t_ull *d);
 void		ft_ftdiv_scale(int log10, t_ull *n, t_ull *d);
+t_superint	*ft_superint_new(t_ull start);
 #endif
