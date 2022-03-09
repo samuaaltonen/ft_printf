@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_superint_destroy.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:23:25 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 11:27:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 21:17:34 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 void	ft_superint_destroy(t_superint	**superint)
 {
-	if (!(*superint))
+	if (!superint || !(*superint))
 		return ;
 	if ((*superint)->numbers)
 		free((*superint)->numbers);

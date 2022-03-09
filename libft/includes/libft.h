@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 17:41:45 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 21:35:57 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,4 +184,5 @@ int			ft_superint_expand(t_superint **addto);
 int			ft_superint_plus(t_superint **addto, t_superint **add);
 void		ft_superint_print(t_superint **superint);
 int			ft_superint_minus(t_superint **from, t_superint **minus);
+void		ft_superint_swap(t_superint **a, t_superint **b);
 #endif

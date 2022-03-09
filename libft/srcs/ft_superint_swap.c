@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_superint_expand.c                               :+:      :+:    :+:   */
+/*   ft_superint_swap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 13:10:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 21:34:07 by saaltone         ###   ########.fr       */
+/*   Created: 2022/03/09 21:35:37 by saaltone          #+#    #+#             */
+/*   Updated: 2022/03/09 21:35:44 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- * Doubles the allocated area of superint and copies values over.
-*/
-int	ft_superint_expand(t_superint **addto)
+void	ft_superint_swap(t_superint **a, t_superint **b)
 {
-	int			i;
-	t_superint	*expanded;
+	t_superint *temp;
 
-	expanded = ft_superint_new(0, (*addto)->allocated * 2);
-	if (!expanded)
-		return (0);
-	i = 0;
-	while (i < (*addto)->count)
-	{
-		expanded->numbers[i] = (*addto)->numbers[i];
-		i++;
-	}
-	expanded->count = (*addto)->count;
-	ft_superint_destroy(addto);
-	*addto = expanded;
-	return (1);
+	temp = *b;
+	*b = *a;
+	*a = temp;
 }
