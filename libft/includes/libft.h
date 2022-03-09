@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 13:11:19 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 13:45:12 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,4 +181,5 @@ void		ft_ftdiv_scale(int log10, t_ull *n, t_ull *d);
 t_superint	*ft_superint_new(t_ull start, int count);
 void		ft_superint_destroy(t_superint	**superint);
 int			ft_superint_expand(t_superint **addto);
+int			ft_superint_plus(t_superint **addto, t_superint **add);
 #endif
