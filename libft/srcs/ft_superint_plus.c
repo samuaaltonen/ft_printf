@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:45:20 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 14:08:52 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:00:33 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_superint_plus(t_superint **addto, t_superint **add)
 	{
 		if ((*addto)->allocated < i - 1 && !ft_superint_expand(addto))
 			return (0);
-		temp = ((t_ull)(*addto)->numbers[i]);
+		temp = (t_ull)(*addto)->numbers[i];
 		if (i < (*add)->count)
-			temp += ((t_ull)(*add)->numbers[i]);
+			temp += (t_ull)(*add)->numbers[i];
 		temp += carry;
 		carry = 0;
 		if (temp >= 1000000000)
