@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 21:39:21 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 21:48:04 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 22:09:42 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_superint_multiply_int(t_superint **target, int multiplier)
 
 	if (multiplier <= 0)
 	{
-		set_to_zero(target);
+		ft_superint_zero(target);
 		return (0);
 	}
 	i = -1;
@@ -59,7 +59,7 @@ int	ft_superint_multiply(t_superint **target, t_superint **multiplier)
 
 	if (ft_superint_iszero(target) || ft_superint_iszero(multiplier))
 	{
-		set_to_zero(target);
+		ft_superint_zero(target);
 		return (1);
 	}
 	copy = ft_superint_new(0, 10);

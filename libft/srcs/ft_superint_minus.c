@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_superint_minus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:41:54 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 17:50:20 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 22:09:31 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	set_to_zero(t_superint **superint)
-{
-	int	i;
-
-	i = (*superint)->count - 1;
-	while (i >= 0)
-	{
-		(*superint)->numbers[i] = 0;
-		i--;
-	}
-	(*superint)->count = 1;
-	return (0);
-}
 
 /*
  * Performs substraction for 2 superints. If value goes to negative, sets it to
@@ -41,7 +27,7 @@ int	ft_superint_minus(t_superint **from, t_superint **minus)
 	while (++i < (*minus)->count || carry)
 	{
 		if (i > (*from)->count - 1)
-			return (set_to_zero(from));
+			return (ft_superint_zero(from));
 		temp = (t_sll)(*from)->numbers[i];
 		if (i < (*minus)->count)
 			temp -= (t_sll)(*minus)->numbers[i];
