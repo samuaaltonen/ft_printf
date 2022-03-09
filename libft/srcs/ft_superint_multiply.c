@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 21:39:21 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 22:09:42 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 22:18:21 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_superint_multiply(t_superint **target, t_superint **multiplier)
 	while (++i < (*multiplier)->count)
 	{
 		if (!ft_superint_multiply_int(target, (*multiplier)->numbers[i])
-			|| !ft_superint_shift(target, i)
+			|| !ft_superint_shift_block(target, i)
 			|| !ft_superint_plus(&temp, target)
 			|| !ft_superint_clone(target, &copy))
 			return (0);

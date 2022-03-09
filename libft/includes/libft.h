@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 22:12:51 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/09 22:16:10 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ int			ft_superint_expand(t_superint **addto);
 void		ft_superint_print(t_superint **superint);
 void		ft_superint_swap(t_superint **a, t_superint **b);
 int			ft_superint_zero(t_superint **superint);
+int			ft_superint_iszero(t_superint **superint);
 int			ft_superint_clone(t_superint **to, t_superint **from);
 int			ft_superint_plus(t_superint **addto, t_superint **add);
 int			ft_superint_minus(t_superint **from, t_superint **minus);
