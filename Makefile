@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 13:12:01 by saaltone          #+#    #+#              #
-#    Updated: 2022/03/09 22:16:23 by saaltone         ###   ########.fr        #
+#    Updated: 2022/03/10 22:04:39 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ LIBFT_SRC_FILES=ft_putchar.c ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c \
 		  ft_superint_expand.c ft_superint_plus.c ft_superint_print.c \
 		  ft_superint_minus.c ft_superint_swap.c ft_superint_multiply.c \
 		  ft_superint_shift.c ft_superint_zero.c ft_superint_clone.c \
-		  ft_superint_iszero.c
+		  ft_superint_iszero.c ft_superint_to_ull.c ft_superint_to_ull.c \
+		  ft_superint_compare.c ft_superint_divide.c
 LIBFT_SOURCES=$(LIBFT_SRC_FILES:%.c=srcs/%.c)
 LIBFT_OBJECTS=$(LIBFT_SRC_FILES:%.c=libft/%.o)
 

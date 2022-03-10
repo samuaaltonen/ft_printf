@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 22:16:10 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/10 22:04:11 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,17 +179,23 @@ int			ft_iszero(long double number);
 void		ft_ftdiv(double number, t_ull *n, t_ull *d);
 void		ft_ftdiv_scale(int log10, t_ull *n, t_ull *d);
 t_superint	*ft_superint_new(t_ull start, int count);
-void		ft_superint_destroy(t_superint	**superint);
+void		ft_superint_destroy(t_superint **superint);
 int			ft_superint_expand(t_superint **addto);
 void		ft_superint_print(t_superint **superint);
 void		ft_superint_swap(t_superint **a, t_superint **b);
 int			ft_superint_zero(t_superint **superint);
 int			ft_superint_iszero(t_superint **superint);
 int			ft_superint_clone(t_superint **to, t_superint **from);
+t_ull		ft_superint_to_ull(t_superint **superint);
+int			ft_superint_compare(t_superint **a, t_superint **b);
 int			ft_superint_plus(t_superint **addto, t_superint **add);
+int			ft_superint_plus_int(t_superint **addto, int plus);
 int			ft_superint_minus(t_superint **from, t_superint **minus);
+int			ft_superint_minus_int(t_superint **from, int minus);
 int			ft_superint_multiply_int(t_superint **target, int multiplier);
 int			ft_superint_multiply(t_superint **target, t_superint **multiplier);
+int			ft_superint_divide_samesize(t_superint **num, t_superint **denum,
+				t_superint **mod, t_ull *result);
 int			ft_superint_shift(t_superint **target, int shift);
 int			ft_superint_shift_block(t_superint **target, int shift);
 #endif

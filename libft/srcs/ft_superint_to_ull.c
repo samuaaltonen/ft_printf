@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_superint_clone.c                                :+:      :+:    :+:   */
+/*   ft_superint_to_ull.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 22:12:01 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/10 21:59:03 by saaltone         ###   ########.fr       */
+/*   Created: 2022/03/10 21:40:45 by saaltone          #+#    #+#             */
+/*   Updated: 2022/03/10 21:43:53 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * Clones superint values and count.
+ * Casts superint into unsigned long long. Assumes superint is small enough to
+ * fit in it.
 */
-int	ft_superint_clone(t_superint **to, t_superint **from)
+t_ull	ft_superint_to_ull(t_superint **superint)
 {
-	int	i;
+	t_ull	result;
 
-	i = (*from)->count - 1;
-	while (i >= 0)
-	{
-		if ((*to)->allocated < i + 1 && !ft_superint_expand(to))
-			return (0);
-		(*to)->numbers[i] = (*from)->numbers[i];
-		i--;
-	}
-	(*to)->count = (*from)->count;
-	return (1);
+	result = 0;
+	if ((*superint)->count >= 3)
+		result += (*superint)->numbers[2] * 1000000000000000000ULL;
+	if ((*superint)->count >= 2)
+		result += (*superint)->numbers[1] * 1000000000ULL;
+	if ((*superint)->count >= 1)
+		result += (*superint)->numbers[0];
+	return (result);
 }

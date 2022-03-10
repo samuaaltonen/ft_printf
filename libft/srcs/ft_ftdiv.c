@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:01:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 22:03:05 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:07:06 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,45 @@
 
 /*
  * Converts exponential form of float to division of 2 integers. 
- * Example:
- * 0.5f = 1.0 * 2^-1 [int part = 1][mantissa = 0][exponent (nonbiased) = -1]
- * ==> (0 + 1 * 2^52) / (1 * 2^53) = 2^-1 = 0.5f
- *     ([mantissa] + 1 * 2^52) / (1 * 2^(52 - [exponent (nonbiased)]))
- *     numerator               / denumerator
+ * Example (single precision but same method for double and extended):
+ * 
+ * 0.75f = 00111111111000000000000000000000
+ * [sign = 0][exponent = 01111111 = 127][mantissa = 11000000000000000000000]
+ * Exponent is biased by 127 (offset), so substracting 127 leaves 0 as exponent
+ * Mantissa is 6291456
+ * 
+ * Equation is: (1 + [mantissa] / 2^23) * 2^([exponent]-127)
+ *            = (1 + 6291456 / 2^23) * 2^0
+ *            = 1 + 6291456 / 8388608 = 1.75
+ * 
+ * The idea is to modify this equation so that it becomes a fraction of two
+ * integers instead of exponential form:
+ * 
+ * (1 + [mantissa] / 2^23) * 2^([exponent]-127) * 2^0
+ * (1 + [mantissa] / 2^23) * 2^([exponent]-127) * 2^(23-23)
+ * (1 + [mantissa] / 2^23) * 2^([exponent]-127-23) * 2^23
+ * (2^23 + [mantissa]) * 2^([exponent]-127-23)
+ * (2^23 + [mantissa]) / 2^-([exponent]-127-23)
+ * numerator           / denumerator
 */
 void	ft_ftdiv(double number, t_ull *n, t_ull *d)
 {
-	t_sll			exponent_normal;
-	t_ull			mantissa_sum;
+	t_sll			denum_exp;
+	t_ull			numerator;
 	t_double_cast	ldouble_cast;
 
 	ldouble_cast.f = number;
-	mantissa_sum = (((t_ull) 1) << 52) + ldouble_cast.s_parts.mantissa;
-	exponent_normal = ldouble_cast.s_parts.exponent - 1023 - 52;
-	*n = 0;
-	*d = mantissa_sum;
-	if (exponent_normal > 0)
+	numerator = (((t_ull) 1) << 52) + ldouble_cast.s_parts.mantissa;
+	denum_exp = ldouble_cast.s_parts.exponent - 1023 - 52;
+	if (denum_exp > 0)
 	{
-		*n = mantissa_sum;
-		*n <<= exponent_normal;
+		*n = numerator;
+		*n <<= denum_exp;
 		*d = 1;
 		return ;
 	}
-	*n = mantissa_sum;
-	*d = ((t_ull) 1) << -exponent_normal;
+	*n = numerator;
+	*d = ((t_ull) 1) << -denum_exp;
 }
 
 /*
@@ -47,8 +60,8 @@ void	ft_ftdiv(double number, t_ull *n, t_ull *d)
  * of division casted to int is allways one digit.
  * If log10 is higher than 0 it means that the original number is 10 or
  * higher, therefore we need to scale denumerator up.
- * Similarly if log10 is less than 0, we scale numerator up.
- * Only scales up to avoid losing any precision.
+ * Similarly, if log10 is less than 0, we scale numerator up.
+ * Only scales up and not down to avoid losing any precision.
 */
 void	ft_ftdiv_scale(int log10, t_ull *n, t_ull *d)
 {

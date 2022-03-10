@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_superint_clone.c                                :+:      :+:    :+:   */
+/*   ft_superint_compare.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 22:12:01 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/10 21:59:03 by saaltone         ###   ########.fr       */
+/*   Created: 2022/03/10 22:00:59 by saaltone          #+#    #+#             */
+/*   Updated: 2022/03/10 22:01:14 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
- * Clones superint values and count.
+ * Compares two superints. Returns: 
+ * positive if a is higher than b
+ * 0 if a is same as b
+ * negative if a is less than b
 */
-int	ft_superint_clone(t_superint **to, t_superint **from)
+int	ft_superint_compare(t_superint **a, t_superint **b)
 {
-	int	i;
-
-	i = (*from)->count - 1;
-	while (i >= 0)
-	{
-		if ((*to)->allocated < i + 1 && !ft_superint_expand(to))
-			return (0);
-		(*to)->numbers[i] = (*from)->numbers[i];
-		i--;
-	}
-	(*to)->count = (*from)->count;
-	return (1);
+	if ((*a)->count != (*b)->count)
+		return ((*a)->count - (*b)->count);
+	return ((*a)->numbers[(*a)->count - 1] - (*b)->numbers[(*b)->count - 1]);
 }

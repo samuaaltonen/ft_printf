@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:23:25 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 21:17:34 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/10 20:22:16 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
  * Frees given superint struct and its int array.
 */
-void	ft_superint_destroy(t_superint	**superint)
+void	ft_superint_destroy(t_superint **superint)
 {
 	if (!superint || !(*superint))
 		return ;
