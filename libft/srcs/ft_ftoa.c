@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 09:32:29 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 10:07:18 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static char	*skip_the_rest(char **ftoa, int log, int precision, t_superint **m)
 	i = 0;
 	while ((*ftoa)[i])
 		i++;
-	while ((log >= 0 && i <= (log + precision + 1))
-		|| (i <= (precision + 1)))
+	while ((log >= 0 && i <= (log + precision))
+		|| (i <= precision))
 	{
 		(*ftoa)[i] = '0';
 		i++;
@@ -45,8 +45,8 @@ static char	*division_to_string(int log10, int precision, t_superint **n,
 	if (!ftoa || !mod)
 		return (NULL);
 	i = 0;
-	while ((log10 >= 0 && i <= (log10 + precision + 1))
-		|| (i <= (precision + 1)))
+	while ((log10 >= 0 && i <= (log10 + precision))
+		|| (i <= precision))
 	{
 		if (ft_superint_iszero(n))
 			return (skip_the_rest(&ftoa, log10, precision, &mod));
@@ -115,7 +115,7 @@ char	*ft_ftoa_positive(long double number, int precision)
 		return (NULL);
 	if (ft_iszero(number))
 		ft_superint_zero(&numerator);
-	str = division_to_string(log10, precision, &numerator, &denumerator);
+	str = division_to_string(log10, precision + 1, &numerator, &denumerator);
 	ft_superint_destroy(&numerator);
 	ft_superint_destroy(&denumerator);
 	if (!str)
