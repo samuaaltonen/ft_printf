@@ -6,25 +6,26 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 01:43:44 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 09:32:29 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*fill_zeroes(char **ftoa, int log10, int precision)
+static char	*skip_the_rest(char **ftoa, int log, int precision, t_superint **m)
 {
 	int	i;
 
 	i = 0;
 	while ((*ftoa)[i])
 		i++;
-	while ((log10 >= 0 && i <= (log10 + precision + 1))
+	while ((log >= 0 && i <= (log + precision + 1))
 		|| (i <= (precision + 1)))
 	{
 		(*ftoa)[i] = '0';
 		i++;
 	}
+	ft_superint_destroy(m);
 	return (*ftoa);
 }
 
@@ -48,7 +49,7 @@ static char	*division_to_string(int log10, int precision, t_superint **n,
 		|| (i <= (precision + 1)))
 	{
 		if (ft_superint_iszero(n))
-			return (fill_zeroes(&ftoa, log10, precision));
+			return (skip_the_rest(&ftoa, log10, precision, &mod));
 		if (ft_superint_divide_samesize(n, d, &mod, &result) <= 0)
 			return (NULL);
 		ft_append_char(&ftoa, '0' + result);
@@ -57,6 +58,7 @@ static char	*division_to_string(int log10, int precision, t_superint **n,
 			return (NULL);
 		i++;
 	}
+	ft_superint_destroy(&mod);
 	return (ftoa);
 }
 
