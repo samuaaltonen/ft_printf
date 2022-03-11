@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 19:55:08 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/08 14:19:22 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:09:09 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	float_output_sign_zeroes(t_conf **conf, char *ftoa)
 	len = ft_strlen(ftoa);
 	if ((*conf)->precision > len)
 		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->precision - len);
-	if ((*conf)->flag_zeropadded && (*conf)->width > len)
+	if ((*conf)->flag_zeropadded_override && (*conf)->width > len)
 	{
 		if ((*conf)->is_negative || (*conf)->flag_addsign)
 			ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len - 1);
@@ -106,13 +106,13 @@ void	conversion_float(t_conf **conf)
 	len = float_width(conf, ftoa);
 	if ((*conf)->width > len
 		&& !(*conf)->flag_leftadjusted
-		&& !(*conf)->flag_zeropadded)
+		&& !(*conf)->flag_zeropadded_override)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
 	float_output_sign_zeroes(conf, ftoa);
 	ft_putstr_n(ftoa, &((*conf)->n));
 	if ((*conf)->width > len
 		&& (*conf)->flag_leftadjusted
-		&& !(*conf)->flag_zeropadded)
+		&& !(*conf)->flag_zeropadded_override)
 		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
 	free(ftoa);
 }
