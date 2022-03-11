@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 22:03:14 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 01:12:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 01:38:12 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,15 @@ int	ft_superint_divide_samesize(t_superint **n, t_superint **d,
 
 	if (ft_superint_iszero(d))
 		return (-1);
-	if (ft_superint_iszero(n) || ft_superint_compare(n, d) < 0)
+	if (ft_superint_iszero(n))
 	{
+		*res = 0;
+		return (1);
+	}
+	if (ft_superint_compare(n, d) < 0)
+	{
+		if (!ft_superint_clone(mod, n))
+			return (-3);
 		*res = 0;
 		return (1);
 	}

@@ -6,11 +6,27 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 01:30:15 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 01:43:44 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	*fill_zeroes(char **ftoa, int log10, int precision)
+{
+	int	i;
+
+	i = 0;
+	while ((*ftoa)[i])
+		i++;
+	while ((log10 >= 0 && i <= (log10 + precision + 1))
+		|| (i <= (precision + 1)))
+	{
+		(*ftoa)[i] = '0';
+		i++;
+	}
+	return (*ftoa);
+}
 
 static char	*division_to_string(int log10, int precision, t_superint **n,
 								t_superint **d)
@@ -31,6 +47,8 @@ static char	*division_to_string(int log10, int precision, t_superint **n,
 	while ((log10 >= 0 && i <= (log10 + precision + 1))
 		|| (i <= (precision + 1)))
 	{
+		if (ft_superint_iszero(n))
+			return (fill_zeroes(&ftoa, log10, precision));
 		if (ft_superint_divide_samesize(n, d, &mod, &result) <= 0)
 			return (NULL);
 		ft_append_char(&ftoa, '0' + result);
