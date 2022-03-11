@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:41:54 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/10 21:40:21 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:26:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_superint_minus(t_superint **from, t_superint **minus)
 	t_ull	carry;
 	int		i;
 
+	if (ft_superint_compare(from, minus) < 0)
+		return (ft_superint_zero(from));
 	i = -1;
 	carry = 0;
 	while (++i < (*minus)->count || carry)
@@ -47,7 +49,7 @@ int	ft_superint_minus(t_superint **from, t_superint **minus)
 		if (temp < 0)
 		{
 			(*from)->numbers[i] = 1000000000 + temp;
-			carry = -temp;
+			carry = 1;
 		}
 		else
 			(*from)->numbers[i] = temp;
@@ -82,4 +84,3 @@ int	ft_superint_minus_int(t_superint **from, int minus)
 	}
 	return (1);
 }
-

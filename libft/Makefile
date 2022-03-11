@@ -6,7 +6,7 @@
 #    By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 10:36:08 by saaltone          #+#    #+#              #
-#    Updated: 2022/03/10 22:04:34 by saaltone         ###   ########.fr        #
+#    Updated: 2022/03/10 23:41:26 by saaltone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ FUNCTIONS = ft_putchar.c ft_memalloc.c ft_memdel.c ft_strnew.c ft_strdel.c \
 		  ft_superint_minus.c ft_superint_swap.c ft_superint_multiply.c \
 		  ft_superint_shift.c ft_superint_zero.c ft_superint_clone.c \
 		  ft_superint_iszero.c ft_superint_to_ull.c ft_superint_to_ull.c \
-		  ft_superint_compare.c ft_superint_divide.c
+		  ft_superint_compare.c ft_superint_divide.c ft_superint_log10.c
 SOURCES = $(FUNCTIONS:%.c=srcs/%.c)
 OBJECTS = $(FUNCTIONS:.c=.o)
 HEADERS = includes

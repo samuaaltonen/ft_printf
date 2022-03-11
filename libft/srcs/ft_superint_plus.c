@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:45:20 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/10 22:34:40 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:26:39 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_superint_plus(t_superint **addto, t_superint **add)
 		temp += carry;
 		carry = 0;
 		if (temp >= 1000000000)
-			carry = temp / 1000000000;
+			carry = 1;
 		if (temp >= 1000000000)
 			(*addto)->numbers[i] = temp % 1000000000;
 		else

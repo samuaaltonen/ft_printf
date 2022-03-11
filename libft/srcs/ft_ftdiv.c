@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:01:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/10 20:07:06 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/10 22:47:31 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,31 @@
  * (2^23 + [mantissa]) * 2^([exponent]-127-23)
  * (2^23 + [mantissa]) / 2^-([exponent]-127-23)
  * numerator           / denumerator
+ * 
+ * single precision (float) exponent is biased by 127
+ * double precision (double) exponent is biased by 1023
+ * extended precision (long double) exponent is biased by 16383
 */
-void	ft_ftdiv(double number, t_ull *n, t_ull *d)
+int	ft_ftdiv(long double number, t_superint **n, t_superint **d)
 {
 	t_sll			denum_exp;
-	t_ull			numerator;
-	t_double_cast	ldouble_cast;
+	t_ldouble_cast	ldouble_cast;
 
 	ldouble_cast.f = number;
-	numerator = (((t_ull) 1) << 52) + ldouble_cast.s_parts.mantissa;
-	denum_exp = ldouble_cast.s_parts.exponent - 1023 - 52;
+	*n = ft_superint_new(((t_ull) 1) << 63, 3);
+	*d = ft_superint_new(1, 3);
+	if (!(*n) || !(*d)
+		|| !ft_superint_plus_ull(n, ldouble_cast.s_parts.mantissa))
+		return (0);
+	denum_exp = ldouble_cast.s_parts.exponent - 16446;
 	if (denum_exp > 0)
 	{
-		*n = numerator;
-		*n <<= denum_exp;
-		*d = 1;
-		return ;
+		if (!ft_superint_shift(n, denum_exp))
+			return (0);
 	}
-	*n = numerator;
-	*d = ((t_ull) 1) << -denum_exp;
+	else if (!ft_superint_shift(d, -denum_exp))
+		return (0);
+	return (1);
 }
 
 /*
@@ -63,20 +69,23 @@ void	ft_ftdiv(double number, t_ull *n, t_ull *d)
  * Similarly, if log10 is less than 0, we scale numerator up.
  * Only scales up and not down to avoid losing any precision.
 */
-void	ft_ftdiv_scale(int log10, t_ull *n, t_ull *d)
+int	ft_ftdiv_scale(int log10, t_superint **n, t_superint **d)
 {
 	if (log10 < 0)
 	{
 		while (log10 < 0)
 		{
-			*n *= 10;
+			if (!ft_superint_multiply_int(n, 10))
+				return (0);
 			log10++;
 		}
-		return ;
+		return (1);
 	}
 	while (log10 > 0)
 	{
-		*d *= 10;
+		if (!ft_superint_multiply_int(d, 10))
+			return (0);
 		log10--;
 	}
+	return (1);
 }
