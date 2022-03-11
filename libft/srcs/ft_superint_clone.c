@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 22:12:01 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/10 21:59:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 12:06:43 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ int	ft_superint_clone(t_superint **to, t_superint **from)
 	i = (*from)->count - 1;
 	while (i >= 0)
 	{
-		if ((*to)->allocated < i + 1 && !ft_superint_expand(to))
-			return (0);
+		while ((*to)->allocated < i + 1)
+		{
+			if (!ft_superint_expand(to))
+				return (0);
+		}
 		(*to)->numbers[i] = (*from)->numbers[i];
 		i--;
 	}
