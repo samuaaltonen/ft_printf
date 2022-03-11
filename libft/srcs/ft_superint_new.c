@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_superint_new.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 09:50:19 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 11:54:10 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/11 09:17:27 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	superint_init_zeros(t_superint **superint)
 	int	i;
 
 	i = 0;
-	while (i < (*superint)->count)
+	while (i < (*superint)->allocated)
 	{
 		((*superint)->numbers)[i] = 0;
 		i++;
