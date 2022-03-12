@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:01:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/10 22:47:31 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/12 10:12:32 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Converts exponential form of float to division of 2 integers. 
  * Example (single precision but same method for double and extended):
  * 
- * 0.75f = 00111111111000000000000000000000
+ * 1.75f = 00111111111000000000000000000000
  * [sign = 0][exponent = 01111111 = 127][mantissa = 11000000000000000000000]
  * Exponent is biased by 127 (offset), so substracting 127 leaves 0 as exponent
  * Mantissa is 6291456
@@ -34,6 +34,9 @@
  * (2^23 + [mantissa]) * 2^([exponent]-127-23)
  * (2^23 + [mantissa]) / 2^-([exponent]-127-23)
  * numerator           / denumerator
+ * 
+ * Using same numbers as above:
+ * 1.75f = (2^23 + 6291456) / 2^-(127-127-23) = 14680064 / 8388608 = 1.75
  * 
  * single precision (float) exponent is biased by 127
  * double precision (double) exponent is biased by 1023
