@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 15:08:11 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/12 09:37:17 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,26 @@ static char	*division_to_string(int log10, int precision, t_superint **n,
 
 static void	set_zeroes_and_dot(int log10, int precision, char **ftoa)
 {
-	int	i;
+	char	*temp;
+	char	*filled;
+	int		i;
+	int		len;
 
 	if (log10 < 0)
 	{
-		ft_memmove(*ftoa + -log10 + 1, *ftoa, ft_strlen(*ftoa));
+		len = ft_strlen(*ftoa);
+		filled = ft_strnew(len - log10 + 1);
+		ft_memmove(filled + -log10 + 1, *ftoa, len);
 		i = 0;
 		while (i <= -log10)
 		{
-			(*ftoa)[i] = '0';
+			filled[i] = '0';
 			i++;
 		}
-		(*ftoa)[1] = '.';
+		filled[1] = '.';
+		temp = *ftoa;
+		*ftoa = filled;
+		free(temp);
 		return ;
 	}
 	ft_memmove(*ftoa + log10 + 2, *ftoa + log10 + 1, precision + 1);

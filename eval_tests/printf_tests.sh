@@ -1,6 +1,6 @@
 if [ $1 = 'clean' ]; then
 	/bin/rm	-f *.o
-	/bin/rm -f tests tests_memory
+	/bin/rm -f temp tests_printf
 	exit 1
 fi
 
@@ -22,7 +22,6 @@ if [ $1 = 'all' ]; then
 	./printf_tests.sh 5
 	./printf_tests.sh 6
 	./printf_tests.sh 7
-	./printf_tests.sh 8
 	exit 1
 fi
 
@@ -104,7 +103,7 @@ fi
 
 if [ $1 -eq 10 ]; then
 
-printf "\n\033[0;35m======================== 10 ========================\033[0m\n\n"
+printf "\n\033[0;35m======================== 10 FLOAT RUNNER ========================\033[0m\n\n"
 
 ./tests_printf
 
