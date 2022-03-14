@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/14 09:27:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:13:31 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,16 @@ static char	*division_to_string(int log10, int precision, t_superint **n,
 	mod = ft_superint_new(0, 3);
 	if (!ftoa || !mod)
 		return (NULL);
-	i = 0;
-	while ((log10 >= 0 && i <= (log10 + precision))
-		|| (i <= precision))
+	i = -1;
+	while ((log10 >= 0 && ++i <= (log10 + precision))
+		|| (++i <= precision))
 	{
 		if (ft_superint_iszero(n))
 			return (skip_the_rest(&ftoa, log10, precision, &mod));
-		if (ft_superint_divide_samesize(n, d, &mod, &result) <= 0)
+		if (ft_superint_divide_samesize(n, d, &mod, &result) <= 0
+			|| !ft_superint_clone(n, &mod) || !ft_superint_multiply_int(n, 10))
 			return (NULL);
 		ft_append_char(&ftoa, '0' + result);
-		if (!ft_superint_clone(n, &mod)
-			|| !ft_superint_multiply_int(n, 10))
-			return (NULL);
-		i++;
 	}
 	ft_superint_destroy(&mod);
 	return (ftoa);
@@ -90,81 +87,31 @@ static void	set_zeroes_and_dot(int log10, int precision, char **ftoa)
 	(*ftoa)[log10 + 1] = '.';
 }
 
-static void	trim_to_precision(char **str, int precision)
-{
-	int	dot_pos;
-
-	if (!str)
-		return ;
-	dot_pos = 0;
-	while ((*str)[dot_pos] && (*str)[dot_pos] != '.')
-		dot_pos++;
-	if ((*str)[dot_pos] != '.')
-		return ;
-	if ((int) ft_strlen(*str) < dot_pos + precision)
-		return ;
-	(*str)[dot_pos + precision] = 0;
-	if ((*str)[ft_strlen(*str) - 1] == '.')
-		(*str)[ft_strlen(*str) - 1] = 0;
-}
-
-/*
- * Log10 might be wrong (could be over/undershot because it is calculated with
- * float arithmetics). Check if first int of quotient is 0 (overshot) and 
- * reduce log10 if necessary.
-*/
-static int	check_log10(int *log10, t_superint **n, t_superint **d)
-{
-	t_superint	*mod;
-	t_ull		result;
-
-	if (ft_superint_iszero(n))
-		return (1);
-	mod = ft_superint_new(0, 3);
-	if (!mod)
-		return (0);
-	if (ft_superint_divide_samesize(n, d, &mod, &result) <= 0)
-		return (0);
-	if (result == 0)
-	{
-		if (!ft_superint_multiply_int(n, 10))
-			return (0);
-		(*log10)--;
-	}
-	ft_superint_destroy(&mod);
-	return (1);
-}
-
 char	*ft_ftoa_positive(long double number, int precision)
 {
-	t_superint	*numerator;
-	t_superint	*denumerator;
+	t_superint	*num;
+	t_superint	*denum;
 	int			log10;
-	int			divnotzero;
 	char		*str;
 
-	if (number < 0)
-		number = -number;
 	log10 = ft_log10(number);
-	if (!ft_ftdiv(number, &numerator, &denumerator)
-		|| !ft_ftdiv_scale(log10, &numerator, &denumerator))
-		return (NULL);
-	if (!check_log10(&log10, &numerator, &denumerator))
+	if (!ft_ftdiv(number, &num, &denum)
+		|| !ft_ftdiv_scale(log10, &num, &denum)
+		|| !ft_ftdiv_logcheck(&log10, &num, &denum))
 		return (NULL);
 	if (ft_iszero(number))
-		ft_superint_zero(&numerator);
-	str = division_to_string(log10, precision + 1, &numerator, &denumerator);
-	divnotzero = !ft_superint_iszero(&numerator);
-	ft_superint_destroy(&numerator);
-	ft_superint_destroy(&denumerator);
+		ft_superint_zero(&num);
+	str = division_to_string(log10, precision + 1, &num, &denum);
 	if (!str)
 		return (NULL);
 	set_zeroes_and_dot(log10, precision, &str);
 	if (log10 < 0)
-		ft_fa_round(&str, precision + 2, 0, divnotzero);
+		ft_fa_round(&str, precision + 2, 0, !ft_superint_iszero(&num));
 	else
-		ft_fa_round(&str, log10 + precision + 2, 0, divnotzero);
-	trim_to_precision(&str, precision + 1);
+		ft_fa_round(&str, log10 + precision + 2, 0, !ft_superint_iszero(&num));
+	ft_fa_trim(&str, precision + 1);
+	ft_superint_destroy(&num);
+	ft_superint_destroy(&denum);
 	return (str);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_superint_zero.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 22:08:46 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/09 22:10:20 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:37:00 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	ft_superint_zero(t_superint **superint)
 		i--;
 	}
 	(*superint)->count = 1;
-	return (0);
+	return (1);
 }

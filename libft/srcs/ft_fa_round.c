@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fa_round.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:03:06 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/14 09:27:30 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:07:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,25 @@ int	ft_fa_round(char **number, int start, int leftover, int divnotzero)
 	(*number)[start] = '0';
 	ft_fa_round(number, start - 1, 1, 0);
 	return (0);
+}
+
+/*
+ * Trims float (ascii-string) to given precision.
+*/
+void	ft_fa_trim(char **str, int precision)
+{
+	int	dot_pos;
+
+	if (!str)
+		return ;
+	dot_pos = 0;
+	while ((*str)[dot_pos] && (*str)[dot_pos] != '.')
+		dot_pos++;
+	if ((*str)[dot_pos] != '.')
+		return ;
+	if ((int) ft_strlen(*str) < dot_pos + precision)
+		return ;
+	(*str)[dot_pos + precision] = 0;
+	if ((*str)[ft_strlen(*str) - 1] == '.')
+		(*str)[ft_strlen(*str) - 1] = 0;
 }

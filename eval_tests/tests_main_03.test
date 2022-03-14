@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_03.test                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/14 09:18:51 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:15:10 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	printf_tester("%.0f", 0.5);
 	printf_tester("%.0f", 0.50000000000001);
 	printf_tester("%.0f", 0.51);
+	printf_tester("%#.f", 0.51);
 	printf_tester("%.12f", 0.5595f);
 	printf_tester("%.10f", 99999.999999);
 	printf_tester("%.0f", 0.999);

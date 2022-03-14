@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_superint_minus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 17:41:54 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 00:26:52 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:37:44 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	update_count(t_superint **superint)
+static int	update_count(t_superint **superint)
 {
 	if ((*superint)->count <= 1)
-		return ;
+		return (1);
 	if ((*superint)->numbers[(*superint)->count - 1] == 0)
 	{
 		(*superint)->count--;
 		update_count(superint);
 	}
+	return (1);
 }
 
 /*
@@ -41,10 +42,9 @@ int	ft_superint_minus(t_superint **from, t_superint **minus)
 	{
 		if (i > (*from)->count - 1)
 			return (ft_superint_zero(from));
-		temp = (t_sll)(*from)->numbers[i];
+		temp = (t_sll)(*from)->numbers[i] - carry;
 		if (i < (*minus)->count)
 			temp -= (t_sll)(*minus)->numbers[i];
-		temp -= carry;
 		carry = 0;
 		if (temp < 0)
 		{
@@ -54,8 +54,7 @@ int	ft_superint_minus(t_superint **from, t_superint **minus)
 		else
 			(*from)->numbers[i] = temp;
 	}
-	update_count(from);
-	return (1);
+	return (update_count(from));
 }
 
 /*

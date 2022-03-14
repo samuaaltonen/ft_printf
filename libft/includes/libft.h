@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/14 09:25:46 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:08:00 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,10 +174,12 @@ int			ft_floatsign(long double number);
 char		*ft_ftoa(long double number, int precision);
 long double	ft_floor(long double number);
 int			ft_fa_round(char **number, int start, int leftover, int divnotzero);
+void		ft_fa_trim(char **str, int precision);
 int			ft_log10(long double number);
 int			ft_iszero(long double number);
 int			ft_ftdiv(long double number, t_superint **n, t_superint **d);
 int			ft_ftdiv_scale(int log10, t_superint **n, t_superint **d);
+int			ft_ftdiv_logcheck(int *log10, t_superint **n, t_superint **d);
 t_superint	*ft_superint_new(t_ull start, int count);
 void		ft_superint_destroy(t_superint **superint);
 int			ft_superint_expand(t_superint **addto);

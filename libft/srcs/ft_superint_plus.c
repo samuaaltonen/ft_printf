@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_superint_plus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:45:20 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 00:26:39 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:44:18 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ int	ft_superint_plus_int(t_superint **addto, int plus)
 		plus = 0;
 		if (temp >= 1000000000)
 			plus = temp / 1000000000;
-		if (temp >= 1000000000)
-			(*addto)->numbers[i] = temp % 1000000000;
-		else
-			(*addto)->numbers[i] = temp;
+		(*addto)->numbers[i] = temp % 1000000000;
 		if (i > (*addto)->count - 1)
 			(*addto)->count++;
 		i++;
@@ -94,10 +91,7 @@ int	ft_superint_plus_ull(t_superint **addto, t_ull plus)
 		plus = 0;
 		if (temp >= 1000000000)
 			plus = temp / 1000000000;
-		if (temp >= 1000000000)
-			(*addto)->numbers[i] = temp % 1000000000;
-		else
-			(*addto)->numbers[i] = temp;
+		(*addto)->numbers[i] = temp % 1000000000;
 		if (i > (*addto)->count - 1)
 			(*addto)->count++;
 		i++;

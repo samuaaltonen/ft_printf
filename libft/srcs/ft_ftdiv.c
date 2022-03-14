@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftdiv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:01:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/12 10:12:32 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 15:04:45 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,32 @@ int	ft_ftdiv_scale(int log10, t_superint **n, t_superint **d)
 			return (0);
 		log10--;
 	}
+	return (1);
+}
+
+/*
+ * Log10 might be wrong (could be overshot because it is calculated with
+ * float arithmetics). Check if first int of quotient is 0 (overshot) and 
+ * reduce log10 if necessary.
+*/
+int	ft_ftdiv_logcheck(int *log10, t_superint **n, t_superint **d)
+{
+	t_superint	*mod;
+	t_ull		result;
+
+	if (ft_superint_iszero(n))
+		return (1);
+	mod = ft_superint_new(0, 3);
+	if (!mod)
+		return (0);
+	if (ft_superint_divide_samesize(n, d, &mod, &result) <= 0)
+		return (0);
+	if (result == 0)
+	{
+		if (!ft_superint_multiply_int(n, 10))
+			return (0);
+		(*log10)--;
+	}
+	ft_superint_destroy(&mod);
 	return (1);
 }
