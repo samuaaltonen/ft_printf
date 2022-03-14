@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:55:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/12 09:37:17 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 09:27:03 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ char	*ft_ftoa_positive(long double number, int precision)
 	t_superint	*numerator;
 	t_superint	*denumerator;
 	int			log10;
+	int			divnotzero;
 	char		*str;
 
 	if (number < 0)
@@ -153,15 +154,16 @@ char	*ft_ftoa_positive(long double number, int precision)
 	if (ft_iszero(number))
 		ft_superint_zero(&numerator);
 	str = division_to_string(log10, precision + 1, &numerator, &denumerator);
+	divnotzero = !ft_superint_iszero(&numerator);
 	ft_superint_destroy(&numerator);
 	ft_superint_destroy(&denumerator);
 	if (!str)
 		return (NULL);
 	set_zeroes_and_dot(log10, precision, &str);
 	if (log10 < 0)
-		ft_fa_round(&str, precision + 2, 0);
+		ft_fa_round(&str, precision + 2, 0, divnotzero);
 	else
-		ft_fa_round(&str, log10 + precision + 2, 0);
+		ft_fa_round(&str, log10 + precision + 2, 0, divnotzero);
 	trim_to_precision(&str, precision + 1);
 	return (str);
 }

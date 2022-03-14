@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 14:03:06 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/11 01:27:12 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/14 09:27:30 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,28 +46,28 @@ static int	round_down(char **number, int index)
  * 1 if rounding has modified the string.
  * Uses bankers rounding (rounds to closes even number)
 */
-int	ft_fa_round(char **number, int rounding_start, int leftover)
+int	ft_fa_round(char **number, int start, int leftover, int divnotzero)
 {
-	if (!number || (int) ft_strlen(*number) < rounding_start)
+	if (!number || (int) ft_strlen(*number) < start)
 		return (0);
-	if (rounding_start < 0)
+	if (start < 0)
 		return (prepend_one(number));
-	if ((*number)[rounding_start] == '.')
-		return (ft_fa_round(number, rounding_start - 1, leftover));
+	if ((*number)[start] == '.')
+		return (ft_fa_round(number, start - 1, leftover, 0));
 	if (!leftover)
 	{
-		if ((*number)[rounding_start] < '5')
-			return (round_down(number, rounding_start));
-		if ((*number)[rounding_start] == '5'
-			&& previous_digit_is_even(number, rounding_start))
-			return (round_down(number, rounding_start));
-		(*number)[rounding_start] = '0';
-		return (ft_fa_round(number, rounding_start - 1, 1));
+		if ((*number)[start] < '5')
+			return (round_down(number, start));
+		if ((*number)[start] == '5'
+			&& previous_digit_is_even(number, start) && !divnotzero)
+			return (round_down(number, start));
+		(*number)[start] = '0';
+		return (ft_fa_round(number, start - 1, 1, 0));
 	}
-	(*number)[rounding_start]++;
-	if ((*number)[rounding_start] <= '9')
+	(*number)[start]++;
+	if ((*number)[start] <= '9')
 		return (1);
-	(*number)[rounding_start] = '0';
-	ft_fa_round(number, rounding_start - 1, 1);
+	(*number)[start] = '0';
+	ft_fa_round(number, start - 1, 1, 0);
 	return (0);
 }
