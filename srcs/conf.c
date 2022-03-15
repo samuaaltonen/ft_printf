@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:25:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/18 15:03:56 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:39:11 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	init_conf(t_conf **conf)
 	(*conf)->flag_addsign = 0;
 	(*conf)->is_uppercase = 0;
 	(*conf)->is_negative = 0;
+	(*conf)->is_nan = 0;
+	(*conf)->is_inf = 0;
 	return (1);
 }
 
@@ -51,4 +53,6 @@ void	reset_conf(t_conf **conf)
 	(*conf)->flag_addsign = 0;
 	(*conf)->is_uppercase = 0;
 	(*conf)->is_negative = 0;
+	(*conf)->is_nan = 0;
+	(*conf)->is_inf = 0;
 }

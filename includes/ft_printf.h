@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 16:02:06 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:36:59 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_conf
 	int		flag_addsign;
 	int		is_uppercase;
 	int		is_negative;
+	int		is_nan;
+	int		is_inf;
 }	t_conf;
 
 typedef struct s_dispatch_identifier
