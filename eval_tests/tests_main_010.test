@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_main_010.test                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/14 09:28:05 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:51:09 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,11 @@ int	main(void)
 	int			i = 0;
 	long double	f = -20.L;
 
-	while (i < 1000)
+	while (i < 100000)
 	{
-		printf_tester("%.10Lf", f);
+		printf_tester("%.40Lf", f);
 		f *= 1.001L;
 		i++;
 	}
-	/* long double	f = 0.50000000000001L;
-	printf("%.0Lf\n", f);
-	ft_printf("%.0Lf\n", f);
-	f = 0.5;
-	printf("%.0Lf\n", f);
-	ft_printf("%.0Lf\n", f); */
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 14:15:03 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/14 15:14:03 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:47:36 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,7 @@ int	main(void)
 	printf_tester("%.1000f", __DBL_MIN__);
 	printf_tester("%Lf", __LDBL_MIN__);
 	printf_tester("%.10Lf", __LDBL_MAX__);
+	printf_tester("%0+# f, % lf, % Lf", INFINITY, (double) INFINITY, (long double) INFINITY);
+	printf_tester("%0+ #f, % lf, % Lf", NAN, (double) NAN, (long double) NAN);
 	return (0);
 }

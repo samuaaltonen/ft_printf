@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests_header.test                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:37:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/07 21:19:47 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:46:40 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef union u_double_cast {
 	double	f;
