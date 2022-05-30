@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   precision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:08:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 16:56:18 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:34:50 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,30 @@ static void	move_cursor_to_nondigit(char **cursor)
 /*
  * Parses precision and saves it to conf.
 */
-void	handle_precision(t_conf **conf, char **cursor)
+void	handle_precision(t_conf *conf, char **cursor)
 {
 	int	digits;
 
 	if (**cursor != '.')
 		return ;
-	(*conf)->precision = -1;
+	conf->precision = -1;
 	(*cursor)++;
 	if (**cursor == '*')
 	{
-		(*conf)->precision = va_arg((*conf)->ap, int);
+		conf->precision = va_arg(conf->ap, int);
 		(*cursor)++;
 		return ;
 	}
-	(*conf)->flag_zeropadded = 0;
-	(*conf)->precision = ft_atoi(*cursor);
-	digits = ft_count_digits((*conf)->precision);
+	conf->flag_zeropadded = 0;
+	conf->precision = ft_atoi(*cursor);
+	digits = ft_count_digits(conf->precision);
 	if (!ft_isdigit(**cursor))
 		digits = 0;
 	*cursor += digits;
 	move_cursor_to_nondigit(cursor);
 	if (**cursor == '*')
 	{
-		va_arg((*conf)->ap, int);
+		va_arg(conf->ap, int);
 		(*cursor)++;
 	}
 	handle_precision(conf, cursor);

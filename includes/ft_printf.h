@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/05/30 13:26:29 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:36:45 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_conf
 typedef struct s_dispatch_identifier
 {
 	char	identifier;
-	void	(*function)(t_conf**);
+	void	(*function)(t_conf*);
 }	t_dispatch_identifier;
 
 typedef struct t_color_identifier
@@ -59,40 +59,40 @@ int					ft_printf(const char *format, ...);
 int					ft_dprintf(int fd, const char *format, ...);
 
 int					ft_printf_init_conf(t_conf **conf);
-void				ft_printf_reset_conf(t_conf **conf);
+void				ft_printf_reset_conf(t_conf *conf);
 
-void				handle_color(t_conf **conf, char **cursor);
-void				handle_flags(t_conf **conf, char **cursor);
-void				handle_width(t_conf **conf, char **cursor);
-void				handle_precision(t_conf **conf, char **cursor);
-void				handle_length(t_conf **conf, char **cursor);
-void				handle_conversion(t_conf **conf, char **cursor);
+void				handle_color(t_conf *conf, char **cursor);
+void				handle_flags(t_conf *conf, char **cursor);
+void				handle_width(t_conf *conf, char **cursor);
+void				handle_precision(t_conf *conf, char **cursor);
+void				handle_length(t_conf *conf, char **cursor);
+void				handle_conversion(t_conf *conf, char **cursor);
 
-long long			get_va_arg(t_conf **conf);
-unsigned long long	get_va_arg_unsigned(t_conf **conf);
+long long			get_va_arg(t_conf *conf);
+unsigned long long	get_va_arg_unsigned(t_conf *conf);
 
 void				ft_printf_exit_error(char *message);
-void				out_char(char c, t_conf **conf);
-void				out_char_repeat(char c, int repeat, t_conf **conf);
-void				out_str(char *str, t_conf **conf);
-void				out_str_case(char *str, int is_uppercase, t_conf **conf);
+void				out_char(char c, t_conf *conf);
+void				out_char_repeat(char c, int repeat, t_conf *conf);
+void				out_str(char *str, t_conf *conf);
+void				out_str_case(char *str, int is_uppercase, t_conf *conf);
 
-void				ft_printf_print_str(t_conf **conf, char *str, int len);
+void				ft_printf_print_str(t_conf *conf, char *str, int len);
 
-void				conversion_percent(t_conf **conf);
-void				conversion_string(t_conf **conf);
-void				conversion_char(t_conf **conf);
-void				conversion_pointer(t_conf **conf);
-void				conversion_n(t_conf **conf);
-void				conversion_hexadecimal(t_conf **conf);
-void				conversion_hexadecimal_lower(t_conf **conf);
-void				conversion_hexadecimal_upper(t_conf **conf);
-void				conversion_octal(t_conf **conf);
-void				conversion_int(t_conf **conf);
-void				conversion_unsigned(t_conf **conf);
-void				conversion_unsigned_capital_u(t_conf **conf);
-void				conversion_float(t_conf **conf);
-void				conversion_binary(t_conf **conf);
-void				conversion_anybase(t_conf **conf);
+void				conversion_percent(t_conf *conf);
+void				conversion_string(t_conf *conf);
+void				conversion_char(t_conf *conf);
+void				conversion_pointer(t_conf *conf);
+void				conversion_n(t_conf *conf);
+void				conversion_hexadecimal(t_conf *conf);
+void				conversion_hexadecimal_lower(t_conf *conf);
+void				conversion_hexadecimal_upper(t_conf *conf);
+void				conversion_octal(t_conf *conf);
+void				conversion_int(t_conf *conf);
+void				conversion_unsigned(t_conf *conf);
+void				conversion_unsigned_capital_u(t_conf *conf);
+void				conversion_float(t_conf *conf);
+void				conversion_binary(t_conf *conf);
+void				conversion_anybase(t_conf *conf);
 
 #endif

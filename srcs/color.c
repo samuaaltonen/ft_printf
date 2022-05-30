@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:15:23 by saaltone          #+#    #+#             */
-/*   Updated: 2022/04/07 16:19:06 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:33:29 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static char	*get_color_str(char **cursor)
 	return (color);
 }
 
-static int	match_color(t_conf **conf, const t_color_identifier *colors,
+static int	match_color(t_conf *conf, const t_color_identifier *colors,
 	char *color)
 {
 	int	i;
@@ -74,7 +74,7 @@ static int	match_color(t_conf **conf, const t_color_identifier *colors,
 	return (0);
 }
 
-static int	output_color(t_conf **conf, char *color)
+static int	output_color(t_conf *conf, char *color)
 {
 	static const t_color_identifier	colors[] = {
 	{"black", COLOR_BLACK},
@@ -101,7 +101,7 @@ static int	output_color(t_conf **conf, char *color)
 	return (match_color(conf, colors, color));
 }
 
-void	handle_color(t_conf **conf, char **cursor)
+void	handle_color(t_conf *conf, char **cursor)
 {
 	char	*color_str;
 

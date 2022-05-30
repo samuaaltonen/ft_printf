@@ -6,29 +6,29 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:44:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/04/07 16:14:25 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:34:50 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	pointer_precision(t_conf **conf, char **output)
+static void	pointer_precision(t_conf *conf, char **output)
 {
 	int		i;
 	int		len;
 	char	*zeros;
 	char	*joined;
 
-	if ((*conf)->precision < 0)
+	if (conf->precision < 0)
 		return ;
 	len = ft_strlen(*output);
-	if ((*conf)->precision <= len)
+	if (conf->precision <= len)
 		return ;
-	zeros = ft_strnew((*conf)->precision - len);
+	zeros = ft_strnew(conf->precision - len);
 	if (!zeros)
 		ft_printf_exit_error(MSG_ALLOC_FAILED);
 	i = 0;
-	while (i < (*conf)->precision - len)
+	while (i < conf->precision - len)
 	{
 		zeros[i] = '0';
 		i++;
@@ -41,17 +41,17 @@ static void	pointer_precision(t_conf **conf, char **output)
 	*output = joined;
 }
 
-static void	pointer_prefix(t_conf **conf, char **output, unsigned long long nbr)
+static void	pointer_prefix(t_conf *conf, char **output, unsigned long long nbr)
 {
 	char	*joined;
 
-	if ((*conf)->flag_zeropadded && !(*conf)->flag_leftadjusted)
+	if (conf->flag_zeropadded && !conf->flag_leftadjusted)
 	{
 		out_str("0x", conf);
-		(*conf)->width -= 2;
+		conf->width -= 2;
 		return ;
 	}
-	if (!nbr && ft_strlen(*output) == 1 && (*conf)->precision == 0)
+	if (!nbr && ft_strlen(*output) == 1 && conf->precision == 0)
 		(*output)[0] = '\0';
 	joined = ft_strjoin("0x", *output);
 	if (!joined)
@@ -63,29 +63,29 @@ static void	pointer_prefix(t_conf **conf, char **output, unsigned long long nbr)
 /*
  * Handles pointer conversion.
 */
-void	conversion_pointer(t_conf **conf)
+void	conversion_pointer(t_conf *conf)
 {
 	int					len;
 	char				*itoa;
 	unsigned long long	number;
 
-	number = va_arg((*conf)->ap, unsigned long long);
+	number = va_arg(conf->ap, unsigned long long);
 	itoa = ft_itoa_base_ull(number, 16, 0);
 	if (!itoa)
 		return ;
 	pointer_precision(conf, &itoa);
 	pointer_prefix(conf, &itoa, number);
 	len = ft_strlen(itoa);
-	if (!number && (*conf)->precision == 0)
+	if (!number && conf->precision == 0)
 		len = 2;
-	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
-		&& !(*conf)->flag_zeropadded)
-		out_char_repeat(' ', (*conf)->width - len, conf);
-	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
-		&& (*conf)->flag_zeropadded)
-		out_char_repeat('0', (*conf)->width - len, conf);
+	if (conf->width - len > 0 && !conf->flag_leftadjusted
+		&& !conf->flag_zeropadded)
+		out_char_repeat(' ', conf->width - len, conf);
+	if (conf->width - len > 0 && !conf->flag_leftadjusted
+		&& conf->flag_zeropadded)
+		out_char_repeat('0', conf->width - len, conf);
 	out_str_case(itoa, 0, conf);
-	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
-		out_char_repeat(' ', (*conf)->width - len, conf);
+	if (conf->width - len > 0 && conf->flag_leftadjusted)
+		out_char_repeat(' ', conf->width - len, conf);
 	free(itoa);
 }

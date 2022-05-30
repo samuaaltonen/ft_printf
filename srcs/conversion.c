@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:20:12 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 16:12:28 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:33:29 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static void	dispatch_conversion(const t_dispatch_identifier *conversions,
-	t_conf **conf, char **cursor)
+	t_conf *conf, char **cursor)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ static void	dispatch_conversion(const t_dispatch_identifier *conversions,
 /*
  * Handles conversion.
 */
-void	handle_conversion(t_conf **conf, char **cursor)
+void	handle_conversion(t_conf *conf, char **cursor)
 {
 	static const t_dispatch_identifier	conversions[] = {
 	{'%', conversion_percent},

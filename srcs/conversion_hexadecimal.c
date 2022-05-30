@@ -6,29 +6,29 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:09:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/04/07 16:09:24 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:34:50 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	hex_precision(t_conf **conf, char **output)
+static void	hex_precision(t_conf *conf, char **output)
 {
 	int		i;
 	int		len;
 	char	*zeros;
 	char	*joined;
 
-	if ((*conf)->precision < 0)
+	if (conf->precision < 0)
 		return ;
 	len = ft_strlen(*output);
-	if ((*conf)->precision <= len)
+	if (conf->precision <= len)
 		return ;
-	zeros = ft_strnew((*conf)->precision - len);
+	zeros = ft_strnew(conf->precision - len);
 	if (!zeros)
 		ft_printf_exit_error(MSG_ALLOC_FAILED);
 	i = 0;
-	while (i < (*conf)->precision - len)
+	while (i < conf->precision - len)
 	{
 		zeros[i] = '0';
 		i++;
@@ -41,21 +41,21 @@ static void	hex_precision(t_conf **conf, char **output)
 	*output = joined;
 }
 
-static void	hex_prefix(t_conf **conf, char **output, long long number)
+static void	hex_prefix(t_conf *conf, char **output, long long number)
 {
 	char	*joined;
 
 	if (!number)
 		return ;
-	if ((*conf)->flag_hashtag)
+	if (conf->flag_hashtag)
 	{
-		if ((*conf)->flag_zeropadded && !(*conf)->flag_leftadjusted)
+		if (conf->flag_zeropadded && !conf->flag_leftadjusted)
 		{
-			if ((*conf)->is_uppercase)
+			if (conf->is_uppercase)
 				out_str("0X", conf);
 			else
 				out_str("0x", conf);
-			(*conf)->width -= 2;
+			conf->width -= 2;
 			return ;
 		}
 		joined = ft_strjoin("0x", *output);
@@ -69,7 +69,7 @@ static void	hex_prefix(t_conf **conf, char **output, long long number)
 /*
  * Handles hexadecimal conversion. Treats given numbers as unsigned.
 */
-void	conversion_hexadecimal(t_conf **conf)
+void	conversion_hexadecimal(t_conf *conf)
 {
 	int					len;
 	char				*itoa;
@@ -82,29 +82,29 @@ void	conversion_hexadecimal(t_conf **conf)
 	hex_precision(conf, &itoa);
 	hex_prefix(conf, &itoa, number);
 	len = ft_strlen(itoa);
-	if (!number && (*conf)->precision == 0)
+	if (!number && conf->precision == 0)
 		len = 0;
-	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
-		&& !(*conf)->flag_zeropadded)
-		out_char_repeat(' ', (*conf)->width - len, conf);
-	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
-		&& (*conf)->flag_zeropadded)
-		out_char_repeat('0', (*conf)->width - len, conf);
-	if (!(!number && (*conf)->precision == 0))
-		out_str_case(itoa, (*conf)->is_uppercase, conf);
-	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
-		out_char_repeat(' ', (*conf)->width - len, conf);
+	if (conf->width - len > 0 && !conf->flag_leftadjusted
+		&& !conf->flag_zeropadded)
+		out_char_repeat(' ', conf->width - len, conf);
+	if (conf->width - len > 0 && !conf->flag_leftadjusted
+		&& conf->flag_zeropadded)
+		out_char_repeat('0', conf->width - len, conf);
+	if (!(!number && conf->precision == 0))
+		out_str_case(itoa, conf->is_uppercase, conf);
+	if (conf->width - len > 0 && conf->flag_leftadjusted)
+		out_char_repeat(' ', conf->width - len, conf);
 	free(itoa);
 }
 
-void	conversion_hexadecimal_lower(t_conf **conf)
+void	conversion_hexadecimal_lower(t_conf *conf)
 {
-	(*conf)->is_uppercase = 0;
+	conf->is_uppercase = 0;
 	conversion_hexadecimal(conf);
 }
 
-void	conversion_hexadecimal_upper(t_conf **conf)
+void	conversion_hexadecimal_upper(t_conf *conf)
 {
-	(*conf)->is_uppercase = 1;
+	conf->is_uppercase = 1;
 	conversion_hexadecimal(conf);
 }

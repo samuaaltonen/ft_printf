@@ -6,13 +6,13 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/05/30 13:20:18 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:37:19 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	handle_args(t_conf **conf, char **cursor)
+static void	handle_args(t_conf *conf, char **cursor)
 {
 	if (!(*cursor) || !(**cursor))
 		return ;
@@ -51,7 +51,7 @@ int	ft_printf(const char *format, ...)
 	cursor = (char *) format;
 	va_start(conf->ap, format);
 	while (*cursor)
-		handle_args(&conf, &cursor);
+		handle_args(conf, &cursor);
 	va_end(conf->ap);
 	n = conf->n;
 	free(conf);
@@ -76,7 +76,7 @@ int	ft_dprintf(int fd, const char *format, ...)
 	cursor = (char *) format;
 	va_start(conf->ap, format);
 	while (*cursor)
-		handle_args(&conf, &cursor);
+		handle_args(conf, &cursor);
 	va_end(conf->ap);
 	n = conf->n;
 	free(conf);
