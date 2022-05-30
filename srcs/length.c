@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   length.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:07:05 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 16:01:25 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:29:25 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,33 +60,33 @@ unsigned long long	get_va_arg_unsigned(t_conf **conf)
 
 /*
  * Handles length modifieds (l, llu, hh etc.):
- * hh	= 1 (char)
- * h	= 2 (short)
- * l	= 3 (long)
- * ll	= 4 (long long)
- * L	= 5 (long double)
+ * hh	= (char)
+ * h	= (short)
+ * l	= (long)
+ * ll	= (long long)
+ * L	= (long double)
  * 
- * q	= 4 synonym for ll
- * j	= 4 intmax_t or uintmax_t
- * z	= 0 size_t or ssize_t
+ * q	= synonym for ll
+ * j	= intmax_t or uintmax_t
+ * z	= size_t or ssize_t
 */
 void	handle_length(t_conf **conf, char **cursor)
 {
 	if (!(*cursor) || !(**cursor == 'h' || **cursor == 'l' || **cursor == 'L'
 			|| **cursor == 'q' || **cursor == 'j' || **cursor == 'z'))
 		return ;
-	if ((*conf)->length == 2 && **cursor == 'h')
-		(*conf)->length = 1;
-	else if ((*conf)->length < 3 && **cursor == 'h')
-		(*conf)->length = 2;
-	if ((*conf)->length == 3 && **cursor == 'l')
-		(*conf)->length = 4;
+	if ((*conf)->length == LENGTH_SHORT && **cursor == 'h')
+		(*conf)->length = LENGTH_CHAR;
+	else if ((*conf)->length < LENGTH_LONG && **cursor == 'h')
+		(*conf)->length = LENGTH_SHORT;
+	if ((*conf)->length == LENGTH_LONG && **cursor == 'l')
+		(*conf)->length = LENGTH_LONG_LONG;
 	else if (**cursor == 'l')
-		(*conf)->length = 3;
+		(*conf)->length = LENGTH_LONG;
 	if (**cursor == 'L')
-		(*conf)->length = 5;
+		(*conf)->length = LENGTH_LONG_DOUBLE;
 	if (**cursor == 'q' || **cursor == 'j' || **cursor == 'z')
-		(*conf)->length = 4;
+		(*conf)->length = LENGTH_LONG_LONG;
 	(*cursor)++;
 	handle_length(conf, cursor);
 }

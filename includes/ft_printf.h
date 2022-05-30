@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/05/30 13:20:56 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:26:29 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define FT_PRINTF_H
 # define DEFAULT_FD 1
 # define MSG_ALLOC_FAILED "Failed to allocate memory."
+# define LENGTH_SIZE_T 0
+# define LENGTH_CHAR 1
+# define LENGTH_SHORT 2
+# define LENGTH_LONG 3
+# define LENGTH_LONG_LONG 4
+# define LENGTH_LONG_DOUBLE 5
 # include <stdarg.h>
 # include "libft.h"
 
