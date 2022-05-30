@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 11:55:09 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 17:20:44 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/04/07 16:11:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@
  * prints 9 and truncates number to -223372036854775808 until continues with
  * recursive printing.
 */
-static void	int_output(long long number, int *n)
+static void	int_output(t_conf **conf, long long number)
 {
 	if (number < 0)
 	{
 		if (number == (long long) -9223372036854775807 - 1)
 		{
-			ft_putchar_n('9', n);
+			out_char('9', conf);
 			number = -223372036854775808;
 		}
 		number = -1 * number;
 	}
 	if (number >= 10)
-		int_output(number / 10, n);
-	ft_putchar_n(number % 10 + '0', n);
+		int_output(conf, number / 10);
+	out_char(number % 10 + '0', conf);
 }
 
 static void	int_output_sign(t_conf **conf, long long number)
@@ -38,9 +38,9 @@ static void	int_output_sign(t_conf **conf, long long number)
 	if (number < 0 || (*conf)->flag_addsign)
 	{
 		if (number < 0)
-			ft_putchar_n('-', &((*conf)->n));
+			out_char('-', conf);
 		else
-			ft_putchar_n('+', &((*conf)->n));
+			out_char('+', conf);
 	}
 }
 
@@ -64,15 +64,15 @@ static void	int_output_zeroes(t_conf **conf, long long number)
 
 	len = ft_count_digits(number);
 	if ((*conf)->precision > len)
-		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->precision - len);
+		out_char_repeat('0', (*conf)->precision - len, conf);
 	if ((*conf)->flag_addspace)
 		len++;
 	if ((*conf)->flag_zeropadded && (*conf)->width > len)
 	{
 		if (number < 0 || (*conf)->flag_addsign)
-			ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len - 1);
+			out_char_repeat('0', (*conf)->width - len - 1, conf);
 		else
-			ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
+			out_char_repeat('0', (*conf)->width - len, conf);
 	}
 }
 
@@ -92,17 +92,17 @@ void	conversion_int(t_conf **conf)
 	if (!number && (*conf)->precision == 0)
 		len--;
 	if (!(*conf)->flag_addsign && (*conf)->flag_addspace && number >= 0)
-		ft_putchar_n(' ', &((*conf)->n));
+		out_char(' ', conf);
 	if ((*conf)->width > len
 		&& !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 	int_output_sign(conf, number);
 	int_output_zeroes(conf, number);
 	if (!(!number && (*conf)->precision == 0))
-		int_output(number, &((*conf)->n));
+		int_output(conf, number);
 	if ((*conf)->width > len
 		&& (*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_binary.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:09:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/28 15:32:28 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/04/07 16:05:18 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	binary_precision(t_conf **conf, char **output)
 		return ;
 	zeros = ft_strnew((*conf)->precision - len);
 	if (!zeros)
-		exit_error(MSG_ALLOC_FAILED);
+		ft_printf_exit_error(MSG_ALLOC_FAILED);
 	i = 0;
 	while (i < (*conf)->precision - len)
 	{
@@ -35,7 +35,7 @@ static void	binary_precision(t_conf **conf, char **output)
 	}
 	joined = ft_strjoin(zeros, *output);
 	if (!joined)
-		exit_error(MSG_ALLOC_FAILED);
+		ft_printf_exit_error(MSG_ALLOC_FAILED);
 	free(*output);
 	free(zeros);
 	*output = joined;
@@ -51,14 +51,13 @@ static void	binary_prefix(t_conf **conf, char **output, long long number)
 	{
 		if ((*conf)->flag_zeropadded && !(*conf)->flag_leftadjusted)
 		{
-			ft_putstr("0x");
+			out_str("0x", conf);
 			(*conf)->width -= 2;
-			(*conf)->n += 2;
 			return ;
 		}
 		joined = ft_strjoin("0x", *output);
 		if (!joined)
-			exit_error(MSG_ALLOC_FAILED);
+			ft_printf_exit_error(MSG_ALLOC_FAILED);
 		free(*output);
 		*output = joined;
 	}
@@ -85,13 +84,13 @@ void	conversion_binary(t_conf **conf)
 		len = 0;
 	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
 		&& (*conf)->flag_zeropadded)
-		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat('0', (*conf)->width - len, conf);
 	if (!(!number && (*conf)->precision == 0))
-		ft_putstr_n_case(itoa, &((*conf)->n), (*conf)->is_uppercase);
+		out_str_case(itoa, (*conf)->is_uppercase, conf);
 	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 	free(itoa);
 }

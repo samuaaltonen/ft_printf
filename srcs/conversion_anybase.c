@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_anybase.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 13:09:33 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/04 16:37:01 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/04/07 16:03:07 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	conversion_anybase(t_conf **conf)
 		len = 0;
 	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 	if ((*conf)->width - len > 0 && !(*conf)->flag_leftadjusted
 		&& (*conf)->flag_zeropadded)
-		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat('0', (*conf)->width - len, conf);
 	if (!(!number && (*conf)->precision == 0))
-		ft_putstr_n(itoa, &((*conf)->n));
+		out_str(itoa, conf);
 	if ((*conf)->width - len > 0 && (*conf)->flag_leftadjusted)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 	free(itoa);
 }

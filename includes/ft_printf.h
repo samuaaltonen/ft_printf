@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/15 12:36:59 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/04/07 15:53:32 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# define DEFAULT_FD 1
 # define MSG_ALLOC_FAILED "Failed to allocate memory."
 # include <stdarg.h>
 # include "libft.h"
@@ -19,6 +20,7 @@
 typedef struct s_conf
 {
 	va_list	ap;
+	int		fd;
 	int		n;
 	int		width;
 	int		length;
@@ -48,9 +50,10 @@ typedef struct t_color_identifier
 }	t_color_identifier;
 
 int					ft_printf(const char *format, ...);
+int					ft_printf_fd(int fd, const char *format, ...);
 
-int					init_conf(t_conf **conf);
-void				reset_conf(t_conf **conf);
+int					ft_printf_init_conf(t_conf **conf);
+void				ft_printf_reset_conf(t_conf **conf);
 
 void				handle_color(t_conf **conf, char **cursor);
 void				handle_flags(t_conf **conf, char **cursor);
@@ -62,13 +65,13 @@ void				handle_conversion(t_conf **conf, char **cursor);
 long long			get_va_arg(t_conf **conf);
 unsigned long long	get_va_arg_unsigned(t_conf **conf);
 
-void				exit_error(char	*message);
-void				ft_putchar_n(char c, int *n);
-void				ft_putchar_n_repeat(char c, int *n, int repeat);
-void				ft_putstr_n(char *str, int *n);
-void				ft_putstr_n_case(char *str, int *n, int is_uppercase);
+void				ft_printf_exit_error(char *message);
+void				out_char(char c, t_conf **conf);
+void				out_char_repeat(char c, int repeat, t_conf **conf);
+void				out_str(char *str, t_conf **conf);
+void				out_str_case(char *str, int is_uppercase, t_conf **conf);
 
-void				print_str(t_conf **conf, char *str, int len);
+void				ft_printf_print_str(t_conf **conf, char *str, int len);
 
 void				conversion_percent(t_conf **conf);
 void				conversion_string(t_conf **conf);

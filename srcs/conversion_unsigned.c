@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_unsigned.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:03:23 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/21 14:47:18 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/04/07 16:17:16 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	unsigned_output(unsigned long long number, int *n)
+static void	unsigned_output(t_conf **conf, unsigned long long number)
 {
 	if (number >= 10)
-		unsigned_output(number / 10, n);
-	ft_putchar(number % 10 + '0');
-	(*n)++;
+		unsigned_output(conf, number / 10);
+	out_char(number % 10 + '0', conf);
 }
 
 static int	unsigned_width(t_conf **conf, long long number)
@@ -36,9 +35,9 @@ static void	unsigned_output_zeroes(t_conf **conf, long long number)
 
 	len = ft_count_digits(number);
 	if ((*conf)->precision > len)
-		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->precision - len);
+		out_char_repeat('0', (*conf)->precision - len, conf);
 	if ((*conf)->flag_zeropadded && (*conf)->width > len)
-		ft_putchar_n_repeat('0', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat('0', (*conf)->width - len, conf);
 }
 
 /*
@@ -56,14 +55,14 @@ void	conversion_unsigned(t_conf **conf)
 	if ((*conf)->width > len
 		&& !(*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 	unsigned_output_zeroes(conf, number);
 	if (!(!number && (*conf)->precision == 0))
-		unsigned_output(number, &((*conf)->n));
+		unsigned_output(conf, number);
 	if ((*conf)->width > len
 		&& (*conf)->flag_leftadjusted
 		&& !(*conf)->flag_zeropadded)
-		ft_putchar_n_repeat(' ', &((*conf)->n), (*conf)->width - len);
+		out_char_repeat(' ', (*conf)->width - len, conf);
 }
 
 void	conversion_unsigned_capital_u(t_conf **conf)

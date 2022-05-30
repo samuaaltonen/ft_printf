@@ -3,41 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:49:16 by saaltone          #+#    #+#             */
-/*   Updated: 2022/02/17 16:31:23 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/04/07 15:52:52 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	exit_error(char	*message)
+void	ft_printf_exit_error(char	*message)
 {
 	ft_putstr(message);
 	exit(EXIT_FAILURE);
 }
 
-void	ft_putchar_n(char c, int *n)
+void	out_char(char c, t_conf **conf)
 {
-	ft_putchar(c);
-	(*n)++;
+	ft_putchar_fd(c, (*conf)->fd);
+	((*conf)->n)++;
 }
 
-void	ft_putchar_n_repeat(char c, int *n, int repeat)
+void	out_char_repeat(char c, int repeat, t_conf **conf)
 {
 	int	i;
 
 	i = 0;
 	while (i < repeat)
 	{
-		ft_putchar(c);
+		ft_putchar_fd(c, (*conf)->fd);
 		i++;
 	}
-	(*n) += i;
+	(*conf)->n += i;
 }
 
-void	ft_putstr_n(char *str, int *n)
+void	out_str(char *str, t_conf **conf)
 {
 	int	i;
 
@@ -46,13 +46,13 @@ void	ft_putstr_n(char *str, int *n)
 	i = 0;
 	while (str[i])
 	{
-		ft_putchar(str[i]);
-		(*n)++;
+		ft_putchar_fd(str[i], (*conf)->fd);
+		((*conf)->n)++;
 		i++;
 	}
 }
 
-void	ft_putstr_n_case(char *str, int *n, int is_uppercase)
+void	out_str_case(char *str, int is_uppercase, t_conf **conf)
 {
 	int	i;
 
@@ -62,9 +62,9 @@ void	ft_putstr_n_case(char *str, int *n, int is_uppercase)
 	while (str[i])
 	{
 		if (is_uppercase)
-			ft_putchar_n(ft_toupper(str[i]), n);
+			out_char(ft_toupper(str[i]), conf);
 		else
-			ft_putchar_n(ft_tolower(str[i]), n);
+			out_char(ft_tolower(str[i]), conf);
 		i++;
 	}
 }

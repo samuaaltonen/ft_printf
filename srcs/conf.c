@@ -6,13 +6,13 @@
 /*   By: saaltone <saaltone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 11:25:36 by saaltone          #+#    #+#             */
-/*   Updated: 2022/03/15 12:39:11 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:29:47 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	init_conf(t_conf **conf)
+int	ft_printf_init_conf(t_conf **conf)
 {
 	if (!conf)
 		return (0);
@@ -40,7 +40,7 @@ int	init_conf(t_conf **conf)
  * Resets conf info to get rid of any possible flags from previous conversion.
  * Does not reset n counter.
 */
-void	reset_conf(t_conf **conf)
+void	ft_printf_reset_conf(t_conf **conf)
 {
 	(*conf)->width = 0;
 	(*conf)->length = 0;
