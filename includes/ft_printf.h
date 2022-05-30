@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:23:37 by saaltone          #+#    #+#             */
-/*   Updated: 2022/04/07 15:53:32 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:20:56 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct t_color_identifier
 }	t_color_identifier;
 
 int					ft_printf(const char *format, ...);
-int					ft_printf_fd(int fd, const char *format, ...);
+int					ft_dprintf(int fd, const char *format, ...);
 
 int					ft_printf_init_conf(t_conf **conf);
 void				ft_printf_reset_conf(t_conf **conf);

@@ -6,7 +6,7 @@
 /*   By: saaltone <saaltone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 13:22:10 by saaltone          #+#    #+#             */
-/*   Updated: 2022/04/08 12:04:30 by saaltone         ###   ########.fr       */
+/*   Updated: 2022/05/30 13:20:18 by saaltone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_printf(const char *format, ...)
  * Conversion specification is:
  * %[$][flags][width][.precision][length modifier]conversion
 */
-int	ft_printf_fd(int fd, const char *format, ...)
+int	ft_dprintf(int fd, const char *format, ...)
 {
 	t_conf	*conf;
 	char	*cursor;
