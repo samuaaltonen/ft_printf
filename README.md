@@ -18,7 +18,7 @@ bg_black, bg_red, bg_green, bg_yellow, bg_blue, bg_purple, bg_cyan, bg_white
 Color can be reset with ```reset``` or ```eoc```.
 
 ## Full IEEE 754 floating point support
-Can represent any IEEE 754 floating point numbers (single to extended) with full accuracy at any given precision. This is achieved by converting exponential form of floats to division by 2-integers with own big integer libary. 
+Can represent any IEEE 754 floating point numbers (single to extended) with full accuracy at any given precision. This is achieved by converting exponential form of floats to division of 2-integers with own big integer libary. 
 Example (single precision float 1.75f to division of 2 big integers):
 
 
@@ -85,4 +85,4 @@ ft_printf("%.10b%c\n", 1, '|');
 ft_printf("%-#010.5b%c\n", 1, '|');
 ```
 
-<img src="https://i.imgur.com/cuWtKpe.png" alt="Binary conversion">
+<img src="https://i.imgur.com/KFJ1clH.png" alt="Binary conversion">
